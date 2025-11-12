@@ -46,12 +46,13 @@ const members: Member[] = [
     linkedin: 'https://www.linkedin.com/in/diego-morales'
   },
   {
-    name: 'Angel Chikumbirike',
+    name: 'Praneet Chilla',
     role: 'Computer Science Major',
     blurb: 'Developer',
     color: '#2b8f6b',
-    github: 'https://github.com/spongebob',
-    linkedin: 'https://www.linkedin.com/in/spongebob'
+    github: 'https://github.com/Kali-Kana',
+    linkedin: 'https://www.linkedin.com/in/praneet-chilla-773a02285',
+    photo: 'praneet-chilla.jpg'
   }
 ];
 
