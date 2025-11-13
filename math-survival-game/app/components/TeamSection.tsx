@@ -14,7 +14,7 @@ type Member = {
 const members: Member[] = [
   {
     name: 'Harry McGuire',
-    role: 'Senior-Computer Science Major',
+    role: 'Computer Science Major',
     blurb: 'Web Designer',
     color: '#0e766e',
     github: 'https://github.com/hmcguire0583',
@@ -26,16 +26,18 @@ const members: Member[] = [
     role: 'Computer Science Major',
     blurb: 'Developer',
     color: '#1f6fa1',
-    github: 'https://github.com/samir-patel',
-    linkedin: 'https://www.linkedin.com/in/samir-patel'
+    github: 'https://github.com/GhostCinna',
+    linkedin: 'https://www.linkedin.com/in/joão-ziedins/',
+    photo: 'joao-z.jpg'
   },
   {
     name: 'Max Leavitt',
     role: 'Computer Science Major',
     blurb: 'Developer',
     color: '#7a4ea6',
-    github: 'https://github.com/lily-zhang',
-    linkedin: 'https://www.linkedin.com/in/lily-zhang'
+    github: 'https://github.com/Max-leav',
+    linkedin: 'https://www.linkedin.com/in/maxleavitt/',
+    photo: 'max-leavitt.jpg'
   },
   {
     name: 'Aryan Bhagat',
