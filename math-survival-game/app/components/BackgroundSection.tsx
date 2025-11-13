@@ -14,7 +14,7 @@ export default function BackgroundSection() {
       <section id="motivation" aria-labelledby="motivation-title" style={{ maxWidth: 980, margin: '40px auto', padding: 28, borderRadius: 12, background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))', border: '1px solid rgba(255,255,255,0.03)' }}>
           <h2 id="motivation-title" style={{ marginTop: 0, color: '#e9fff0', fontSize: '2rem' }}>Motivation</h2>
             <p style={{ color: '#cfe9dd', lineHeight: 1.6 }}>
-              The motivation for this game came from our final project in the first run of the Software Engineering course at UMass Lowell. We wanted to build something fun but meaningful, so we took inspiration from survival games, especially the Steam game <em> Raft </em>, and added an educational twist. The idea was to make math feel like a tool for survival, not just something you do in class. By blending gameplay with real math concepts, we aimed to create something that’s both engaging and useful for middle school students.
+              The motivation for this game came from our final project during the first run of the Software Engineering course at UMass Lowell. We wanted to build something fun but meaningful, so we took inspiration from survival games, especially the Steam game <em>Raft</em>, and added an educational twist. The idea was to make math feel like a tool for survival, not just something you do in class. By blending gameplay with real math concepts, we aimed to create something that’s both engaging and useful for middle school students.
 
             </p>
       </section>
