@@ -38,10 +38,10 @@ const BibliographyData: SourceItem[] = [
       "Comprehensive resource for HTML, CSS, and JavaScript standards used in styling and interactivity.",
   },
   {
-    title: "Game-Based Learning in Mathematics Education (The Massachusetts Department of Education)",
+    title: "The Massachusetts Department of Education",
     url: "https://www.doe.mass.edu/frameworks/current.html",
     description:
-      "Academic research exploring how interactive games improve motivation and comprehension in mathematics learning.",
+      "The Massachusetts DESE runs public education from pre-K to grade 12 statewide. We follow clear academic standards to make sure every student gets a fair shot at quality learning.",
   },
   {
     title: "Additional Research Sources",
