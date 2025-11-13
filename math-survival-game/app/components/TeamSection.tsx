@@ -44,8 +44,9 @@ const members: Member[] = [
     role: 'Computer Science Major',
     blurb: 'Developer',
     color: '#b9624a',
-    github: 'https://github.com/diego-morales',
-    linkedin: 'https://www.linkedin.com/in/diego-morales'
+    //github: 'https://github.com/diego-morales',
+    linkedin: 'https://www.linkedin.com/in/aryan-bhagat-694799305/',
+    photo: 'Aryan-Bhagat.jpg'
   },
   {
     name: 'Praneet Chilla',
