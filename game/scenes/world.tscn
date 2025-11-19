@@ -136,7 +136,7 @@ y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
-position = Vector2(-268, -96)
+position = Vector2(-223, -137)
 tile_set = SubResource("TileSet_7r4gi")
 format = 2
 layer_0/name = "ground"
