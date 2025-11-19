@@ -11,8 +11,7 @@ config_version=5
 [application]
 
 config/name="SurviveX"
-run/main_scene="uid://rqphw5hige8p"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://art/icon.svg"
 
 [display]
