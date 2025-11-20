@@ -2,11 +2,14 @@ extends CharacterBody2D
 
 const speed = 100
 var current_dir = "none"
+var on_boat := false
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 
 func _physics_process(delta):
+	if on_boat:
+		return  # do nothing if on the boat
 	player_movement(delta)
 
 func player_movement(delta):
