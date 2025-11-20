@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://rc0hmvrpvd0u"]
+[gd_scene load_steps=88 format=3 uid="uid://rc0hmvrpvd0u"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bda6f83hdcpn1" path="res://scenes/enemy.gd" id="1_otmr2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cmn35aqbssaxi" path="res://art/characters/Zombie_Big/Zombie_Big_Up_First-Attack-Sheet8.png" id="8_jmwgi"]
 [ext_resource type="Texture2D" uid="uid://cqwqal6hf1lim" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Idle-Sheet6.png" id="9_g2u8i"]
 [ext_resource type="Texture2D" uid="uid://duxg1dvtla1j4" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Walk-Sheet8.png" id="10_otto8"]
-[ext_resource type="Script" uid="uid://cbe51xmekx80v" path="res://scripts/enemy.gd" id="11_pwjut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q82m"]
 atlas = ExtResource("1_dxifv")
@@ -590,9 +589,8 @@ script = ExtResource("1_otmr2")
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_pf1hb")
 animation = &"side_walk"
-frame_progress = 0.7141385
+frame_progress = 0.714139
 offset = Vector2(0, -6)
-script = ExtResource("11_pwjut")
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2
