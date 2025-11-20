@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 40.0
+@export var speed := 20.0
 var player_chase := false
 var player = null
 var current_dir := "down"  # Default facing direction
@@ -11,12 +11,12 @@ func _ready():
 
 func _physics_process(delta):
 	if player_chase and player:
-		var move_vec = (player.position - position)
+		var move_vec = player.position - position
 		update_direction(move_vec)
-		position += move_vec / speed
 
-		# Only play walk if movement is significant
+		# Normalize and scale by speed and delta for consistent movement
 		if move_vec.length() > 1:
+			position += move_vec.normalized() * speed * delta
 			play_anim(1)
 		else:
 			play_anim(0)
@@ -24,8 +24,9 @@ func _physics_process(delta):
 		play_anim(0)
 
 func _on_detection_area_body_entered(body):
-	player = body
-	player_chase = true
+	if body.name == "Player":  # Optional: check by name or group
+		player = body
+		player_chase = true
 
 func _on_detection_area_body_exited(body):
 	if body == player:
@@ -34,7 +35,7 @@ func _on_detection_area_body_exited(body):
 
 func update_direction(vec: Vector2):
 	if vec == Vector2.ZERO:
-		return  # Don't update direction if there's no movement
+		return
 	if abs(vec.x) > abs(vec.y):
 		current_dir = "right" if vec.x > 0 else "left"
 	else:
@@ -58,4 +59,4 @@ func play_anim(movement):
 			anim.play("up_walk" if movement == 1 else "up_idle")
 		_:
 			anim.flip_h = false
-			anim.play("down_idle")  # Fallback
+			anim.play("down_idle")

@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var tilemap: TileMap
 
-var acceleration := 200.0
+var acceleration := 150.0
 var max_speed := 160.0
 var turn_speed := 2.5
 var water_drag := 0.05
@@ -90,7 +90,7 @@ func apply_drag(delta):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player") and not player_on_board:
 		player = body
-		print("Press E to hop on the boat!")
+		print("Press SPACE to hop on the boat!")
 
 func _on_Area2D_body_exited(body):
 	if body == player and not player_on_board:
