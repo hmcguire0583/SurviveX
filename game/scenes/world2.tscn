@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://d13u6hp7j5hv5"]
+[gd_scene load_steps=22 format=3 uid="uid://d13u6hp7j5hv5"]
 
+[ext_resource type="Script" uid="uid://bai38yab1j8fg" path="res://scenes/world_2.gd" id="1_hvnw1"]
 [ext_resource type="Texture2D" uid="uid://c7u0b7grl7vq0" path="res://art/tilesets/Water.png" id="1_oojol"]
 [ext_resource type="Texture2D" uid="uid://c1cr1b6nt5bbe" path="res://art/tilesets/grass.png" id="2_xq77f"]
 [ext_resource type="Texture2D" uid="uid://d4f4iesohr63o" path="res://art/tilesets/plains.png" id="3_0yomu"]
@@ -517,6 +518,7 @@ animations = [{
 }]
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_hvnw1")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-1, 1)
@@ -601,3 +603,15 @@ position = Vector2(-188, 134)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="LevelTimer" type="Timer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ObjectiveLabel" type="Label" parent="CanvasLayer2"]
+offset_right = 40.0
+offset_bottom = 23.0

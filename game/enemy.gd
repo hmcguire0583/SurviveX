@@ -7,6 +7,9 @@ var current_dir := "down"
 var math_challenge_active := false
 var active_math_screen = null
 
+# Preload the vanquish label scene
+var VanquishLabelScene := preload("res://vanquish_label.tscn")
+
 func _ready():
 	current_dir = "down"
 	$AnimatedSprite2D.play("down_idle")
@@ -82,8 +85,17 @@ func defeat_enemy():
 	if active_math_screen:
 		active_math_screen.queue_free()
 
-	var label = get_tree().current_scene.get_node("VanquishLabel")
-	if label:
-		label.text = "Enemy vanquished!"
+	# Increment global counter
+	GameManager.enemies_defeated += 1
+
+	# If all enemies are defeated, show "You Win!" only
+	if GameManager.enemies_defeated >= 3:
+		var win_label = VanquishLabelScene.instantiate()
+		win_label.get_node("Label").text = "You Win!"
+		get_tree().current_scene.add_child(win_label)
+	else:
+		# Otherwise show "Enemy vanquished!"
+		var label_instance = VanquishLabelScene.instantiate()
+		get_tree().current_scene.add_child(label_instance)
 
 	queue_free()
