@@ -1,6 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://rc0hmvrpvd0u"]
+[gd_scene load_steps=89 format=3 uid="uid://rc0hmvrpvd0u"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
+[ext_resource type="Script" uid="uid://bda6f83hdcpn1" path="res://scenes/enemy.gd" id="1_otmr2"]
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
@@ -10,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cmn35aqbssaxi" path="res://art/characters/Zombie_Big/Zombie_Big_Up_First-Attack-Sheet8.png" id="8_jmwgi"]
 [ext_resource type="Texture2D" uid="uid://cqwqal6hf1lim" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Idle-Sheet6.png" id="9_g2u8i"]
 [ext_resource type="Texture2D" uid="uid://duxg1dvtla1j4" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Walk-Sheet8.png" id="10_otto8"]
-[ext_resource type="Script" uid="uid://cbe51xmekx80v" path="res://enemy.gd" id="11_pwjut"]
+[ext_resource type="Script" uid="uid://cbe51xmekx80v" path="res://scripts/enemy.gd" id="11_pwjut"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q82m"]
 atlas = ExtResource("1_dxifv")
@@ -583,12 +584,13 @@ radius = 54.0
 radius = 7.0
 
 [node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_otmr2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_pf1hb")
-animation = &"down_idle"
-frame_progress = 0.36079884
+animation = &"side_walk"
+frame_progress = 0.7141385
 offset = Vector2(0, -6)
 script = ExtResource("11_pwjut")
 
@@ -602,3 +604,6 @@ shape = SubResource("CircleShape2D_xk8vo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qsno1")
+
+[connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_exited"]
