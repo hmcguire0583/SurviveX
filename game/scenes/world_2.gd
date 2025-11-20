@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var time_limit := 60  # seconds
+@export var time_limit := 30  # seconds
 @onready var level_timer := $LevelTimer
 @onready var timer_label := $TimerLabel
 @onready var objective_label := $CanvasLayer2/ObjectiveLabel
@@ -33,4 +33,6 @@ func _on_time_out():
 	if timer_label:
 		timer_label.text = "GAME OVER"
 	# Change scene to Main Menu
+	get_tree().paused = false
+
 	get_tree().change_scene_to_file("res://main_menu.tscn")
