@@ -104,7 +104,7 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Exit
+text = "Exit (placeholder)
 "
 
 [node name="Label" type="Label" parent="."]
