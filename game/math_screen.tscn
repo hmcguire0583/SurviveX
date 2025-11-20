@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://didnoohi4scvf"]
+
+[ext_resource type="Script" uid="uid://b1vvfx7qt37b5" path="res://math_screen.gd" id="1_g5ya0"]
+
+[sub_resource type="Theme" id="Theme_kr40e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yy2o2"]
+bg_color = Color(0.14117648, 0.3137255, 0.6, 1)
+
+[sub_resource type="Theme" id="Theme_a2y5b"]
+
+[node name="MathScreen" type="CanvasLayer"]
+script = ExtResource("1_g5ya0")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.75
+offset_top = -157.6875
+offset_right = 274.75
+offset_bottom = 157.6875
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kr40e")
+theme_override_styles/panel = SubResource("StyleBoxFlat_yy2o2")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 52.0
+offset_right = 78.5
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SUBMIT (BUTTON)"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -90.0
+offset_right = 80.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_a2y5b")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="LineEdit" type="LineEdit" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -21.0
+offset_right = 79.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -582,7 +582,13 @@ text = "2 + 3 = ?"
 position = Vector2(353, -11)
 
 [node name="enemy" parent="." instance=ExtResource("5_jlm5j")]
-position = Vector2(152, 84)
+position = Vector2(181, -54)
+
+[node name="enemy3" parent="." instance=ExtResource("5_jlm5j")]
+position = Vector2(24, -152)
+
+[node name="enemy2" parent="." instance=ExtResource("5_jlm5j")]
+position = Vector2(138, 156)
 
 [node name="shark2" parent="." instance=ExtResource("6_r0a0i")]
 position = Vector2(299, 208)
