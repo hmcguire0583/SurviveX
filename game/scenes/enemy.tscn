@@ -1,7 +1,7 @@
-[gd_scene load_steps=88 format=3 uid="uid://rc0hmvrpvd0u"]
+[gd_scene load_steps=88 format=3 uid="uid://c61hr0gy4d1dv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
-[ext_resource type="Script" uid="uid://bda6f83hdcpn1" path="res://scenes/enemy.gd" id="1_otmr2"]
+[ext_resource type="Script" uid="uid://bypqay10gersj" path="res://enemy.gd" id="1_otmr2"]
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
@@ -603,5 +603,7 @@ shape = SubResource("CircleShape2D_xk8vo")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_qsno1")
 
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_exited"]
