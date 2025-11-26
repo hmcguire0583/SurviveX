@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nvwqq7jbc3fl"]
 
-[ext_resource type="Script" uid="uid://1aasivpggr12" path="res://vanquish_label.gd" id="1_hxwti"]
+[ext_resource type="Script" uid="uid://1aasivpggr12" path="res://scripts/vanquish_label.gd" id="1_hxwti"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_hxwti")

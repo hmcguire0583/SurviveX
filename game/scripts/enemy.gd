@@ -8,7 +8,7 @@ var math_challenge_active := false
 var active_math_screen = null
 
 # Preload the vanquish label scene
-var VanquishLabelScene := preload("res://vanquish_label.tscn")
+var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
 	current_dir = "down"
@@ -74,7 +74,7 @@ func show_math_challenge():
 
 	get_tree().paused = true
 
-	active_math_screen = preload("res://math_screen.tscn").instantiate()
+	active_math_screen = preload("res://scenes/math_screen.tscn").instantiate()
 	active_math_screen.set_process_mode(2)
 	get_tree().current_scene.add_child(active_math_screen)
 	active_math_screen.connect("correct_answer", Callable(self, "defeat_enemy"))

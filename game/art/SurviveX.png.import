@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uosjxo11nh0b"
-path="res://.godot/imported/SurviveX.png-d2c8d919777283c4676fc1ae99760966.ctex"
+path="res://.godot/imported/SurviveX.png-2b7fffddcd154fa902ff69b3d7f6f930.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SurviveX.png"
-dest_files=["res://.godot/imported/SurviveX.png-d2c8d919777283c4676fc1ae99760966.ctex"]
+source_file="res://art/SurviveX.png"
+dest_files=["res://.godot/imported/SurviveX.png-2b7fffddcd154fa902ff69b3d7f6f930.ctex"]
 
 [params]
 

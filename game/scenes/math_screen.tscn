@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://didnoohi4scvf"]
 
-[ext_resource type="Script" uid="uid://b1vvfx7qt37b5" path="res://math_screen.gd" id="1_g5ya0"]
+[ext_resource type="Script" uid="uid://b1vvfx7qt37b5" path="res://scripts/math_screen.gd" id="1_g5ya0"]
 
 [sub_resource type="Theme" id="Theme_kr40e"]
 

@@ -35,4 +35,4 @@ func _on_time_out():
 	# Change scene to Main Menu
 	get_tree().paused = false
 
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

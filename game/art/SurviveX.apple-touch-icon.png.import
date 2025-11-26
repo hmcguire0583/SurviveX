@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ltnulqe8n56o"
-path="res://.godot/imported/SurviveX.apple-touch-icon.png-f2173e2017a129d0311caded2a739baf.ctex"
+path="res://.godot/imported/SurviveX.apple-touch-icon.png-34db44869f6437f89429192d615379f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SurviveX.apple-touch-icon.png"
-dest_files=["res://.godot/imported/SurviveX.apple-touch-icon.png-f2173e2017a129d0311caded2a739baf.ctex"]
+source_file="res://art/SurviveX.apple-touch-icon.png"
+dest_files=["res://.godot/imported/SurviveX.apple-touch-icon.png-34db44869f6437f89429192d615379f8.ctex"]
 
 [params]
 

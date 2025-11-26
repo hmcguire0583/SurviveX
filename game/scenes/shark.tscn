@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dhhctwvnbpoc4"]
 
-[ext_resource type="Script" uid="uid://di0e2a7ydwtws" path="res://shark.gd" id="1_d5pdq"]
+[ext_resource type="Script" uid="uid://di0e2a7ydwtws" path="res://scripts/shark.gd" id="1_d5pdq"]
 [ext_resource type="Texture2D" uid="uid://r4assefy5oty" path="res://art/hai-fin_only.png" id="1_rwmi6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d5pdq"]
