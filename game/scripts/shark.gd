@@ -1,30 +1,40 @@
 extends CharacterBody2D
 
-@export var speed := 20.0
-var player_chase := false
-var player = null
-var current_dir := "side"  # Default facing direction
+@export var speed: float = 60.0
+@export var wander_change_time: float = 2.0   # seconds before picking a new heading
+
+var current_dir: Vector2 = Vector2.RIGHT
+var time_accum: float = 0.0
 
 func _ready():
-	current_dir = "side"
-	$AnimatedSprite2D.play("shark_side")
+	# Start with a random direction
+	current_dir = Vector2.RIGHT.rotated(randf() * TAU)
+	velocity = current_dir.normalized() * speed
 
-func play_anim(movement):
+func _physics_process(delta):
+	# Move in current direction
+	move_and_slide()
+
+	# Occasionally pick a new random heading
+	time_accum += delta
+	if time_accum > wander_change_time:
+		time_accum = 0.0
+		current_dir = Vector2.RIGHT.rotated(randf() * TAU)
+		velocity = current_dir.normalized() * speed
+
+	update_direction(velocity)
+
+func update_direction(vec: Vector2):
 	var anim = $AnimatedSprite2D
-
-	match current_dir:
-		"right":
+	if abs(vec.x) > abs(vec.y):
+		if vec.x > 0:
 			anim.flip_h = false
 			anim.play("shark_side")
-		"left":
+		else:
 			anim.flip_h = true
 			anim.play("shark_side")
-		"down":
-			anim.flip_h = false
+	else:
+		if vec.y > 0:
 			anim.play("shark_down")
-		"up":
-			anim.flip_h = false
+		else:
 			anim.play("shark_up")
-		_:
-			anim.flip_h = false
-			anim.play("shark_down")  # Fallback

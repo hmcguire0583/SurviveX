@@ -2,18 +2,30 @@ extends CharacterBody2D
 
 const speed = 100
 var current_dir = "none"
-var on_boat := false
+var on_boat = false
+var health = 100
+var is_dead = false
+var math_challenge_active = false
+var previous_health = 100   # NEW: track last health value
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
+	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
+	$Damagelabel.visible = false   # hide initially
 
 func _physics_process(delta):
-	if on_boat:
-		return  # do nothing if on the boat
+	if on_boat or is_dead:
+		return
+	if math_challenge_active:
+		velocity = Vector2.ZERO
+		return
 	player_movement(delta)
+	update_health()
 
 func player_movement(delta):
-	
+	if is_dead:
+		return
+
 	if Input.is_action_pressed("ui_right"):
 		current_dir = "right"
 		play_anim(1)
@@ -34,43 +46,91 @@ func player_movement(delta):
 		play_anim(1)
 		velocity.y = -speed
 		velocity.x = 0
-	else: 
+	else:
 		play_anim(0)
 		velocity.x = 0
 		velocity.y = 0
-	
+
 	move_and_slide()
-	
+
 func play_anim(movement):
+	if is_dead:
+		return
+
 	var dir = current_dir
 	var anim = $AnimatedSprite2D
-		
+
 	if dir == "right":
 		anim.flip_h = false
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			anim.play("side_idle")
-	if dir == "left":
+		anim.play("side_walk" if movement == 1 else "side_idle")
+	elif dir == "left":
 		anim.flip_h = true
-		if movement == 1:
-			anim.play("side_walk")
-		elif movement == 0:
-			anim.play("side_idle")
-	if dir == "down":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("front_walk")
-		elif movement == 0:
-			anim.play("front_idle")
-	if dir == "up":
-		anim.flip_h = true
-		if movement == 1:
-			anim.play("back_walk")
-		elif movement == 0:
-			anim.play("back_idle")
- 
-		
-			
-		
-		
+		anim.play("side_walk" if movement == 1 else "side_idle")
+	elif dir == "down":
+		anim.flip_h = false
+		anim.play("front_walk" if movement == 1 else "front_idle")
+	elif dir == "up":
+		anim.flip_h = false
+		anim.play("back_walk" if movement == 1 else "back_idle")
+
+func update_health():
+	var healthbar = $HealthBar
+	healthbar.value = health
+	healthbar.visible = health < 100
+
+	# Show damage popup only when health decreases
+	if health < previous_health:
+		var damage_amount = previous_health - health
+		show_damage_label("-" + str(damage_amount))
+
+	previous_health = health  # update tracker
+
+	if health <= 0 and not is_dead:
+		trigger_death()
+
+func trigger_death():
+	is_dead = true
+	velocity = Vector2.ZERO
+	$AnimatedSprite2D.play("death")
+
+func _on_animation_finished(anim_name: String):
+	if is_dead and anim_name == "death":
+		var last_frame = $AnimatedSprite2D.sprite_frames.get_frame_count("death") - 1
+		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.frame = last_frame
+
+# Called by zombie when math challenge starts
+func start_math_challenge(zombie_position: Vector2):
+	math_challenge_active = true
+	velocity = Vector2.ZERO
+
+	var vec = zombie_position - position
+	if abs(vec.x) > abs(vec.y):
+		current_dir = "right" if vec.x > 0 else "left"
+	else:
+		current_dir = "down" if vec.y > 0 else "up"
+
+	play_anim(0)
+
+# Called by zombie when math challenge ends
+func end_math_challenge():
+	math_challenge_active = false
+
+# Animate the built-in DamageLabel node
+func show_damage_label(text: String):
+	var dmg_label = $Damagelabel   # ensure node name matches your scene
+	if dmg_label == null:
+		push_error("DamageLabel node not found in Player scene!")
+		return
+
+	dmg_label.text = text
+	dmg_label.visible = true
+	dmg_label.modulate = Color(1,1,1,1)  # reset alpha
+	dmg_label.position = Vector2(0, -20)
+
+	var tween = create_tween()
+	tween.tween_property(dmg_label, "position:y", dmg_label.position.y - 30, 0.6)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	tween.tween_property(dmg_label, "modulate:a", 0.0, 0.6)\
+		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
+	tween.finished.connect(func(): dmg_label.visible = false)

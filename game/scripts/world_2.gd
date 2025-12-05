@@ -5,10 +5,13 @@ extends Node2D  # Attach this to your world scene root
 # Node references
 @onready var objective_label: Label = $UI/ObjectiveLabel
 @onready var day_night: DayNight = $DayNight
-@onready var time_label: Label = $UI/TimeLabel   # directly under UI
+@onready var time_label: Label = $UI/TimeLabel   
 
 var current_enemy = null
 var correct_answer = 0
+
+var days_survived := 1
+var _prev_whole_hour := -1 
 
 func _ready():
 	if enable_day_night_cycle:
@@ -22,6 +25,21 @@ func _ready():
 func _setup_day_night_cycle() -> void:
 	day_night.time_changed.connect(_on_time_changed)
 
-func _on_time_changed(_hour: float, time_string: String) -> void:
-	if time_label:
-		time_label.text = time_string
+func _on_time_changed(hour: float, _time_string: String) -> void:
+	if not time_label:
+		return
+
+	var whole_hour := int(floor(hour)) % 24
+
+	if _prev_whole_hour != -1 and _prev_whole_hour > whole_hour:
+		days_survived += 1
+
+	_prev_whole_hour = whole_hour
+
+	# 12-hour formatting without minutes
+	var display_hour := whole_hour % 12
+	if display_hour == 0:
+		display_hour = 12
+	var am_pm = "AM" if whole_hour < 12 else "PM"
+
+	time_label.text = "Day %d: %d %s" % [days_survived, display_hour, am_pm]

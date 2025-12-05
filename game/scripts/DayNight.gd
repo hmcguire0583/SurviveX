@@ -6,7 +6,7 @@ signal time_changed(current_hour: float, time_string: String)
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 @export_group("Time Settings")
-@export var day_duration: float = 24.0
+@export var day_duration: float = 12.0
 @export var starting_hour: float = 8.0
 @export_range(0,23) var sunrise_hour: int = 6
 @export_range(0,23) var sunset_hour: int = 19
