@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=96 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
@@ -14,7 +14,34 @@
 [ext_resource type="Script" uid="uid://cqbnwiuljdj3v" path="res://scenes/zombie_bubble.gd" id="12_j0cyh"]
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="12_otmr2"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
-[ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q82m"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(0, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epc7x"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(29, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7rgc"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(58, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdav3"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(87, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jpbtr"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(116, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgdfx"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(145, 0, 29, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qku5p"]
+atlas = ExtResource("1_dxifv")
+region = Rect2(174, 0, 29, 23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -280,36 +307,34 @@ region = Rect2(96, 0, 16, 24)
 atlas = ExtResource("10_otto8")
 region = Rect2(112, 0, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8q82m"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(0, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_epc7x"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(29, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o7rgc"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(58, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdav3"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(87, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jpbtr"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(116, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgdfx"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(145, 0, 29, 23)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qku5p"]
-atlas = ExtResource("1_dxifv")
-region = Rect2(174, 0, 29, 23)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_pf1hb"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q82m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epc7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7rgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdav3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jpbtr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgdfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qku5p")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l1fjw")
@@ -552,32 +577,6 @@ animations = [{
 "loop": true,
 "name": &"up_walk",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8q82m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_epc7x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o7rgc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdav3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jpbtr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qgdfx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qku5p")
-}],
-"loop": true,
-"name": &"z_death",
-"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xk8vo"]
@@ -621,7 +620,7 @@ script = ExtResource("1_otmr2")
 y_sort_enabled = true
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_pf1hb")
-animation = &"z_death"
+animation = &"down_attack"
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
@@ -689,28 +688,7 @@ text = "Submit"
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_g0wcc")
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(0, 0.7490196, 0.105882354, 1)
-offset_left = -5.0000005
-offset_top = 6.0
-offset_right = 115.0
-offset_bottom = 36.0
-scale = Vector2(0.1, 0.1)
-show_percentage = false
-
-[node name="DamageLabel" type="Label" parent="."]
-offset_left = -2.0
-offset_top = -27.0
-offset_right = 38.0
-offset_bottom = -4.0
-theme_override_colors/font_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("15_g0wcc")
-theme_override_font_sizes/font_size = 5
-text = "25"
-
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_exited"]
-[connection signal="pressed" from="ZombieBubble/NinePatchRect/SubmitButton" to="ZombieBubble" method="_on_SubmitButton_pressed"]

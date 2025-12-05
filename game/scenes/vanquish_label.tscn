@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://nvwqq7jbc3fl"]
+[gd_scene load_steps=3 format=3 uid="uid://nvwqq7jbc3fl"]
 
 [ext_resource type="Script" uid="uid://1aasivpggr12" path="res://scripts/vanquish_label.gd" id="1_hxwti"]
+[ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="2_p4r7a"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_hxwti")
@@ -17,6 +18,8 @@ offset_right = 76.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.07450981, 0.15294118, 0.3137255, 1)
+theme_override_fonts/font = ExtResource("2_p4r7a")
 text = "Enemy Vanquished!"
 
 [node name="AutoHideTimer" type="Timer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://didnoohi4scvf"]
+[gd_scene load_steps=6 format=3 uid="uid://didnoohi4scvf"]
 
 [ext_resource type="Script" uid="uid://b1vvfx7qt37b5" path="res://scripts/math_screen.gd" id="1_g5ya0"]
 
@@ -6,6 +6,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yy2o2"]
 bg_color = Color(0.14117648, 0.3137255, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tl0o1"]
+bg_color = Color(0.0018233175, 3.2601062e-07, 0.002481852, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 30
 
 [sub_resource type="Theme" id="Theme_a2y5b"]
 
@@ -39,6 +44,7 @@ offset_right = 78.5
 offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tl0o1")
 text = "SUBMIT (BUTTON)"
 
 [node name="Label" type="Label" parent="."]
