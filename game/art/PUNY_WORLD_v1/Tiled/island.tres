@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://du3t83rkw7m6s"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://du3t83rkw7m6s"]
 
 [ext_resource type="Texture2D" uid="uid://wkjq5uq6ktew" path="res://art/PUNY_WORLD_v1/punyworld-overworld-tileset.png" id="1_hhyh6"]
 [ext_resource type="Texture2D" uid="uid://d4f4iesohr63o" path="res://art/tilesets/plains.png" id="2_amhyd"]
+[ext_resource type="Texture2D" uid="uid://dxgdw6j1ntuob" path="res://art/palmtrees.png" id="2_q0j0o"]
 [ext_resource type="Texture2D" uid="uid://dwu27ikebhltn" path="res://art/objects/objects.png" id="3_q0j0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rj3ek"]
@@ -667,6 +668,61 @@ texture = ExtResource("1_hhyh6")
 0:31/0 = 0
 4:26/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bs1kl"]
+texture = ExtResource("2_q0j0o")
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+0:1/size_in_atlas = Vector2i(6, 5)
+0:1/0 = 0
+0:1/0/y_sort_origin = 20
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8.867493, 25.445847, 1.1566315, 30.843452, -8.867493, 23.903675, -3.8554306, 12.722923, 4.2409744, 12.337379)
+6:1/size_in_atlas = Vector2i(6, 5)
+6:1/0 = 0
+6:1/0/y_sort_origin = 20
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8.867493, 25.445847, 1.1566315, 30.843452, -8.867493, 23.903675, -3.8554306, 12.722923, 4.2409744, 12.337379)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amhyd"]
 texture = ExtResource("3_q0j0o")
 0:0/0 = 0
@@ -738,3 +794,4 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rj3ek")
 sources/3 = SubResource("TileSetAtlasSource_amhyd")
 sources/4 = SubResource("TileSetAtlasSource_q0j0o")
+sources/1 = SubResource("TileSetAtlasSource_bs1kl")
