@@ -148,6 +148,10 @@ func defeat_enemy():
 		get_tree().current_scene.add_child(label_instance)
 
 		$AnimatedSprite2D.play("z_death")
+		var t = get_tree().create_timer(1.2)
+		t.timeout.connect(func():
+			self.queue_free()
+		)
 	else:
 		var ok_label = VanquishLabelScene.instantiate()
 		ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
