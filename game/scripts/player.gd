@@ -8,6 +8,8 @@ var is_dead = false
 var math_challenge_active = false
 var previous_health = 100   # NEW: track last health value
 
+@export var inv: Inv
+
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)

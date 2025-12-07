@@ -1,6 +1,7 @@
-[gd_scene load_steps=57 format=3 uid="uid://rqphw5hige8p"]
+[gd_scene load_steps=58 format=3 uid="uid://rqphw5hige8p"]
 
 [ext_resource type="Script" uid="uid://xgqu346xf6ew" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Resource" uid="uid://opplh1jl6o02" path="res://inventory/player_inventory.tres" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://doxc6153cmd1l" path="res://art/characters/player.png" id="2_qhqgy"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="3_qhqgy"]
 
@@ -421,6 +422,7 @@ radius = 4.1231055
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_g2els")
+inv = ExtResource("2_dqkch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
