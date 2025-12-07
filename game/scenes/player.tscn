@@ -457,3 +457,8 @@ theme_override_font_sizes/font_size = 5
 text = "25"
 
 [node name="Inv_UI" parent="." instance=ExtResource("5_qlg0r")]
+z_index = 1
+offset_left = -32.0
+offset_top = -79.0
+offset_right = 33.0
+offset_bottom = -35.0
