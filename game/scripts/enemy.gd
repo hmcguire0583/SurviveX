@@ -10,7 +10,7 @@ var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
 var is_dead := false   # gate AI and animations when dead
-var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
+#var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
 	current_dir = "down"
@@ -141,21 +141,21 @@ func defeat_enemy():
 		$CollisionShape2D.disabled = true
 
 		GameManager.enemies_defeated += 1
-		var label_instance = VanquishLabelScene.instantiate()
-		label_instance.get_node("Label").text = (
-			"You Win!" if GameManager.enemies_defeated >= 3 else "Enemy vanquished!"
-		)
-		get_tree().current_scene.add_child(label_instance)
+		#var label_instance = VanquishLabelScene.instantiate()
+		#label_instance.get_node("Label").text = (
+			#"You Win!" if GameManager.enemies_defeated >= 3 else "Enemy vanquished!"
+		#)
+		#get_tree().current_scene.add_child(label_instance)
 
 		$AnimatedSprite2D.play("z_death")
 		var t = get_tree().create_timer(1.2)
 		t.timeout.connect(func():
 			self.queue_free()
 		)
-	else:
-		var ok_label = VanquishLabelScene.instantiate()
-		ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
-		get_tree().current_scene.add_child(ok_label)
+	#else:
+	#	var ok_label = VanquishLabelScene.instantiate()
+	#	ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
+	#	get_tree().current_scene.add_child(ok_label)
 
 func penalize_player():
 	if is_dead or is_attacking:

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cmn35aqbssaxi" path="res://art/characters/Zombie_Big/Zombie_Big_Up_First-Attack-Sheet8.png" id="8_jmwgi"]
 [ext_resource type="Texture2D" uid="uid://cqwqal6hf1lim" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Idle-Sheet6.png" id="9_g2u8i"]
 [ext_resource type="Texture2D" uid="uid://duxg1dvtla1j4" path="res://art/characters/Zombie_Big/Zombie_Big_Up_Walk-Sheet8.png" id="10_otto8"]
-[ext_resource type="Script" uid="uid://cqbnwiuljdj3v" path="res://scripts/zombie_bubble.gd" id="12_j0cyh"]
+[ext_resource type="Script" uid="uid://cqbnwiuljdj3v" path="res://scenes/zombie_bubble.gd" id="12_j0cyh"]
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="12_otmr2"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
