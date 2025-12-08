@@ -429,7 +429,7 @@ inv = ExtResource("2_dqkch")
 y_sort_enabled = true
 position = Vector2(-1, -14)
 sprite_frames = SubResource("SpriteFrames_76oay")
-animation = &"front_attack"
+animation = &"death"
 offset = Vector2(0, -15)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

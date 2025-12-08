@@ -102,6 +102,8 @@ func trigger_death():
 	is_dead = true
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("death")
+	await get_tree().create_timer(0.6).timeout
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_animation_finished(anim_name: String):
 	if is_dead and anim_name == "death":
