@@ -2,17 +2,14 @@ extends StaticBody2D
 
 var player = null
 var chest_opened = false
-@export var items: Array[InvItem]
+@export var scrapItem: InvItem
+@export var woodItem: InvItem
+@export var foodItem: InvItem
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.visible = true
 	$chestart.play("closed_chest")
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -29,10 +26,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			
 func reward_player(player):
 	if GameManager.enemies_defeated >= 1:
-		var woodItem = items.filter(func(i): return i != null and i.name == "wood")
-		var scrapItem = items.filter(func(i): return i != null and i.name == "scrap")
-		var foodItem = items.filter(func(i): return i != null and i.name == "food")
-		player.collect(woodItem[0], 25)
-		player.collect(scrapItem[0], 25)
-		player.collect(foodItem[0], 25)
+		player.collect(woodItem, 25)
+		player.collect(scrapItem, 15)
+		player.collect(foodItem, 7)
+		pass
 		

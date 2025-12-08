@@ -9,7 +9,6 @@ signal update
 func insert(item: InvItem, amount): # enemy drops item or chest drops item, call to insert
 	var itemName = item.name
 	var addItem = false
-	print("inserting ", itemName)
 	if "arm" in itemName:
 		var armorslot = slots.filter(func(slot): return slot.item != null and "arm" in slot.item.name)
 		if !armorslot.is_empty():

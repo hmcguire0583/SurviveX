@@ -9,7 +9,7 @@ func update(slot: InvSlot):
 		item_visual.visible = false
 		amount_text.visible = false
 	else:
-		if slot.item.name == "wood":
+		if slot.item.name == "wood" or slot.item.name == "food":
 			item_visual.scale = Vector2(1.0, 1.0)
 		elif slot.item.name == "nightvision":
 			item_visual.scale = Vector2(0.09, 0.09)
