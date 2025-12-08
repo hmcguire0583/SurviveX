@@ -1,8 +1,8 @@
 [gd_scene load_steps=48 format=3 uid="uid://djroqbs4k7wj2"]
 
 [ext_resource type="Script" uid="uid://3s28k2g4gyht" path="res://scripts/boat.gd" id="1_12u0i"]
-[ext_resource type="Texture2D" uid="uid://dmjqpsnovf53w" path="res://art/assets/floss-idle-with-sail-blue.png" id="1_sl03k"]
-[ext_resource type="Texture2D" uid="uid://bbprvw5a11aw7" path="res://art/assets/floss-move-with-sail-transp.png" id="2_rakhh"]
+[ext_resource type="Texture2D" uid="uid://buv12r1u4srq8" path="res://art/assets/floss-idle-with-sail-blue.png" id="1_sl03k"]
+[ext_resource type="Texture2D" uid="uid://b1awf3rt70gqd" path="res://art/assets/floss-move-with-sail-transp.png" id="2_rakhh"]
 [ext_resource type="Script" uid="uid://0mgmbkwf260h" path="res://scripts/RaftBubble.gd" id="4_twfgx"]
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="5_jhkin"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="6_5ppx3"]
@@ -389,6 +389,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_vroka")
 text = "Submit"
 
 [node name="RaftMenu" type="Control" parent="StaticBody2D"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -407,17 +408,17 @@ anchor_top = -0.245
 anchor_right = -0.384
 anchor_bottom = -0.245
 offset_left = -22.0
-offset_top = 34.0
-offset_right = 59.0
-offset_bottom = 103.0
+offset_top = 27.0
+offset_right = 64.0
+offset_bottom = 115.0
 
 [node name="ButtonIsland1" type="Button" parent="StaticBody2D/RaftMenu/Panel"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 7.0
 offset_top = 2.0
-offset_right = 75.0
-offset_bottom = 21.0
+offset_right = 77.0
+offset_bottom = 23.0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 9
@@ -428,9 +429,9 @@ text = "Island 1"
 layout_mode = 1
 anchors_preset = -1
 offset_left = 7.0
-offset_top = 24.0
-offset_right = 75.0
-offset_bottom = 45.0
+offset_top = 23.0
+offset_right = 77.0
+offset_bottom = 44.0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 9
@@ -441,13 +442,26 @@ text = "Island 2"
 layout_mode = 1
 anchors_preset = -1
 offset_left = 7.0
-offset_top = 46.0
-offset_right = 74.0
-offset_bottom = 67.0
+offset_top = 44.0
+offset_right = 77.0
+offset_bottom = 65.0
 theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 9
 disabled = true
 text = "Island 3"
+
+[node name="ButtonIsland4" type="Button" parent="StaticBody2D/RaftMenu/Panel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 7.0
+offset_top = 65.0
+offset_right = 77.0
+offset_bottom = 86.0
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 9
+disabled = true
+text = "Island 4"
 
 [connection signal="pressed" from="StaticBody2D/RaftBubble/NinePatchRect/SubmitButton" to="StaticBody2D/RaftBubble" method="_on_submit_button_pressed"]

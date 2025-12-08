@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+[gd_scene load_steps=5 format=3 uid="uid://ug01v643e8ui"]
+=======
 [gd_scene load_steps=5 format=3 uid="uid://bjrp6dasggtww"]
+>>>>>>> main
 
 [ext_resource type="Texture2D" uid="uid://b4av2nqc5rlu0" path="res://art/background.png" id="1_7vrkn"]
 
