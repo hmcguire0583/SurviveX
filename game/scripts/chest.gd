@@ -32,8 +32,7 @@ func reward_player(player):
 		var woodItem = items.filter(func(i): return i != null and i.name == "wood")
 		var scrapItem = items.filter(func(i): return i != null and i.name == "scrap")
 		var foodItem = items.filter(func(i): return i != null and i.name == "food")
-		for i in range(25):
-			player.collect(woodItem[0])
-			player.collect(scrapItem[0])
-			player.collect(foodItem[0])
+		player.collect(woodItem[0], 25)
+		player.collect(scrapItem[0], 25)
+		player.collect(foodItem[0], 25)
 		
