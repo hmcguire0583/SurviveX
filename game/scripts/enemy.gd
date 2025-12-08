@@ -139,6 +139,8 @@ func defeat_enemy():
 	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
+	if GameManager.time == "night":
+		damage *= 0.95
 	update_health()
 	show_damage_label("-" + str(damage))
 
@@ -231,6 +233,8 @@ func penalize_player():
 		var damage = base_dmg + (10 * (GameManager.current_day) - 1)
 		damage += (5 * (GameManager.islands_unlocked - 1))
 		damage *= 1 - (0.1 * player.armor_tier)
+		if GameManager.time == "night":
+			damage *= 1.05
 		player.health -= damage
 		player.update_health()
 
