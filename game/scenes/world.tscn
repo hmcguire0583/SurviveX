@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="8_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://po62p3lvarb" path="res://scenes/chest.tscn" id="9_7r4gi"]
 [ext_resource type="Script" uid="uid://fa2xcuce2k5v" path="res://scripts/docks.gd" id="11_e3hyu"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="12_jhx03"]
+[ext_resource type="PackedScene" uid="uid://bee55ic0scdag" path="res://scenes/pause_menu.tscn" id="12_jhx03"]
 [ext_resource type="PackedScene" uid="uid://dyv2oi7wono43" path="res://scenes/day_night.tscn" id="12_q5onr"]
 
 [sub_resource type="Theme" id="Theme_i7141"]
@@ -151,7 +151,7 @@ z_index = 1
 position = Vector2(6411, -2022)
 
 [node name="chest3" parent="." instance=ExtResource("9_7r4gi")]
-position = Vector2(17, -17)
+position = Vector2(37, 7)
 
 [node name="enemy6" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
@@ -216,7 +216,7 @@ z_index = 1
 position = Vector2(2057, -276)
 
 [node name="collision" type="StaticBody2D" parent="."]
-position = Vector2(7, 0)
+position = Vector2(49, 2)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision"]
 polygon = PackedVector2Array(227, 82, 278, 81, 279, 22, 226, 22, 226, 32, 236, 33, 236, 25, 269, 24, 269, 32, 278, 33, 278, 44, 278, 53, 270, 55, 270, 66, 251, 69, 236, 66, 235, 56, 231, 53, 227, 54, 227, 58)
@@ -225,11 +225,11 @@ polygon = PackedVector2Array(227, 82, 278, 81, 279, 22, 226, 22, 226, 32, 236, 3
 polygon = PackedVector2Array(2152, -238, 2098, -238, 2098, -299, 2101, -312, 2106, -310, 2108, -303, 2140, -302, 2144, -312, 2149, -311, 2151, -301, 2150, -296, 2143, -298, 2134, -295, 2121, -295, 2109, -298, 2106, -297, 2107, -288, 2101, -287, 2100, -267, 2106, -266, 2108, -255, 2121, -251, 2133, -253, 2141, -254, 2142, -265, 2145, -267, 2151, -264)
 
 [node name="Docks" type="Node2D" parent="."]
-position = Vector2(13, -28)
+position = Vector2(41, -7)
 script = ExtResource("11_e3hyu")
 
 [node name="Dock0" type="Marker2D" parent="Docks"]
-position = Vector2(251, 61)
+position = Vector2(234, 88)
 
 [node name="Dock1" type="Marker2D" parent="Docks"]
 position = Vector2(2127, -263)
@@ -238,3 +238,4 @@ position = Vector2(2127, -263)
 position = Vector2(4664, -1846)
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_jhx03")]
+visible = false
