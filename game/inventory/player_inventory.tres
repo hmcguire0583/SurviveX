@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Inv" load_steps=10 format=3 uid="uid://opplh1jl6o02"]
 
-[ext_resource type="Script" uid="uid://cyexb1cfwk2y3" path="res://inventory/inv_slot.gd" id="2_fhgtu"]
-[ext_resource type="Resource" uid="uid://bkr03crnl1eye" path="res://shop/items/axe1.tres" id="3_ptr4k"]
+[ext_resource type="Script" path="res://inventory/inv_slot.gd" id="2_fhgtu"]
+[ext_resource type="Resource" path="res://shop/items/axe1.tres" id="3_ptr4k"]
 [ext_resource type="Script" uid="uid://dpwonrwp74aqy" path="res://inventory/inventory.gd" id="5_65xq6"]
 
 [sub_resource type="Resource" id="Resource_fhgtu"]
@@ -12,22 +12,27 @@ metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [sub_resource type="Resource" id="Resource_ptr4k"]
 script = ExtResource("2_fhgtu")
+amount = 0
 metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [sub_resource type="Resource" id="Resource_fi1x0"]
 script = ExtResource("2_fhgtu")
+amount = 0
 metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [sub_resource type="Resource" id="Resource_65xq6"]
 script = ExtResource("2_fhgtu")
+amount = 0
 metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [sub_resource type="Resource" id="Resource_3ih0p"]
 script = ExtResource("2_fhgtu")
+amount = 0
 metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [sub_resource type="Resource" id="Resource_cwv8g"]
 script = ExtResource("2_fhgtu")
+amount = 0
 metadata/_custom_type_script = "uid://cyexb1cfwk2y3"
 
 [resource]

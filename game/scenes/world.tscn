@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dhel60ii2vfsg" path="res://shop/shop.tscn" id="7_5mrxx"]
 [ext_resource type="PackedScene" uid="uid://dhhctwvnbpoc4" path="res://scenes/shark.tscn" id="7_i7141"]
 [ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="8_4mrxx"]
-[ext_resource type="PackedScene" uid="uid://po62p3lvarb" path="res://scenes/chest.tscn" id="9_7r4gi"]
+[ext_resource type="PackedScene" path="res://scenes/chest.tscn" id="9_7r4gi"]
 [ext_resource type="Script" uid="uid://fa2xcuce2k5v" path="res://scripts/docks.gd" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://dyv2oi7wono43" path="res://scenes/day_night.tscn" id="12_q5onr"]
 
@@ -230,11 +230,11 @@ polygon = PackedVector2Array(2152, -238, 2098, -238, 2098, -299, 2101, -312, 210
 position = Vector2(-7, -3)
 script = ExtResource("11_e3hyu")
 
-[node name="Dock" type="Marker2D" parent="Docks"]
+[node name="Dock0" type="Marker2D" parent="Docks"]
 position = Vector2(251, 61)
 
-[node name="Dock2" type="Marker2D" parent="Docks"]
+[node name="Dock1" type="Marker2D" parent="Docks"]
 position = Vector2(2127, -263)
 
-[node name="Dock3" type="Marker2D" parent="Docks"]
+[node name="Dock2" type="Marker2D" parent="Docks"]
 position = Vector2(4664, -1846)
