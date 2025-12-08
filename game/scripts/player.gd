@@ -19,8 +19,8 @@ func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	$Damagelabel.visible = false   # hide initially
-	
 	for boat in get_tree().get_nodes_in_group("raft"):
+		print("DEBUG: found boat", boat.name)
 		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
@@ -172,9 +172,11 @@ func _on_boarded(boat):
 	boat_ref = boat
 	# Snap player onto boat deck (adjust offset as needed)
 	global_position = boat.global_position + Vector2(-4, 26)
-func teleport_to_dock(dock_name: String):
+func teleport_to_dock(island_index: int):
 	# Find the Docks folder in your World scene
 	var docks = get_tree().root.get_node("world/Docks")
+	var dock_name = "Dock" + str(island_index)
+	print("Looking for dock:", dock_name)
 	var dock = docks.get_node_or_null(dock_name)
 	if dock:
 		global_position = dock.global_position
