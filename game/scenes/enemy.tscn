@@ -1,10 +1,8 @@
-[gd_scene load_steps=104 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=101 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
-[ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="2_ile5s"]
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
-[ext_resource type="Texture2D" uid="uid://vc5ljt1n87dl" path="res://art/objects/scrap.png" id="3_1x4g4"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
 [ext_resource type="Resource" uid="uid://dqxn0lmlglm00" path="res://inventory/items/scrap.tres" id="4_2pwtc"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
@@ -20,12 +18,6 @@
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
 [ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="16_s1ycm"]
-
-[sub_resource type="Resource" id="Resource_2pwtc"]
-script = ExtResource("2_ile5s")
-name = "scrap"
-texture = ExtResource("3_1x4g4")
-metadata/_custom_type_script = "uid://ev022o36ms0y"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -630,7 +622,6 @@ radius = 41.231056
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_otmr2")
-itemRes = SubResource("Resource_2pwtc")
 scrapItem = ExtResource("4_2pwtc")
 woodItem = ExtResource("5_rogs8")
 

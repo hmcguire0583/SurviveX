@@ -7,6 +7,8 @@ var health = 100
 var is_dead = false
 var math_challenge_active = false
 var previous_health = 100   # NEW: track last health value
+var weapon_tier := 1
+var armor_tier := 0
 
 @export var inv: Inv
 
