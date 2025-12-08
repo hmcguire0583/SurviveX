@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs0ns6eisrdbp"
-path="res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"
+uid="uid://dmjqpsnovf53w"
+path="res://.godot/imported/floss-idle-with-sail-blue.png-bb51cccaaaf12c617e9f23b61bb5e369.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tilesets/floors/wooden.png"
-dest_files=["res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"]
+source_file="res://art/assets/floss-idle-with-sail-blue.png"
+dest_files=["res://.godot/imported/floss-idle-with-sail-blue.png-bb51cccaaaf12c617e9f23b61bb5e369.ctex"]
 
 [params]
 
