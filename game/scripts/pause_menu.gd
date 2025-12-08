@@ -14,10 +14,12 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		visible = true
 		get_tree().paused = true
+		AudioController.play_menu_music()
 
 func _on_resumebutton_pressed() -> void:
 	visible = false
 	get_tree().paused = false
+	AudioController.play_stop_music()
 
 func _on_optionsbutton_pressed() -> void:
 	print("settings pressed")

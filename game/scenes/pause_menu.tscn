@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bee55ic0scdag"]
+[gd_scene load_steps=7 format=3 uid="uid://bee55ic0scdag"]
 
 [ext_resource type="Script" uid="uid://df7pwcmhg4a0i" path="res://scripts/pause_menu.gd" id="1_5d2l8"]
 [ext_resource type="Texture2D" uid="uid://b4av2nqc5rlu0" path="res://art/background.png" id="2_3pg70"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="3_ia2uk"]
-[ext_resource type="AudioStream" uid="uid://c2v0bc1pjqkvx" path="res://audio/Main_Menu_Song.mp3" id="4_05mxt"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jix8l"]
 texture = ExtResource("2_3pg70")
@@ -138,10 +137,6 @@ theme_override_constants/shadow_outline_size = 6
 theme_override_fonts/font = ExtResource("3_ia2uk")
 theme_override_font_sizes/font_size = 26
 text = "SurviveX"
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_05mxt")
-autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/resumebutton" to="." method="_on_resumebutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/optionsbutton" to="." method="_on_optionsbutton_pressed"]

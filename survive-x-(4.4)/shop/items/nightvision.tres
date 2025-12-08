@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://nft5p2ue82ta"]
+
+[ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="1_lhb2m"]
+[ext_resource type="Texture2D" uid="uid://kqb3hkafrknm" path="res://art/equipment/nightvision.png" id="2_elm07"]
+
+[resource]
+script = ExtResource("1_lhb2m")
+name = "nightvision"
+texture = ExtResource("2_elm07")
+metadata/_custom_type_script = "uid://ev022o36ms0y"
