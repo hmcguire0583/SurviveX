@@ -13,6 +13,6 @@ func insert(item: InvItem): # enemy drops item or chest drops item, call to inse
 	else:
 		var emptyslots = slots.filter(func(slot): return slot.item == null)
 		emptyslots[0].item = item
-		emptyslots.amount = 1
+		emptyslots[0].amount = 1
 	
 	update.emit()

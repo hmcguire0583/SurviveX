@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @export var speed := 20.0
 @export var stop_distance := 5.0
-
+@onready var scrap = $scrap_collectable
+@export var itemRes: InvItem
 var player_chase := false
 var player = null
 var health = 100
@@ -48,14 +49,16 @@ func _physics_process(delta):
 func _on_detection_area_body_entered(body):
 	if is_dead:
 		return
-	if body.name == "Player" and not math_challenge_active:
+	if body.has_method("player"):
 		player = body
 		player_chase = true
 
+
 func _on_detection_area_body_exited(body):
-	if body == player:
+	if body.has_method("player"):
 		player = null
 		player_chase = false
+
 
 func update_direction(vec: Vector2):
 	if vec == Vector2.ZERO or is_dead:
@@ -148,14 +151,31 @@ func defeat_enemy():
 		#get_tree().current_scene.add_child(label_instance)
 
 		$AnimatedSprite2D.play("z_death")
-		var t = get_tree().create_timer(1.2)
-		t.timeout.connect(func():
-			self.queue_free()
-		)
+		
+		await get_tree().create_timer(1.2).timeout
+		drop_scrap()
+		#self.queue_free()
+		$AnimatedSprite2D.visible = false
+		$CollisionShape2D.disabled = true
+		$detection_area/CollisionShape2D.disabled = true
+		
 	#else:
 	#	var ok_label = VanquishLabelScene.instantiate()
 	#	ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
 	#	get_tree().current_scene.add_child(ok_label)
+func drop_scrap():
+	scrap.visible = true
+	$scrap_collect_area/CollisionShape2D.disabled = false
+	scrap_collect()
+	
+	
+func scrap_collect():
+	await get_tree().create_timer(1.5).timeout
+	scrap.visible = false
+	print(player == null)
+	player.collect(itemRes)
+	
+	queue_free()
 
 func penalize_player():
 	if is_dead or is_attacking:
@@ -232,3 +252,8 @@ func show_damage_label(text: String):
 	tween.tween_property(dmg_label, "modulate:a", 0.0, 0.6)\
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	tween.finished.connect(func(): dmg_label.visible = false)
+
+
+func _on_scrap_collect_area_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player = body

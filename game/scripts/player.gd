@@ -138,5 +138,8 @@ func show_damage_label(text: String):
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	tween.finished.connect(func(): dmg_label.visible = false)
 	
+func player():
+	pass
+	
 func collect(item):
 	inv.insert(item)
