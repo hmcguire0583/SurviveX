@@ -38,4 +38,5 @@ func remove(item: InvItem, amount): # enemy drops item or chest drops item, call
 		var emptyslots = slots.filter(func(slot): return slot.item == null)
 		emptyslots[0].item = item
 		emptyslots[0].amount = 1
+	
 	update.emit()

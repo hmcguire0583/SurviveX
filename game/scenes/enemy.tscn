@@ -1,8 +1,10 @@
-[gd_scene load_steps=97 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=102 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
+[ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="2_ile5s"]
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
+[ext_resource type="Texture2D" uid="uid://vc5ljt1n87dl" path="res://art/objects/scrap.png" id="3_1x4g4"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
 [ext_resource type="Texture2D" uid="uid://bswc351d7yua4" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Attack-Sheet8.png" id="5_doop2"]
@@ -15,6 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="12_otmr2"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
+[ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="16_s1ycm"]
+
+[sub_resource type="Resource" id="Resource_2pwtc"]
+script = ExtResource("2_ile5s")
+name = "scrap"
+texture = ExtResource("3_1x4g4")
+metadata/_custom_type_script = "uid://ev022o36ms0y"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -612,10 +621,14 @@ corner_radius_bottom_left = 8
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0wcc"]
 radius = 12.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ile5s"]
+radius = 41.231056
+
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_otmr2")
+itemRes = SubResource("Resource_2pwtc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -709,8 +722,17 @@ theme_override_fonts/font = ExtResource("15_g0wcc")
 theme_override_font_sizes/font_size = 5
 text = "25"
 
+[node name="scrap_collectable" parent="." instance=ExtResource("16_s1ycm")]
+
+[node name="scrap_collect_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scrap_collect_area"]
+shape = SubResource("CircleShape2D_ile5s")
+disabled = true
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_exited" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_exited"]
 [connection signal="pressed" from="ZombieBubble/NinePatchRect/SubmitButton" to="ZombieBubble" method="_on_SubmitButton_pressed"]
+[connection signal="body_entered" from="scrap_collect_area" to="." method="_on_scrap_collect_area_body_entered"]
