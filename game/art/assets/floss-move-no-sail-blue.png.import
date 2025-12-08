@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs0ns6eisrdbp"
-path="res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"
+uid="uid://iosdso0ec12k"
+path="res://.godot/imported/floss-move-no-sail-blue.png-1b9b018593a13af78f129acd72242d22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tilesets/floors/wooden.png"
-dest_files=["res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"]
+source_file="res://art/assets/floss-move-no-sail-blue.png"
+dest_files=["res://.godot/imported/floss-move-no-sail-blue.png-1b9b018593a13af78f129acd72242d22.ctex"]
 
 [params]
 

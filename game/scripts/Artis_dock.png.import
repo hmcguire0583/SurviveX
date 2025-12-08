@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs0ns6eisrdbp"
-path="res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"
+uid="uid://dv1giyv0wy3gd"
+path="res://.godot/imported/Artis_dock.png-6232a0f1a30842f64349145988ee0d46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tilesets/floors/wooden.png"
-dest_files=["res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"]
+source_file="res://scripts/Artis_dock.png"
+dest_files=["res://.godot/imported/Artis_dock.png-6232a0f1a30842f64349145988ee0d46.ctex"]
 
 [params]
 

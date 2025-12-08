@@ -28,6 +28,6 @@ func reward_player(player):
 	if GameManager.enemies_defeated >= 1:
 		player.collect(woodItem, 25)
 		player.collect(scrapItem, 15)
-		player.collect(foodItem, 7)
+		player.collect(foodItem, 3)
 		pass
 		
