@@ -59,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="startbutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -75,7 +75,7 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="optionsbutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -89,9 +89,9 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Options (placeholder)"
+text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="instructionsbutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -105,7 +105,24 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Exit (placeholder)
+text = "Instructions
+"
+
+[node name="exitbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "Exit
 "
 
 [node name="Label" type="Label" parent="."]
@@ -135,6 +152,7 @@ text = "SurviveX"
 stream = ExtResource("4_wu84c")
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="VBoxContainer/startbutton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/optionsbutton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/instructionsbutton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/exitbutton" to="." method="_on_exit_pressed"]
