@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed := 20.0
 @export var stop_distance := 5.0
 @onready var scrap = $scrap_collectable
+@onready var wood = $wood_collectable
 @export var scrapItem: InvItem
 @export var woodItem: InvItem
 var player_chase := false
@@ -172,6 +173,7 @@ func defeat_enemy():
 	#	get_tree().current_scene.add_child(ok_label)
 func drop_scrap():
 	scrap.visible = true
+	wood.visible
 	$scrap_collect_area/CollisionShape2D.disabled = false
 	scrap_collect()
 	
@@ -179,6 +181,7 @@ func drop_scrap():
 func scrap_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
+	wood.visible = false
 	var scrap = 0
 	var wood = 0
 	randomize()

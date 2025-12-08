@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnyvcu3pc4gkc"]
+
+[ext_resource type="Texture2D" uid="uid://dtjqi7exlp1ly" path="res://art/objects/stick-icon.png" id="1_holuo"]
+
+[node name="wood_collectable" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_holuo")
