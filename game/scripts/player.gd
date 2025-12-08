@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 100
+const speed = 600
 var current_dir = "none"
 var on_boat = false
 var boat_ref = null

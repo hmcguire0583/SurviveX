@@ -161,7 +161,7 @@ func defeat_enemy():
 		$AnimatedSprite2D.play("z_death")
 		
 		await get_tree().create_timer(1.2).timeout
-		drop_scrap()
+		drop_resources()
 		#self.queue_free()
 		$AnimatedSprite2D.visible = false
 		$CollisionShape2D.disabled = true
@@ -171,14 +171,14 @@ func defeat_enemy():
 	#	var ok_label = VanquishLabelScene.instantiate()
 	#	ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
 	#	get_tree().current_scene.add_child(ok_label)
-func drop_scrap():
+func drop_resources():
 	scrap.visible = true
-	wood.visible
+	wood.visible = true
 	$scrap_collect_area/CollisionShape2D.disabled = false
-	scrap_collect()
+	resource_collect()
 	
 	
-func scrap_collect():
+func resource_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
 	wood.visible = false

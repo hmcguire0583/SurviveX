@@ -719,6 +719,7 @@ theme_override_font_sizes/font_size = 5
 text = "25"
 
 [node name="scrap_collectable" parent="." instance=ExtResource("16_s1ycm")]
+visible = false
 
 [node name="scrap_collect_area" type="Area2D" parent="."]
 
@@ -727,6 +728,7 @@ shape = SubResource("CircleShape2D_ile5s")
 disabled = true
 
 [node name="wood_collectable" parent="." instance=ExtResource("19_1x4g4")]
+visible = false
 position = Vector2(-8, 0)
 scale = Vector2(1.2, 1.2)
 
