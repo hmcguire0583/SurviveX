@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bebvcxgahxxu1"
-path="res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"
+uid="uid://b1awf3rt70gqd"
+path="res://.godot/imported/floss-move-with-sail-transp.png-72a88f03b850b02c6f02defec6f7c382.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/tilesets/floors/wooden.png"
-dest_files=["res://.godot/imported/wooden.png-f7a7fbc2c711d06cdba6fe7fe1f748ea.ctex"]
+source_file="res://art/assets/floss-move-with-sail-transp.png"
+dest_files=["res://.godot/imported/floss-move-with-sail-transp.png-72a88f03b850b02c6f02defec6f7c382.ctex"]
 
 [params]
 

@@ -3,14 +3,17 @@ extends CharacterBody2D
 @export var speed := 20.0
 @export var stop_distance := 5.0
 @onready var scrap = $scrap_collectable
-@export var itemRes: InvItem
+@export var scrapItem: InvItem
+@export var woodItem: InvItem
 var player_chase := false
 var player = null
-var health = 100
+var maxHealth = 100
+var health = 20
 var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
 var is_dead := false   # gate AI and animations when dead
+var base_dmg = 15
 #var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
@@ -56,7 +59,6 @@ func _on_detection_area_body_entered(body):
 
 func _on_detection_area_body_exited(body):
 	if body.has_method("player"):
-		player = null
 		player_chase = false
 
 
@@ -133,9 +135,13 @@ func defeat_enemy():
 				player_chase = true
 		)
 
-	health -= 20
+	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
+	damage *= 1 - (0.05 * (GameManager.current_day - 1))
+	health -= damage
+	if GameManager.time == "night":
+		damage *= 0.95
 	update_health()
-	show_damage_label("-20")
+	show_damage_label("-" + str(damage))
 
 	if health <= 0:
 		is_dead = true
@@ -144,6 +150,7 @@ func defeat_enemy():
 		$CollisionShape2D.disabled = true
 
 		GameManager.enemies_defeated += 1
+		print(GameManager.enemies_defeated)
 		#var label_instance = VanquishLabelScene.instantiate()
 		#label_instance.get_node("Label").text = (
 			#"You Win!" if GameManager.enemies_defeated >= 3 else "Enemy vanquished!"
@@ -170,10 +177,25 @@ func drop_scrap():
 	
 	
 func scrap_collect():
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
-	print(player == null)
-	player.collect(itemRes)
+	var scrap = 0
+	var wood = 0
+	randomize()
+	if GameManager.current_island <= 1:
+		scrap = randi() % 3 + 2
+		wood = randi() % 4 + 3
+	elif GameManager.current_island == 2:
+		scrap = randi() % 4 + 4
+		wood = randi() % 5 + 5
+	elif GameManager.current_island >= 3:
+		scrap = randi() % 5 + 6
+		wood = randi() % 6 + 7
+	
+	print("rewarding ", scrap, " scrap")
+	print("rewarding ", wood, " wood")
+	player.collect(scrapItem, scrap)
+	player.collect(woodItem, wood)
 	
 	queue_free()
 
@@ -209,7 +231,12 @@ func penalize_player():
 			"up":
 				$AnimatedSprite2D.play("up_attack")
 
-		player.health -= 10
+		var damage = base_dmg + (10 * (GameManager.current_day) - 1)
+		damage += (5 * (GameManager.islands_unlocked - 1))
+		damage *= 1 - (0.1 * player.armor_tier)
+		if GameManager.time == "night":
+			damage *= 1.05
+		player.health -= damage
 		player.update_health()
 
 		# Fallback reset for attack state
@@ -235,7 +262,7 @@ func _on_animation_finished_proxy(anim_name: String):
 func update_health():
 	var healthbar = $HealthBar
 	healthbar.value = health
-	healthbar.visible = (health > 0 and health < 100)
+	healthbar.visible = (health > 0 and health < maxHealth)
 
 func show_damage_label(text: String):
 	if is_dead:

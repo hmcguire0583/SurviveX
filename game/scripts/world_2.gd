@@ -3,14 +3,13 @@ extends Node2D  # Attach this to your world scene root
 @export var enable_day_night_cycle: bool = true
 
 # Node references
-@onready var objective_label: Label = $UI/ObjectiveLabel
+#@onready var objective_label: Label = $UI/ObjectiveLabel
 @onready var day_night: DayNight = $DayNight
 @onready var time_label: Label = $UI/TimeLabel   
 
 var current_enemy = null
 var correct_answer = 0
 
-var days_survived := 1
 var _prev_whole_hour := -1 
 
 func _ready():
@@ -32,7 +31,7 @@ func _on_time_changed(hour: float, _time_string: String) -> void:
 	var whole_hour := int(floor(hour)) % 24
 
 	if _prev_whole_hour != -1 and _prev_whole_hour > whole_hour:
-		days_survived += 1
+		GameManager.current_day += 1
 
 	_prev_whole_hour = whole_hour
 
@@ -42,4 +41,4 @@ func _on_time_changed(hour: float, _time_string: String) -> void:
 		display_hour = 12
 	var am_pm = "AM" if whole_hour < 12 else "PM"
 
-	time_label.text = "Day %d: %d %s" % [days_survived, display_hour, am_pm]
+	time_label.text = "Day %d: %d %s" % [GameManager.current_day, display_hour, am_pm]

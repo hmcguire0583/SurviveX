@@ -1,13 +1,13 @@
-[gd_scene load_steps=102 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=101 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
-[ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="2_ile5s"]
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
-[ext_resource type="Texture2D" uid="uid://vc5ljt1n87dl" path="res://art/objects/scrap.png" id="3_1x4g4"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
+[ext_resource type="Resource" uid="uid://dqxn0lmlglm00" path="res://inventory/items/scrap.tres" id="4_2pwtc"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
 [ext_resource type="Texture2D" uid="uid://bswc351d7yua4" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Attack-Sheet8.png" id="5_doop2"]
+[ext_resource type="Resource" uid="uid://chsnfakysfdkb" path="res://inventory/items/wood.tres" id="5_rogs8"]
 [ext_resource type="Texture2D" uid="uid://vmc6qt21g48n" path="res://art/characters/Zombie_Big/Zombie_Big_Side_Idle-Sheet6.png" id="6_5hcft"]
 [ext_resource type="Texture2D" uid="uid://cjt22is5hin8h" path="res://art/characters/Zombie_Big/Zombie_Big_Side_Walk-Sheet8.png" id="7_nnovl"]
 [ext_resource type="Texture2D" uid="uid://cmn35aqbssaxi" path="res://art/characters/Zombie_Big/Zombie_Big_Up_First-Attack-Sheet8.png" id="8_jmwgi"]
@@ -18,12 +18,6 @@
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
 [ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="16_s1ycm"]
-
-[sub_resource type="Resource" id="Resource_2pwtc"]
-script = ExtResource("2_ile5s")
-name = "scrap"
-texture = ExtResource("3_1x4g4")
-metadata/_custom_type_script = "uid://ev022o36ms0y"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -590,33 +584,33 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xk8vo"]
-radius = 127.3185
+radius = 127.318
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0cyh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0wcc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0wcc"]
-bg_color = Color(0.105882354, 0.08627451, 0.43137255, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0cyh"]
+bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtq4b"]
-bg_color = Color(0.10410399, 0.086341985, 0.4311352, 1)
+bg_color = Color(0.104104, 0.086342, 0.431135, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0cyh"]
-bg_color = Color(0.105882354, 0.08627451, 0.43137255, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0wcc"]
+bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0wcc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0cyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0wcc"]
 radius = 12.0
@@ -628,7 +622,8 @@ radius = 41.231056
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_otmr2")
-itemRes = SubResource("Resource_2pwtc")
+scrapItem = ExtResource("4_2pwtc")
+woodItem = ExtResource("5_rogs8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
@@ -660,7 +655,7 @@ offset_left = 7.0
 offset_top = 17.0
 offset_right = 76.0
 offset_bottom = 66.0
-theme_override_colors/font_color = Color(0.0010700348, 0.0042613177, 0.0050936313, 1)
+theme_override_colors/font_color = Color(0.00107003, 0.00426132, 0.00509363, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 1
 theme_override_font_sizes/font_size = 7
@@ -675,7 +670,7 @@ offset_top = 28.0
 offset_right = 83.0
 offset_bottom = 47.0
 scale = Vector2(0.5, 0.5)
-theme_override_colors/font_color = Color(0.0016294002, 0.015444754, 0.006747622, 1)
+theme_override_colors/font_color = Color(0.0016294, 0.0154448, 0.00674762, 1)
 theme_override_font_sizes/font_size = 7
 placeholder_text = "Answer"
 
@@ -685,17 +680,17 @@ offset_left = 27.0
 offset_top = 36.0
 offset_right = 55.0
 offset_bottom = 46.0
+theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.73333335, 0.015686275, 0.16862746, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.73333335, 0.015686275, 0.16862746, 1)
+theme_override_colors/font_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_fonts/font = ExtResource("14_j0cyh")
 theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxEmpty_j0cyh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g0wcc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wtq4b")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j0cyh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g0wcc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j0cyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wtq4b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g0wcc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j0cyh")
 text = "Submit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -703,8 +698,8 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_g0wcc")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(0, 0.7490196, 0.105882354, 1)
-offset_left = -5.0000005
+modulate = Color(0, 0.74902, 0.105882, 1)
+offset_left = -5.0
 offset_top = 6.0
 offset_right = 115.0
 offset_bottom = 36.0
@@ -716,7 +711,7 @@ offset_left = -2.0
 offset_top = -27.0
 offset_right = 38.0
 offset_bottom = -4.0
-theme_override_colors/font_color = Color(0.80049086, 0.80049074, 0.80049074, 1)
+theme_override_colors/font_color = Color(0.800491, 0.800491, 0.800491, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("15_g0wcc")
 theme_override_font_sizes/font_size = 5

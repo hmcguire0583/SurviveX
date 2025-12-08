@@ -86,12 +86,9 @@ func swap_item_forward():
 
 func buy():
 	var itemBought = items.filter(func(i): return i != null and i.name == animNames[item])
-	player.collect(itemBought[0])
+	player.collect(itemBought[0], 1)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_shop_method"):
 		player = body
-		
-		var wood = items.filter(func(i): return i != null and i.name == "wood")
-		var scrap = items.filter(func(i): return i != null and i.name == "scrap")

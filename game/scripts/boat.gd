@@ -1,121 +1,53 @@
-extends CharacterBody2D
+extends StaticBody2D
 
-@export var tilemap: TileMap
-@export var max_speed := 160
-@export var water_drag := 0.1
+signal boarded(raft)
 
-var in_water := false
-var player_on_board := false
-var player: CharacterBody2D = null
-
-@onready var interact_area: Area2D = $Area2D
-
+var player_in_range = null
 
 func _ready():
-	interact_area.body_entered.connect(_on_Area2D_body_entered)
-	interact_area.body_exited.connect(_on_Area2D_body_exited)
+	set_process(true)
+	$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
+	$Area2D.connect("body_exited", Callable(self, "_on_body_exited"))
+	$Sprite2D.play("right")
 
+func _on_body_entered(body):
+	print("Entered:", body.name)
+	if body.is_in_group("player"):
+		player_in_range = body
 
-func _physics_process(delta):
-	check_water()
+func _on_body_exited(body):
+	if body == player_in_range:
+		player_in_range = null
 
-	# Hop on/off
-	if player and Input.is_action_just_pressed("ui_accept"):
-		if not player_on_board:
-			hop_on()
-		else:
-			hop_off()
+func _process(delta):
+	if player_in_range and Input.is_action_just_pressed("interact"):
+		print("Boarding triggered!")
+		emit_signal("boarded", self)
+		# Show the menu instead of starting bubble directly
+		$RaftMenu.visible = true
+		$RaftMenu.update_unlocks()
+		
+		if not $RaftMenu.is_connected("island_selected", Callable(self, "_on_island_selected")):
+			$RaftMenu.connect("island_selected", Callable(self, "_on_island_selected"))
 
-	# Boat movement only when player is onboard AND water
-	if player_on_board and in_water:
-		handle_movement(delta)
+# Called when a menu button is pressed
+func _on_island_selected(dock_name: String):
+	#debug for math challenge
+	$RaftBubble.start_challenge(dock_name)
+	if GameManager.unlocked_islands.has(dock_name):
+		var player = get_tree().root.get_node("world/Player")
+		player.teleport_to_dock(dock_name)
 	else:
-		velocity = Vector2.ZERO
+		$RaftBubble.start_challenge(dock_name) # Not unlocked yet
+		if not $RaftBubble.is_connected("correct_answer", Callable(self, "_on_correct_answer")):
+			$RaftBubble.connect("correct_answer", Callable(self, "_on_correct_answer"))
+		if not $RaftBubble.is_connected("wrong_answer", Callable(self, "_on_wrong_answer")):
+			$RaftBubble.connect("wrong_answer", Callable(self, "_on_wrong_answer"))
 
-	move_and_slide()
+func _on_correct_answer(dock_name: String):
+	GameManager.unlocked_islands[dock_name] = true
+	var player = get_tree().root.get_node("world/Player")
+	player.teleport_to_dock(dock_name)
 
-	# Keep player centered on boat (local coordinates)
-	if player_on_board and player:
-		player.position = Vector2.ZERO
-
-
-# -------------------- Water check --------------------
-func check_water():
-	var local_pos = global_position - tilemap.global_position
-	var tile_coords = tilemap.local_to_map(local_pos)
-	var data: TileData = tilemap.get_cell_tile_data(2, tile_coords)
-	in_water = data != null and data.get_custom_data("water") == true
-
-
-# -------------------- Boat movement --------------------
-func handle_movement(delta):
-	var input_vector = Vector2.ZERO
-	if Input.is_action_pressed("ui_up"): input_vector.y -= 1
-	if Input.is_action_pressed("ui_down"): input_vector.y += 1
-	if Input.is_action_pressed("ui_left"): input_vector.x -= 1
-	if Input.is_action_pressed("ui_right"): input_vector.x += 1
-
-	if input_vector != Vector2.ZERO:
-		input_vector = input_vector.normalized()
-
-	velocity = input_vector * max_speed
-	velocity = velocity.move_toward(Vector2.ZERO, water_drag * delta)
-
-
-# -------------------- Interaction --------------------
-func _on_Area2D_body_entered(body):
-	if body.is_in_group("player") and not player_on_board:
-		player = body
-		print("Press E to hop on the boat!")
-
-
-func _on_Area2D_body_exited(body):
-	# DO NOT clear reference while riding
-	if player_on_board:
-		return
-
-	if body == player:
-		player = null
-
-
-# -------------------- Hop On --------------------
-func hop_on():
-	if not player:
-		return
-
-	player_on_board = true
-	player.on_boat = true
-
-	# Reparent safely
-	var parent = player.get_parent()
-	parent.remove_child(player)
-	add_child(player)
-
-	await get_tree().process_frame
-
-	# Place player on top of boat (local space)
-	if player:
-		player.position = Vector2(0, -10)
-
-	print("Player hopped on!")
-
-
-# -------------------- Hop Off --------------------
-func hop_off():
-	if not player:
-		return
-
-	player_on_board = false
-	player.on_boat = false
-
-	# Reparent back to world
-	remove_child(player)
-	get_parent().add_child(player)
-
-	await get_tree().process_frame
-
-	# Place beside boat (global space)
-	if player:
-		player.global_position = global_position + Vector2(16, 0)
-
-	print("Player hopped off!")
+func _on_wrong_answer(dock_name: String):
+	print("Dock", dock_name, "remains locked.")
