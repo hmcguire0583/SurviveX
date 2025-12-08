@@ -6,7 +6,7 @@ signal time_changed(current_hour: float, time_string: String)
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 @export_group("Time Settings")
-@export var day_duration: float = 5
+@export var day_duration: float = 0.1
 @export var starting_hour: float = 8.0
 @export_range(0,23) var sunrise_hour: int = 6
 @export_range(0,23) var sunset_hour: int = 19
@@ -27,10 +27,11 @@ func _ready() -> void:
 	time_changed.emit(current_hour, get_time_string())
 
 func _process(delta: float) -> void:
-	elapsed_time += delta
-	current_hour = fmod(starting_hour + (elapsed_time * 24.0 / (day_duration * 60.0)), 24.0)
-	_update_world_color()
-	time_changed.emit(current_hour, get_time_string())
+	if get_tree().paused == false:
+		elapsed_time += delta
+		current_hour = fmod(starting_hour + (elapsed_time * 24.0 / (day_duration * 60.0)), 24.0)
+		_update_world_color()
+		time_changed.emit(current_hour, get_time_string())
 
 func _update_world_color() -> void:
 	var target_color: Color

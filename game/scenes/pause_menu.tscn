@@ -20,6 +20,7 @@ corner_radius_bottom_left = 20
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
+layer = 5
 script = ExtResource("1_5d2l8")
 
 [node name="Panel" type="Panel" parent="."]
@@ -67,6 +68,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
 text = "Resume Game"
 
 [node name="optionsbutton" type="Button" parent="VBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -80,7 +82,23 @@ theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
-text = "Options (placeholder)"
+text = "Options"
+
+[node name="instructionsbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_rhts7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7vrkn")
+text = "Instructions"
 
 [node name="main_menubutton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -127,4 +145,5 @@ autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/resumebutton" to="." method="_on_resumebutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/instructionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/main_menubutton" to="." method="_on_main_menubutton_pressed"]
