@@ -21,7 +21,7 @@ func _on_body_exited(body):
 
 func _process(delta):
 	if player_in_range and Input.is_action_just_pressed("interact"):
-		print("Boarding triggered!")
+		print("DEBUG: Boarding triggered!")
 		emit_signal("boarded", self)
 		# Show the menu instead of starting bubble directly
 		$RaftMenu.visible = true

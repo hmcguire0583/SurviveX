@@ -20,6 +20,7 @@ func _ready():
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	$Damagelabel.visible = false   # hide initially
 	for boat in get_tree().get_nodes_in_group("raft"):
+		print("DEBUG: found boat", boat.name)
 		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
