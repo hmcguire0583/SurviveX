@@ -136,13 +136,9 @@ func defeat_enemy():
 				player_chase = true
 		)
 
-<<<<<<< HEAD
 	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
-=======
-	health -= 100
->>>>>>> e7160db75dfd01ffa40466b41b7c8becb8c3955f
 	update_health()
 	show_damage_label("-" + str(damage))
 
