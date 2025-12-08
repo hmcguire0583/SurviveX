@@ -23,11 +23,29 @@ func _process(delta):
 	if player_in_range and Input.is_action_just_pressed("interact"):
 		print("Boarding triggered!")
 		emit_signal("boarded", self)
-		$RaftBubble.start_challenge("Dock2")
-		$RaftBubble.correct_answer.connect(_on_correct_answer)
-		$RaftBubble.wrong_answer.connect(_on_wrong_answer)
+		# Show the menu instead of starting bubble directly
+		$RaftMenu.visible = true
+		$RaftMenu.update_unlocks()
+		
+		if not $RaftMenu.is_connected("island_selected", Callable(self, "_on_island_selected")):
+			$RaftMenu.connect("island_selected", Callable(self, "_on_island_selected"))
+
+# Called when a menu button is pressed
+func _on_island_selected(dock_name: String):
+	#debug for math challenge
+	$RaftBubble.start_challenge(dock_name)
+	if GameManager.unlocked_islands.has(dock_name):
+		var player = get_tree().root.get_node("world/Player")
+		player.teleport_to_dock(dock_name)
+	else:
+		$RaftBubble.start_challenge(dock_name) # Not unlocked yet
+		if not $RaftBubble.is_connected("correct_answer", Callable(self, "_on_correct_answer")):
+			$RaftBubble.connect("correct_answer", Callable(self, "_on_correct_answer"))
+		if not $RaftBubble.is_connected("wrong_answer", Callable(self, "_on_wrong_answer")):
+			$RaftBubble.connect("wrong_answer", Callable(self, "_on_wrong_answer"))
 
 func _on_correct_answer(dock_name: String):
+	GameManager.unlocked_islands[dock_name] = true
 	var player = get_tree().root.get_node("world/Player")
 	player.teleport_to_dock(dock_name)
 
