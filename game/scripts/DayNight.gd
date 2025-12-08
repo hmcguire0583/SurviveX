@@ -21,6 +21,7 @@ var elapsed_time: float = 0.0
 var current_hour: float = 0.0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	current_hour = starting_hour
 	_update_world_color()
 	time_changed.emit(current_hour, get_time_string())
