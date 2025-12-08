@@ -19,7 +19,7 @@ func start_challenge(island_index: int):
 	visible = true
 
 	# Initial message
-	$NinePatchRect/QuestionLabel.text = "Solve to unlock " + str(island_index)
+	$NinePatchRect/QuestionLabel.text = "Solve to unlock island " + str(island_index + 1)
 	$NinePatchRect/QuestionLabel.autowrap_mode = TextServer.AUTOWRAP_WORD
 	$NinePatchRect/QuestionLabel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	$NinePatchRect/QuestionLabel.size_flags_vertical = Control.SIZE_EXPAND_FILL

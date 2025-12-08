@@ -14,7 +14,7 @@ var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
 var is_dead := false   # gate AI and animations when dead
-var base_dmg = 15
+var base_dmg = 8
 #var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():

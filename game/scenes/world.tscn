@@ -137,7 +137,7 @@ collision_mask = 1
 
 [node name="shop" parent="." instance=ExtResource("7_4mrxx")]
 z_index = 1
-position = Vector2(2619, -497)
+position = Vector2(41, -12)
 collision_layer = 3
 items = Array[ExtResource("8_4mrxx")]([])
 
@@ -264,7 +264,7 @@ position = Vector2(4322, -3943)
 [node name="enemy30" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(15, -129)
+position = Vector2(15, -135)
 
 [node name="Raft" parent="." groups=["raft"] instance=ExtResource("9_w7kh3")]
 z_index = 1
@@ -312,10 +312,10 @@ position = Vector2(251, 64)
 position = Vector2(2126, -272)
 
 [node name="Dock2" type="Marker2D" parent="Docks"]
-position = Vector2(4672, -4704)
+position = Vector2(4580, -1945)
 
 [node name="Dock3" type="Marker2D" parent="Docks"]
-position = Vector2(4574, -1936)
+position = Vector2(4657, -4762)
 
 [node name="chest1" parent="." instance=ExtResource("9_7r4gi")]
 z_index = 1
