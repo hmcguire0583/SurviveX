@@ -24,6 +24,10 @@ func _ready():
 		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
+	#if Input.is_action_pressed("ui_cancel"):
+		#get_tree().paused = true
+		#get_tree().change_scene_to_file("res://scenes/pause_menu.tscn")
+		
 	if on_boat or is_dead:
 		return
 	if math_challenge_active:
