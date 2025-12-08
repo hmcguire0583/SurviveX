@@ -7,11 +7,13 @@ extends CharacterBody2D
 @export var woodItem: InvItem
 var player_chase := false
 var player = null
+var maxHealth = 100
 var health = 20
 var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
 var is_dead := false   # gate AI and animations when dead
+var base_dmg = 15
 #var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
@@ -211,7 +213,10 @@ func penalize_player():
 			"up":
 				$AnimatedSprite2D.play("up_attack")
 
-		player.health -= 10
+		var damage = base_dmg + (10 * (GameManager.current_day) - 1)
+		damage += (5 * (GameManager.islands_unlocked - 1))
+		damage *= 1 - (0.1 * player.armor_tier)
+		player.health -= damage
 		player.update_health()
 
 		# Fallback reset for attack state
