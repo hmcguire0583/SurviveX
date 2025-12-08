@@ -1,11 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://djroqbs4k7wj2"]
+[gd_scene load_steps=47 format=3 uid="uid://djroqbs4k7wj2"]
 
+[ext_resource type="Script" uid="uid://3s28k2g4gyht" path="res://scripts/boat.gd" id="1_12u0i"]
 [ext_resource type="Texture2D" uid="uid://dmjqpsnovf53w" path="res://art/assets/floss-idle-with-sail-blue.png" id="1_sl03k"]
-[ext_resource type="Script" uid="uid://b2ifg6u24o1lh" path="res://scenes/boat.gd" id="2_hs5u7"]
 [ext_resource type="Texture2D" uid="uid://bbprvw5a11aw7" path="res://art/assets/floss-move-with-sail-transp.png" id="2_rakhh"]
+[ext_resource type="Script" uid="uid://0mgmbkwf260h" path="res://scripts/RaftBubble.gd" id="4_twfgx"]
+[ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="5_jhkin"]
+[ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="6_5ppx3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_12u0i"]
-radius = 27.0
+radius = 51.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rakhh"]
 atlas = ExtResource("1_sl03k")
@@ -277,13 +280,39 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12u0i"]
 size = Vector2(44, 34.5)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyejl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eai20"]
+bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qwpy"]
+bg_color = Color(0.104104, 0.086342, 0.431135, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5nr"]
+bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vroka"]
+
 [node name="Raft" type="Node2D"]
 position = Vector2(90, 84)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["raft"]]
 position = Vector2(2, 2)
 collision_layer = 2
-script = ExtResource("2_hs5u7")
+script = ExtResource("1_12u0i")
 
 [node name="Area2D" type="Area2D" parent="StaticBody2D"]
 collision_layer = 3
@@ -303,3 +332,60 @@ frame_progress = 0.829392
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1, 8.75)
 shape = SubResource("RectangleShape2D_12u0i")
+
+[node name="RaftBubble" type="Node2D" parent="StaticBody2D"]
+position = Vector2(-2, -2)
+script = ExtResource("4_twfgx")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StaticBody2D/RaftBubble"]
+offset_left = -39.0
+offset_top = -59.0
+offset_right = 40.0
+offset_bottom = 17.0
+texture = ExtResource("5_jhkin")
+
+[node name="QuestionLabel" type="Label" parent="StaticBody2D/RaftBubble/NinePatchRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 17.0
+offset_right = 76.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(0.00107003, 0.00426132, 0.00509363, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 7
+text = "2x + 3
+"
+horizontal_alignment = 1
+
+[node name="AnswerInput" type="LineEdit" parent="StaticBody2D/RaftBubble/NinePatchRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 28.0
+offset_right = 83.0
+offset_bottom = 47.0
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.0016294, 0.0154448, 0.00674762, 1)
+theme_override_font_sizes/font_size = 7
+placeholder_text = "Answer"
+
+[node name="SubmitButton" type="Button" parent="StaticBody2D/RaftBubble/NinePatchRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 36.0
+offset_right = 55.0
+offset_bottom = 46.0
+theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
+theme_override_fonts/font = ExtResource("6_5ppx3")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xyejl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qwpy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vj5nr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vroka")
+text = "Submit"
+
+[connection signal="pressed" from="StaticBody2D/RaftBubble/NinePatchRect/SubmitButton" to="StaticBody2D/RaftBubble" method="_on_submit_button_pressed"]

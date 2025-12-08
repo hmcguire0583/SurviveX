@@ -3,7 +3,7 @@ extends Node2D  # Attach this to your world scene root
 @export var enable_day_night_cycle: bool = true
 
 # Node references
-@onready var objective_label: Label = $UI/ObjectiveLabel
+#@onready var objective_label: Label = $UI/ObjectiveLabel
 @onready var day_night: DayNight = $DayNight
 @onready var time_label: Label = $UI/TimeLabel   
 
