@@ -183,16 +183,18 @@ func scrap_collect():
 	var scrap = 0
 	var wood = 0
 	randomize()
-	if GameManager.current_island == 1:
+	if GameManager.current_island <= 1:
 		scrap = randi() % 3 + 2
 		wood = randi() % 4 + 3
 	elif GameManager.current_island == 2:
 		scrap = randi() % 4 + 4
 		wood = randi() % 5 + 5
-	elif GameManager.current_island == 1:
+	elif GameManager.current_island >= 3:
 		scrap = randi() % 5 + 6
 		wood = randi() % 6 + 7
-		
+	
+	print("rewarding ", scrap, " scrap")
+	print("rewarding ", wood, " wood")
 	player.collect(scrapItem, scrap)
 	player.collect(woodItem, wood)
 	

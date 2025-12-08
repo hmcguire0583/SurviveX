@@ -36,7 +36,7 @@ func reward_player(player):
 	var scrap = 0
 	var wood = 0
 	var food = 0
-	if GameManager.current_island == 1:
+	if GameManager.current_island <= 1:
 		scrap = randi() % 8 + 8
 		wood = randi() % 10 + 12
 		food = randi() % 2 + 2
@@ -44,7 +44,7 @@ func reward_player(player):
 		scrap = randi() % 11 + 11
 		wood = randi() % 13 + 15
 		food = randi() % 3 + 3
-	elif GameManager.current_island == 1:
+	elif GameManager.current_island >= 3:
 		scrap = randi() % 15 + 15
 		wood = randi() % 20 + 20
 		food = randi() % 4 + 4
