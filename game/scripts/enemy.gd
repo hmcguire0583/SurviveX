@@ -178,9 +178,21 @@ func drop_scrap():
 func scrap_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
-	print(player == null)
-	player.collect(scrapItem, 10)
-	player.collect(woodItem, 20)
+	var scrap = 0
+	var wood = 0
+	randomize()
+	if GameManager.current_island == 1:
+		scrap = randi() % 3 + 2
+		wood = randi() % 4 + 3
+	elif GameManager.current_island == 2:
+		scrap = randi() % 4 + 4
+		wood = randi() % 5 + 5
+	elif GameManager.current_island == 1:
+		scrap = randi() % 5 + 6
+		wood = randi() % 6 + 7
+		
+	player.collect(scrapItem, scrap)
+	player.collect(woodItem, wood)
 	
 	queue_free()
 
