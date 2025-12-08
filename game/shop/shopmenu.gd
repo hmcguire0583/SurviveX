@@ -35,17 +35,16 @@ func _physics_process(delta: float) -> void:
 		
 		if player != null:
 			var inv = player.getInventory().slots
+			var wood = 0
+			var scrap = 0
 			for i in inv:
 				if i.item != null:
-					print(i.item.name)
-			var wood = inv.filter(func(slot): slot.item != null and slot.item.name == "wood")
-			var scrap = inv.filter(func(slot): slot.item != null and slot.item.name == "scrap")
-			
-			if wood.is_empty() or scrap.is_empty():
-				print("no wood or no scrap")
-				$buybuttoncolor.color = "6e0012"
-			elif wood[0] >= price["wood"] and scrap[0] >= price["scrap"]:
-				print("wood: ", wood[0], " | scrap: ", scrap[0])
+					if i.item.name == "wood":
+						wood = i.amount
+					elif i.item.name == "scrap":
+						scrap = i.amount
+
+			if wood >= price["wood"] and scrap >= price["scrap"]:
 				$buybuttoncolor.color = "456d33"
 			else:
 				$buybuttoncolor.color = "6e0012"		
@@ -57,12 +56,21 @@ func _on_buttonright_pressed() -> void:
 	swap_item_forward()
 func _on_buybutton_pressed() -> void:	
 	var inv = player.getInventory().slots
-	var wood = inv.filter(func(slot): slot.item != null and slot.item.name == "wood")
-	var scrap = inv.filter(func(slot): slot.item != null and slot.item.name == "scrap")
+	var wood = 0
+	var scrap = 0
+	for i in inv:
+		if i.item != null:
+			if i.item.name == "wood":
+				wood = i.amount
+			elif i.item.name == "scrap":
+				scrap = i.amount
 	
-	if not(wood.is_empty() or scrap.is_empty()):
-		if wood[0] >= price["wood"] and scrap[0] >= price["scrap"]:
-			buy()
+	if wood >= price["wood"] and scrap >= price["scrap"]:
+		buy()
+		var woodItem = items.filter(func(i): return i != null and i.name == "wood")
+		var scrapItem = items.filter(func(i): return i != null and i.name == "scrap")
+		player.remove(woodItem[0], price["wood"])
+		player.remove(scrapItem[0], price["scrap"])
 	
 func swap_item_back():
 	if item == 0:
@@ -78,17 +86,12 @@ func swap_item_forward():
 
 func buy():
 	var itemBought = items.filter(func(i): return i != null and i.name == animNames[item])
-	print("bought: ", animNames[item])
 	player.collect(itemBought[0])
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_shop_method"):
 		player = body
-		print("player entered")
 		
 		var wood = items.filter(func(i): return i != null and i.name == "wood")
 		var scrap = items.filter(func(i): return i != null and i.name == "scrap")
-		for i in range(200):
-			player.collect(wood[0])
-			player.collect(scrap[0])

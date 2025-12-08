@@ -141,6 +141,9 @@ func show_damage_label(text: String):
 func collect(item):
 	inv.insert(item)
 	
+func remove(item, amount):
+	inv.remove(item, amount)
+	
 func getInventory():
 	return inv
 	

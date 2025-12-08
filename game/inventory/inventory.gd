@@ -29,3 +29,13 @@ func insert(item: InvItem): # enemy drops item or chest drops item, call to inse
 			emptyslots[0].amount = 1
 	
 	update.emit()
+	
+func remove(item: InvItem, amount): # enemy drops item or chest drops item, call to insert
+	var itemslots = slots.filter(func(slot): return slot.item==item)
+	if !itemslots.is_empty():
+		itemslots[0].amount -= amount
+	else:
+		var emptyslots = slots.filter(func(slot): return slot.item == null)
+		emptyslots[0].item = item
+		emptyslots[0].amount = 1
+	update.emit()
