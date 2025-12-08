@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=2 format=3 uid="uid://pdyreflojwf7"]
+=======
+[gd_scene load_steps=0 format=3 uid="uid://pdyreflojwf7"]
+>>>>>>> e7160db75dfd01ffa40466b41b7c8becb8c3955f
 
 [ext_resource type="Texture2D" uid="uid://vc5ljt1n87dl" path="res://art/objects/scrap.png" id="1_yhbfu"]
 

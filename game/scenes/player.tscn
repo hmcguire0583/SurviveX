@@ -417,9 +417,9 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 4.1231055
+radius = 4.12311
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_g2els")
@@ -437,10 +437,10 @@ position = Vector2(0, -15)
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-modulate = Color(3.657937e-06, 0.7484261, 0.10763546, 1)
-offset_left = -5.9999995
+modulate = Color(3.65794e-06, 0.748426, 0.107635, 1)
+offset_left = -6.0
 offset_top = -11.0
-offset_right = 103.999985
+offset_right = 104.0
 offset_bottom = 19.0
 scale = Vector2(0.1, 0.1)
 show_percentage = false
