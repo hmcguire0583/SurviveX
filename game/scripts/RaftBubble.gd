@@ -1,25 +1,25 @@
 extends Node2D
 
-signal correct_answer(dock_name: String)
-signal wrong_answer(dock_name: String)
+signal correct_answer(island_index: int )
+signal wrong_answer(island_index: int)
 
 var a : int
 var b : int
 var c : int
 var solution : float
-var target_dock : String = ""
+var target_island : int = -1
 
 func _ready():
 	randomize()
 	visible = false
 	$NinePatchRect/SubmitButton.pressed.connect(_on_submit_button_pressed)
 
-func start_challenge(dock_name: String):
-	target_dock = dock_name
+func start_challenge(island_index: int):
+	target_island = island_index
 	visible = true
 
 	# Initial message
-	$NinePatchRect/QuestionLabel.text = "Solve to unlock " + dock_name
+	$NinePatchRect/QuestionLabel.text = "Solve to unlock " + str(island_index)
 	$NinePatchRect/QuestionLabel.autowrap_mode = TextServer.AUTOWRAP_WORD
 	$NinePatchRect/QuestionLabel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	$NinePatchRect/QuestionLabel.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -63,26 +63,30 @@ func start_challenge(dock_name: String):
 	# Show input after question is ready
 	$NinePatchRect/AnswerInput.visible = true
 	$NinePatchRect/SubmitButton.visible = true
-	print("DEBUG: Question =", $NinePatchRect/QuestionLabel.text, " | Solution =", solution)
+	#print("DEBUG: Question =", $NinePatchRect/QuestionLabel.text, " | Solution =", solution)
 func _on_submit_button_pressed() -> void:
 	var input = parse_input($NinePatchRect/AnswerInput.text)
 	if abs(input - solution) < 0.01:
 		$NinePatchRect/QuestionLabel.text = "Correct!"
-		emit_signal("correct_answer", target_dock)
+		emit_signal("correct_answer", target_island)
+		#print("DEBUG: emitting correct_answer for island", target_island)
 		visible = false
 	else:
 		$NinePatchRect/QuestionLabel.text = "Attack by shark! Try again..."
-		emit_signal("wrong_answer", target_dock)
+		emit_signal("wrong_answer", target_island)
 		await get_tree().create_timer(1.5).timeout
-		start_challenge(target_dock)
+		start_challenge(target_island)
 		
 func parse_input(text: String) -> float:
 		# Handle fractions like "25/7"
+	text = text.strip_edges()
 	if "/" in text:
 		var parts = text.split("/")
 		if parts.size() == 2:
-			var numerator = parts[0].to_float()
-			var denominator = parts[1].to_float()
+			var numerator_str = parts[0].strip_edges()
+			var denominator_str = parts[1].strip_edges()
+			var numerator = numerator_str.to_float()
+			var denominator = denominator_str.to_float()
 			if denominator != 0:
 				return numerator / denominator
 	# Fallback: normal float

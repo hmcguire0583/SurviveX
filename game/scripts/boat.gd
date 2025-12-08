@@ -31,23 +31,31 @@ func _process(delta):
 			$RaftMenu.connect("island_selected", Callable(self, "_on_island_selected"))
 
 # Called when a menu button is pressed
-func _on_island_selected(dock_name: String):
+func _on_island_selected(island_index: int):
 	#debug for math challenge
-	$RaftBubble.start_challenge(dock_name)
-	if GameManager.unlocked_islands.has(dock_name):
+	#$RaftBubble.start_challenge(dock_name)
+	if GameManager.unlocked_islands.has(island_index) and GameManager.unlocked_islands[island_index]:
+		GameManager.current_island = island_index
 		var player = get_tree().root.get_node("world/Player")
-		player.teleport_to_dock(dock_name)
+		player.teleport_to_dock(island_index)
 	else:
-		$RaftBubble.start_challenge(dock_name) # Not unlocked yet
+		$RaftBubble.start_challenge(island_index) # Not unlocked yet
 		if not $RaftBubble.is_connected("correct_answer", Callable(self, "_on_correct_answer")):
 			$RaftBubble.connect("correct_answer", Callable(self, "_on_correct_answer"))
+			#print("DEBUG: connecting RaftBubble correct_answer")
 		if not $RaftBubble.is_connected("wrong_answer", Callable(self, "_on_wrong_answer")):
 			$RaftBubble.connect("wrong_answer", Callable(self, "_on_wrong_answer"))
 
-func _on_correct_answer(dock_name: String):
-	GameManager.unlocked_islands[dock_name] = true
+func _on_correct_answer(island_index: int):
+	if !GameManager.unlocked_islands.has(island_index) or GameManager.unlocked_islands[island_index] == false:
+		GameManager.unlocked_islands[island_index] = true
+		GameManager.islands_unlocked += 1   # simpler counter update
+		print("Unlocked dock:", island_index, "| Total unlocked =", GameManager.islands_unlocked)
+		
+	GameManager.current_island = island_index
 	var player = get_tree().root.get_node("world/Player")
-	player.teleport_to_dock(dock_name)
+	#print("DEBUG: player node =", player)
+	player.teleport_to_dock(island_index)
 
 func _on_wrong_answer(dock_name: String):
 	print("Dock", dock_name, "remains locked.")
