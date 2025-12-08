@@ -140,3 +140,9 @@ func show_damage_label(text: String):
 	
 func collect(item):
 	inv.insert(item)
+	
+func getInventory():
+	return inv
+	
+func player_shop_method():
+	pass
