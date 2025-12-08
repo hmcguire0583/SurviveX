@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var stop_distance := 5.0
 @onready var scrap = $scrap_collectable
 @export var itemRes: InvItem
+@export var scrapItem: InvItem
+@export var woodItem: InvItem
 var player_chase := false
 var player = null
 var health = 20
@@ -173,7 +175,8 @@ func scrap_collect():
 	await get_tree().create_timer(1.5).timeout
 	scrap.visible = false
 	print(player == null)
-	player.collect(itemRes)
+	player.collect(scrapItem, 10)
+	player.collect(woodItem, 20)
 	
 	queue_free()
 
