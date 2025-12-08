@@ -60,9 +60,10 @@ offset_bottom = 23.0
 
 [node name="Player" parent="." instance=ExtResource("4_1te1p")]
 z_index = 1
-position = Vector2(2559, -452)
+position = Vector2(2521, -416)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(3, 1)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
@@ -150,6 +151,7 @@ z_index = 1
 position = Vector2(6411, -2022)
 
 [node name="chest3" parent="." instance=ExtResource("9_7r4gi")]
+position = Vector2(17, -17)
 
 [node name="enemy6" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
@@ -214,6 +216,7 @@ z_index = 1
 position = Vector2(2057, -276)
 
 [node name="collision" type="StaticBody2D" parent="."]
+position = Vector2(7, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collision"]
 polygon = PackedVector2Array(227, 82, 278, 81, 279, 22, 226, 22, 226, 32, 236, 33, 236, 25, 269, 24, 269, 32, 278, 33, 278, 44, 278, 53, 270, 55, 270, 66, 251, 69, 236, 66, 235, 56, 231, 53, 227, 54, 227, 58)
@@ -222,7 +225,7 @@ polygon = PackedVector2Array(227, 82, 278, 81, 279, 22, 226, 22, 226, 32, 236, 3
 polygon = PackedVector2Array(2152, -238, 2098, -238, 2098, -299, 2101, -312, 2106, -310, 2108, -303, 2140, -302, 2144, -312, 2149, -311, 2151, -301, 2150, -296, 2143, -298, 2134, -295, 2121, -295, 2109, -298, 2106, -297, 2107, -288, 2101, -287, 2100, -267, 2106, -266, 2108, -255, 2121, -251, 2133, -253, 2141, -254, 2142, -265, 2145, -267, 2151, -264)
 
 [node name="Docks" type="Node2D" parent="."]
-position = Vector2(-7, -3)
+position = Vector2(13, -28)
 script = ExtResource("11_e3hyu")
 
 [node name="Dock0" type="Marker2D" parent="Docks"]
