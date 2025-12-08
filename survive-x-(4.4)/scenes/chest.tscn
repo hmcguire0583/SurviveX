@@ -1,0 +1,112 @@
+[gd_scene load_steps=18 format=3 uid="uid://po62p3lvarb"]
+
+[ext_resource type="Texture2D" uid="uid://c6b1ox31cafbc" path="res://art/objects/chest_01.png" id="1_oii8l"]
+[ext_resource type="Script" uid="uid://c2oio5v6jwio1" path="res://scripts/chest.gd" id="1_sy5e1"]
+[ext_resource type="Resource" uid="uid://dqxn0lmlglm00" path="res://inventory/items/scrap.tres" id="3_ilhio"]
+[ext_resource type="Resource" uid="uid://chsnfakysfdkb" path="res://inventory/items/wood.tres" id="4_kg5gm"]
+[ext_resource type="Resource" uid="uid://b8grvgyrabk08" path="res://inventory/items/food.tres" id="5_8me8i"]
+[ext_resource type="PackedScene" uid="uid://dnyvcu3pc4gkc" path="res://scenes/wood_collectable.tscn" id="6_kg5gm"]
+[ext_resource type="PackedScene" uid="uid://bh2elqp6wii7m" path="res://scenes/food_collectable.tscn" id="7_8me8i"]
+[ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="8_lfymr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilhio"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqd3d"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yue2o"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhylo"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w02o5"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilhio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy5e1")
+}],
+"loop": true,
+"name": &"closed_chest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilhio")
+}],
+"loop": true,
+"name": &"open_chest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqd3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yue2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhylo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w02o5")
+}],
+"loop": true,
+"name": &"opening_chest",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg5gm"]
+size = Vector2(14, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8me8i"]
+radius = 23.0
+
+[node name="chest" type="StaticBody2D"]
+script = ExtResource("1_sy5e1")
+scrapItem = ExtResource("3_ilhio")
+woodItem = ExtResource("4_kg5gm")
+foodItem = ExtResource("5_8me8i")
+
+[node name="chestart" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ilhio")
+animation = &"open_chest"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_kg5gm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8me8i")
+
+[node name="wood_collectable" parent="." instance=ExtResource("6_kg5gm")]
+visible = false
+position = Vector2(7, 8)
+scale = Vector2(1.2, 1.2)
+
+[node name="food_collectable" parent="." instance=ExtResource("7_8me8i")]
+visible = false
+position = Vector2(-7, 8)
+scale = Vector2(1.3, 1.3)
+
+[node name="scrap_collectable" parent="." instance=ExtResource("8_lfymr")]
+visible = false
+position = Vector2(0, 8)
+scale = Vector2(0.4, 0.4)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

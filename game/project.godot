@@ -12,12 +12,13 @@ config_version=5
 
 config/name="SurviveX"
 run/main_scene="uid://ca22crgx6e3u"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://art/icon.svg"
 
 [autoload]
 
 GameManager="*res://scripts/GameManager.gd"
+AudioController="*res://scenes/audio_controller.tscn"
 
 [display]
 
