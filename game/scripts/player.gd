@@ -141,8 +141,8 @@ func show_damage_label(text: String):
 func player():
 	pass
 	
-func collect(item):
-	inv.insert(item)
+func collect(item, amount):
+	inv.insert(item, amount)
 	
 func remove(item, amount):
 	inv.remove(item, amount)
