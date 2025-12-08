@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var speed := 20.0
 @export var stop_distance := 5.0
 @onready var scrap = $scrap_collectable
-@export var itemRes: InvItem
 @export var scrapItem: InvItem
 @export var woodItem: InvItem
 var player_chase := false
@@ -172,7 +171,7 @@ func drop_scrap():
 	
 	
 func scrap_collect():
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
 	print(player == null)
 	player.collect(scrapItem, 10)

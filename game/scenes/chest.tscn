@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://c6b1ox31cafbc" path="res://art/objects/chest_01.png" id="1_oii8l"]
 [ext_resource type="Script" uid="uid://c2oio5v6jwio1" path="res://scripts/chest.gd" id="1_sy5e1"]
-[ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="2_w02o5"]
 [ext_resource type="Resource" uid="uid://dqxn0lmlglm00" path="res://inventory/items/scrap.tres" id="3_ilhio"]
 [ext_resource type="Resource" uid="uid://chsnfakysfdkb" path="res://inventory/items/wood.tres" id="4_kg5gm"]
 [ext_resource type="Resource" uid="uid://b8grvgyrabk08" path="res://inventory/items/food.tres" id="5_8me8i"]
@@ -10,6 +9,10 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_sy5e1"]
 atlas = ExtResource("1_oii8l")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilhio"]
+atlas = ExtResource("1_oii8l")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqd3d"]
 atlas = ExtResource("1_oii8l")
@@ -37,7 +40,10 @@ animations = [{
 "name": &"closed_chest",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilhio")
+}],
 "loop": true,
 "name": &"open_chest",
 "speed": 5.0
@@ -68,7 +74,9 @@ radius = 23.0
 
 [node name="chest" type="StaticBody2D"]
 script = ExtResource("1_sy5e1")
-items = Array[ExtResource("2_w02o5")]([ExtResource("3_ilhio"), ExtResource("4_kg5gm"), ExtResource("5_8me8i")])
+scrapItem = ExtResource("3_ilhio")
+woodItem = ExtResource("4_kg5gm")
+foodItem = ExtResource("5_8me8i")
 
 [node name="chestart" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ilhio")
