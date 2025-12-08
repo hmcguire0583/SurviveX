@@ -136,9 +136,11 @@ func defeat_enemy():
 				player_chase = true
 		)
 
-	health -= 20
+	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
+	damage *= 1 - (0.05 * (GameManager.current_day - 1))
+	health -= damage
 	update_health()
-	show_damage_label("-20")
+	show_damage_label("-" + str(damage))
 
 	if health <= 0:
 		is_dead = true
@@ -242,7 +244,7 @@ func _on_animation_finished_proxy(anim_name: String):
 func update_health():
 	var healthbar = $HealthBar
 	healthbar.value = health
-	healthbar.visible = (health > 0 and health < 100)
+	healthbar.visible = (health > 0 and health < maxHealth)
 
 func show_damage_label(text: String):
 	if is_dead:
