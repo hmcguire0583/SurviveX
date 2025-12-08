@@ -3,7 +3,8 @@ extends Node2D
 var unlocked_docks = {
 	0: true,   # starting island always unlocked
 	1: false,
-	2: false
+	2: false,
+	3: false
 }
 
 func unlock_dock(name: String):
