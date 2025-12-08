@@ -92,6 +92,3 @@ func buy():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_shop_method"):
 		player = body
-		
-		var wood = items.filter(func(i): return i != null and i.name == "wood")
-		var scrap = items.filter(func(i): return i != null and i.name == "scrap")

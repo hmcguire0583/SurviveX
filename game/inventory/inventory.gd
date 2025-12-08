@@ -9,6 +9,7 @@ signal update
 func insert(item: InvItem): # enemy drops item or chest drops item, call to insert
 	var itemName = item.name
 	var addItem = false
+	print("inserting ", itemName)
 	if "arm" in itemName:
 		var armorslot = slots.filter(func(slot): return slot.item != null and "arm" in slot.item.name)
 		if !armorslot.is_empty():
@@ -20,7 +21,7 @@ func insert(item: InvItem): # enemy drops item or chest drops item, call to inse
 			axeslot[0].item = item
 			addItem = true
 	if not addItem:
-		var itemslots = slots.filter(func(slot): return slot.item==item)
+		var itemslots = slots.filter(func(slot): return slot.item != null and slot.item.name == item.name)
 		if !itemslots.is_empty():
 			itemslots[0].amount += 1
 		else:
@@ -31,7 +32,7 @@ func insert(item: InvItem): # enemy drops item or chest drops item, call to inse
 	update.emit()
 	
 func remove(item: InvItem, amount): # enemy drops item or chest drops item, call to insert
-	var itemslots = slots.filter(func(slot): return slot.item==item)
+	var itemslots = slots.filter(func(slot): return slot.item != null and slot.item.name == item.name)
 	if !itemslots.is_empty():
 		itemslots[0].amount -= amount
 	else:

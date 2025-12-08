@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d13u6hp7j5hv5"]
+[gd_scene load_steps=12 format=4 uid="uid://d13u6hp7j5hv5"]
 
 [ext_resource type="Script" uid="uid://bai38yab1j8fg" path="res://scripts/world_2.gd" id="1_hvnw1"]
 [ext_resource type="TileSet" uid="uid://du3t83rkw7m6s" path="res://art/PUNY_WORLD_v1/Tiled/island.tres" id="2_7r4gi"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhel60ii2vfsg" path="res://shop/shop.tscn" id="7_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dhhctwvnbpoc4" path="res://scenes/shark.tscn" id="7_i7141"]
 [ext_resource type="Script" uid="uid://ev022o36ms0y" path="res://inventory/inventory_item.gd" id="8_4mrxx"]
+[ext_resource type="PackedScene" uid="uid://po62p3lvarb" path="res://scenes/chest.tscn" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://dyv2oi7wono43" path="res://scenes/day_night.tscn" id="12_q5onr"]
 
 [sub_resource type="Theme" id="Theme_i7141"]
@@ -136,3 +137,7 @@ z_index = 1
 position = Vector2(2619, -497)
 collision_layer = 3
 items = Array[ExtResource("8_4mrxx")]([])
+
+[node name="chest1" parent="." instance=ExtResource("9_7r4gi")]
+z_index = 1
+position = Vector2(3142, -309)
