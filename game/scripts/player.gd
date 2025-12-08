@@ -145,7 +145,6 @@ func show_damage_label(text: String):
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
 	tween.finished.connect(func(): dmg_label.visible = false)
 	
-<<<<<<< HEAD
 func player():
 	pass
 	
@@ -160,9 +159,6 @@ func getInventory():
 	
 func player_shop_method():
 	pass
-=======
-func collect(item):
-	inv.insert(item)
 
 func _on_boarded(boat):
 	print("Boarded boat:", boat.name)  # Debug
@@ -182,4 +178,3 @@ func teleport_to_dock(dock_name: String):
 		set_physics_process(true)
 	else:
 		push_error("Dock not found: " + dock_name)
->>>>>>> e7160db75dfd01ffa40466b41b7c8becb8c3955f
