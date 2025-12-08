@@ -3,6 +3,7 @@ extends CharacterBody2D
 const speed = 100
 var current_dir = "none"
 var on_boat = false
+var boat_ref = null
 var health = 100
 var is_dead = false
 var math_challenge_active = false
@@ -15,6 +16,9 @@ func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	$Damagelabel.visible = false   # hide initially
+	
+	for boat in get_tree().get_nodes_in_group("raft"):
+		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
 	if on_boat or is_dead:
@@ -140,3 +144,22 @@ func show_damage_label(text: String):
 	
 func collect(item):
 	inv.insert(item)
+
+func _on_boarded(boat):
+	print("Boarded boat:", boat.name)  # Debug
+	on_boat = true
+	boat_ref = boat
+	# Snap player onto boat deck (adjust offset as needed)
+	global_position = boat.global_position + Vector2(-4, 26)
+func teleport_to_dock(dock_name: String):
+	# Find the Docks folder in your World scene
+	var docks = get_tree().root.get_node("world/Docks")
+	var dock = docks.get_node_or_null(dock_name)
+	if dock:
+		global_position = dock.global_position
+		print("Teleported to dock:", dock_name)
+		on_boat = false
+		boat_ref = null
+		set_physics_process(true)
+	else:
+		push_error("Dock not found: " + dock_name)
