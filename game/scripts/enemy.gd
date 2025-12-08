@@ -136,9 +136,13 @@ func defeat_enemy():
 				player_chase = true
 		)
 
+<<<<<<< HEAD
 	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
+=======
+	health -= 100
+>>>>>>> e7160db75dfd01ffa40466b41b7c8becb8c3955f
 	update_health()
 	show_damage_label("-" + str(damage))
 
@@ -149,6 +153,7 @@ func defeat_enemy():
 		$CollisionShape2D.disabled = true
 
 		GameManager.enemies_defeated += 1
+		print(GameManager.enemies_defeated)
 		#var label_instance = VanquishLabelScene.instantiate()
 		#label_instance.get_node("Label").text = (
 			#"You Win!" if GameManager.enemies_defeated >= 3 else "Enemy vanquished!"
