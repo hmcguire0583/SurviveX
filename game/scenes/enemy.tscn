@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=104 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cb2vm14ca20aq" path="res://art/characters/Zombie_Big/Zombie_Big_Down_First-Attack-Sheet8.png" id="2_pwjut"]
 [ext_resource type="Texture2D" uid="uid://vc5ljt1n87dl" path="res://art/objects/scrap.png" id="3_1x4g4"]
 [ext_resource type="Texture2D" uid="uid://bgsoc13qmc2g4" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Idle-Sheet6.png" id="3_n0g06"]
+[ext_resource type="Resource" uid="uid://dqxn0lmlglm00" path="res://inventory/items/scrap.tres" id="4_2pwtc"]
 [ext_resource type="Texture2D" uid="uid://d08wvt61o40w6" path="res://art/characters/Zombie_Big/Zombie_Big_Down_Walk-Sheet8.png" id="4_ar8e5"]
 [ext_resource type="Texture2D" uid="uid://bswc351d7yua4" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Attack-Sheet8.png" id="5_doop2"]
+[ext_resource type="Resource" uid="uid://chsnfakysfdkb" path="res://inventory/items/wood.tres" id="5_rogs8"]
 [ext_resource type="Texture2D" uid="uid://vmc6qt21g48n" path="res://art/characters/Zombie_Big/Zombie_Big_Side_Idle-Sheet6.png" id="6_5hcft"]
 [ext_resource type="Texture2D" uid="uid://cjt22is5hin8h" path="res://art/characters/Zombie_Big/Zombie_Big_Side_Walk-Sheet8.png" id="7_nnovl"]
 [ext_resource type="Texture2D" uid="uid://cmn35aqbssaxi" path="res://art/characters/Zombie_Big/Zombie_Big_Up_First-Attack-Sheet8.png" id="8_jmwgi"]
@@ -629,6 +631,8 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_otmr2")
 itemRes = SubResource("Resource_2pwtc")
+scrapItem = ExtResource("4_2pwtc")
+woodItem = ExtResource("5_rogs8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
