@@ -138,6 +138,8 @@ func defeat_enemy():
 	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
+	if GameManager.time == "night":
+		damage *= 0.95
 	update_health()
 	show_damage_label("-" + str(damage))
 
@@ -177,9 +179,23 @@ func drop_scrap():
 func scrap_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
-	print(player == null)
-	player.collect(scrapItem, 10)
-	player.collect(woodItem, 20)
+	var scrap = 0
+	var wood = 0
+	randomize()
+	if GameManager.current_island <= 1:
+		scrap = randi() % 3 + 2
+		wood = randi() % 4 + 3
+	elif GameManager.current_island == 2:
+		scrap = randi() % 4 + 4
+		wood = randi() % 5 + 5
+	elif GameManager.current_island >= 3:
+		scrap = randi() % 5 + 6
+		wood = randi() % 6 + 7
+	
+	print("rewarding ", scrap, " scrap")
+	print("rewarding ", wood, " wood")
+	player.collect(scrapItem, scrap)
+	player.collect(woodItem, wood)
 	
 	queue_free()
 
@@ -218,6 +234,8 @@ func penalize_player():
 		var damage = base_dmg + (10 * (GameManager.current_day) - 1)
 		damage += (5 * (GameManager.islands_unlocked - 1))
 		damage *= 1 - (0.1 * player.armor_tier)
+		if GameManager.time == "night":
+			damage *= 1.05
 		player.health -= damage
 		player.update_health()
 
