@@ -6,7 +6,7 @@ signal time_changed(current_hour: float, time_string: String)
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 @export_group("Time Settings")
-@export var day_duration: float = 12.0
+@export var day_duration: float = 0.5
 @export var starting_hour: float = 8.0
 @export_range(0,23) var sunrise_hour: int = 6
 @export_range(0,23) var sunset_hour: int = 19
@@ -21,6 +21,7 @@ var elapsed_time: float = 0.0
 var current_hour: float = 0.0
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	current_hour = starting_hour
 	_update_world_color()
 	time_changed.emit(current_hour, get_time_string())
@@ -37,16 +38,21 @@ func _update_world_color() -> void:
 	if current_hour >= sunrise_hour and current_hour < sunrise_hour + 1:
 		var t = (current_hour - sunrise_hour) / 1.0
 		target_color = night_color.lerp(day_color, t)
+		GameManager.time = "night"
 	elif current_hour >= sunrise_hour + 1 and current_hour < sunset_hour - 2:
 		target_color = day_color
+		GameManager.time = "day"
 	elif current_hour >= sunset_hour - 2 and current_hour < sunset_hour:
 		var t = (current_hour - (sunset_hour - 2)) / 2.0
 		target_color = day_color.lerp(sunset_color, t)
+		GameManager.time = "night"
 	elif current_hour >= sunset_hour and current_hour < sunset_hour + 2:
 		var t = (current_hour - sunset_hour) / 2.0
 		target_color = sunset_color.lerp(night_color, t)
+		GameManager.time = "night"
 	else:
 		target_color = night_color
+		GameManager.time = "night"
 		
 	canvas_modulate.color = target_color
 
