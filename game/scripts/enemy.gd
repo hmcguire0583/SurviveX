@@ -59,7 +59,6 @@ func _on_detection_area_body_entered(body):
 
 func _on_detection_area_body_exited(body):
 	if body.has_method("player"):
-		player = null
 		player_chase = false
 
 
