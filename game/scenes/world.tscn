@@ -283,8 +283,6 @@ position = Vector2(4506, -1956)
 z_index = 1
 position = Vector2(4729, -4777)
 
-[node name="PauseMenu" parent="." instance=ExtResource("12_jhx03")]
-
 [node name="Collisions" type="StaticBody2D" parent="."]
 position = Vector2(249, 56)
 
@@ -329,3 +327,5 @@ position = Vector2(6410, -2023)
 [node name="chest3" parent="." instance=ExtResource("9_7r4gi")]
 z_index = 1
 position = Vector2(3302, -4672)
+
+[node name="PauseMenu" parent="." instance=ExtResource("12_jhx03")]
