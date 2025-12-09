@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=3 uid="uid://djroqbs4k7wj2"]
 
-[ext_resource type="Script" uid="uid://b8sl43gsuau3x" path="res://scenes/raft.gd" id="1_5ppx3"]
+[ext_resource type="Script" path="res://scenes/raft.gd" id="1_5ppx3"]
 [ext_resource type="Script" uid="uid://3s28k2g4gyht" path="res://scripts/boat.gd" id="1_12u0i"]
 [ext_resource type="Texture2D" uid="uid://buv12r1u4srq8" path="res://art/assets/floss-idle-with-sail-blue.png" id="1_sl03k"]
 [ext_resource type="Texture2D" uid="uid://b1awf3rt70gqd" path="res://art/assets/floss-move-with-sail-transp.png" id="2_rakhh"]
@@ -282,9 +282,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12u0i"]
 size = Vector2(44, 34.5)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vroka"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyejl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5nr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eai20"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -299,14 +299,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eai20"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5nr"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyejl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vroka"]
 
 [node name="Raft" type="Node2D"]
 position = Vector2(90, 84)
@@ -377,23 +377,28 @@ offset_left = 36.0
 offset_top = 76.0
 offset_right = 101.0
 offset_bottom = 84.0
+theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_fonts/font = ExtResource("6_5ppx3")
 theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxEmpty_vroka")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vj5nr")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8qwpy")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xyejl")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qwpy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vj5nr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vroka")
 text = "Submit"
 
 [node name="TimerLabel" type="Label" parent="StaticBody2D/RaftBubble/NinePatchRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 119.0
+offset_top = 77.0
+offset_right = 150.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="StaticBody2D/RaftBubble"]
 
@@ -474,10 +479,10 @@ disabled = true
 text = "Island 4"
 
 [node name="RaftHealth" type="ProgressBar" parent="."]
-modulate = Color(0, 0.7490196, 0.105882354, 1)
-offset_left = -6.000002
+modulate = Color(0, 0.74902, 0.105882, 1)
+offset_left = -6.0
 offset_top = 39.0
-offset_right = 163.99994
+offset_right = 164.0
 offset_bottom = 89.0
 scale = Vector2(0.1, 0.1)
 show_percentage = false
