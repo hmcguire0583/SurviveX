@@ -2,15 +2,22 @@ extends Node2D
 
 signal correct_answer
 signal wrong_answer
-
+@onready var answer_timer = $Timer
+@onready var timer_label = $NinePatchRect/TimerLabel
 
 var a : int
 var b : int
 var c : int
 var solution : int
+var time_remaining = 20
 
 func _ready():
 	randomize()
+	answer_timer.wait_time = 1.0
+	answer_timer.one_shot = false
+	answer_timer.autostart = false
+	answer_timer.timeout.connect(_on_AnswerTimer_timeout)
+	visible = false
 
 func start_challenge():
 	var variable = get_random_char('m', 'z')
@@ -30,8 +37,14 @@ func start_challenge():
 	$NinePatchRect/QuestionLabel.text = str(a) + variable + " + " + str(b) + " = " + str(c)
 	$NinePatchRect/AnswerInput.visible = true
 	$NinePatchRect/SubmitButton.visible = true
+	time_remaining = max(10, 20 - (GameManager.current_day - 1))
+	timer_label.visible = true
+	timer_label.text = "Time left: " + str(time_remaining)
+	answer_timer.start()
 
 func _on_SubmitButton_pressed():
+	timer_label.visible = false
+	answer_timer.stop()
 	var input = $NinePatchRect/AnswerInput.text.to_int()
 	if input == solution:
 		$NinePatchRect/QuestionLabel.text = "Correct!"
@@ -59,3 +72,15 @@ func get_random_char(start_char: String, end_char: String) -> String:
 
 	var random_code = randi_range(start_code, end_code)
 	return String.chr(random_code)
+func _on_AnswerTimer_timeout():
+	if time_remaining > 0:
+		time_remaining -= 1
+		timer_label.text = "Time left: " + str(time_remaining)
+
+	if time_remaining <= 0:
+		time_remaining = 0
+		timer_label.visible = false
+		$NinePatchRect/QuestionLabel.text = "Time’s up!"
+		emit_signal("wrong_answer")
+		answer_timer.stop()
+		visible = false

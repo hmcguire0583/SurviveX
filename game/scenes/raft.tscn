@@ -390,6 +390,13 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xyejl")
 text = "Submit"
 
+[node name="TimerLabel" type="Label" parent="StaticBody2D/RaftBubble/NinePatchRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="StaticBody2D/RaftBubble"]
+
 [node name="RaftMenu" type="Control" parent="StaticBody2D"]
 visible = false
 layout_mode = 3

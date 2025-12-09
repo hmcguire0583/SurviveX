@@ -14,21 +14,16 @@ func _on_body_entered(body):
 	print("Entered:", body.name)
 	if body.is_in_group("player"):
 		player_in_range = body
-
-func _on_body_exited(body):
-	if body == player_in_range:
-		player_in_range = null
-
-func _process(delta):
-	if player_in_range and Input.is_action_just_pressed("interact"):
 		print("DEBUG: Boarding triggered!")
 		emit_signal("boarded", self)
 		# Show the menu instead of starting bubble directly
 		$RaftMenu.visible = true
 		$RaftMenu.update_unlocks()
-		
 		if not $RaftMenu.is_connected("island_selected", Callable(self, "_on_island_selected")):
 			$RaftMenu.connect("island_selected", Callable(self, "_on_island_selected"))
+func _on_body_exited(body):
+	if body == player_in_range:
+		player_in_range = null
 
 # Called when a menu button is pressed
 func _on_island_selected(island_index: int):
