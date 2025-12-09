@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=3 uid="uid://djroqbs4k7wj2"]
 
-[ext_resource type="Script" path="res://scenes/raft.gd" id="1_5ppx3"]
+[ext_resource type="Script" uid="uid://b8sl43gsuau3x" path="res://scenes/raft.gd" id="1_5ppx3"]
 [ext_resource type="Script" uid="uid://3s28k2g4gyht" path="res://scripts/boat.gd" id="1_12u0i"]
 [ext_resource type="Texture2D" uid="uid://buv12r1u4srq8" path="res://art/assets/floss-idle-with-sail-blue.png" id="1_sl03k"]
 [ext_resource type="Texture2D" uid="uid://b1awf3rt70gqd" path="res://art/assets/floss-move-with-sail-transp.png" id="2_rakhh"]
