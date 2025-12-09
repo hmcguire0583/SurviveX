@@ -6,10 +6,14 @@ var chest_opened = false
 @export var woodItem: InvItem
 @export var foodItem: InvItem
 
+@onready var scrap = $scrap_collectable
+@onready var wood = $wood_collectable
+@onready var food = $food_collectable
+
 var enemiesNeeded = {
-	1: 5,
-	2: 16,
-	3: 29
+	"1": 6,
+	"2": 17,
+	"3": 30
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -23,16 +27,24 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player = body
 		
 		if not chest_opened: 
-			var needed = enemiesNeeded[GameManager.enemies_defeated]
+			var needed = enemiesNeeded[str(GameManager.current_island)]
 			if GameManager.enemies_defeated >= needed:
 				$chestart.play("opening_chest")
 				await get_tree().create_timer(0.8).timeout
 				$chestart.play("open_chest")
+				food.visible = true
+				wood.visible = true
+				scrap.visible = true
+				await get_tree().create_timer(0.4).timeout
 				
 				chest_opened = true
 				reward_player(player)
 			
 func reward_player(player):
+	food.visible = false
+	wood.visible = false
+	scrap.visible = false
+	
 	var scrap = 0
 	var wood = 0
 	var food = 0

@@ -12,6 +12,10 @@ var correct_answer = 0
 
 var _prev_whole_hour := -1 
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		$PauseMenu.open_pause()
+
 func _ready():
 	if enable_day_night_cycle:
 		_setup_day_night_cycle()
