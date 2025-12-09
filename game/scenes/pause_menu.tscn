@@ -215,5 +215,6 @@ text = "Back"
 
 [connection signal="pressed" from="VBoxContainer/resumebutton" to="." method="_on_resumebutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/optionsbutton" to="." method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/main_menubutton" to="." method="_on_main_menubutton_pressed"]
 [connection signal="value_changed" from="volumepanel/volumeslider" to="." method="_on_volumeslider_value_changed"]
 [connection signal="pressed" from="volumepanel/backbutton" to="." method="_on_backbutton_pressed"]

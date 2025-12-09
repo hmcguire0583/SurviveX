@@ -15,11 +15,19 @@ func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/world.tscn")
 	AudioController.stop_menu_music()
 
+func _on_optionsbutton_pressed() -> void:
+	$volumepanel.visible = true
+	$menulabel.visible = false
+	$VBoxContainer.visible = false
 
-func _on_settings_pressed() -> void:
-	print("settings pressed")
 
-
-
+func _on_instructionsbutton_pressed() -> void:
+	pass # Replace with function body.
+	
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_backbutton_pressed() -> void:
+	$volumepanel.visible = false
+	$menulabel.visible = true
+	$VBoxContainer.visible = true
