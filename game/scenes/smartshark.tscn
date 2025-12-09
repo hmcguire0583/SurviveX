@@ -1,0 +1,241 @@
+[gd_scene load_steps=27 format=3 uid="uid://duo6djxhkdxki"]
+
+[ext_resource type="Texture2D" uid="uid://r4assefy5oty" path="res://art/hai-fin_only.png" id="1_bacp5"]
+[ext_resource type="Script" uid="uid://cjgyxdxm7eeg3" path="res://scenes/smartshark.gd" id="1_y0mes"]
+[ext_resource type="Texture2D" uid="uid://l1g04flq8htt" path="res://art/particles/dust_particles_01.png" id="3_qcb64"]
+[ext_resource type="Script" uid="uid://bp7jy50hfw8v0" path="res://scenes/shark_bubble.gd" id="4_erruo"]
+[ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="4_qcb64"]
+[ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="5_gbsgd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmyig"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 0, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1wj8"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 141, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx3at"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k71uw"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 282, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0mes"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 0, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v778f"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(148, 0, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu3na"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(296, 0, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erruo"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(444, 0, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcb64"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 141, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbsgd"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(148, 141, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wt27u"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(296, 141, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_828ms"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(444, 141, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2xl7"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(0, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1tj4"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(148, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcho1"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(296, 423, 148, 141)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqr6c"]
+atlas = ExtResource("1_bacp5")
+region = Rect2(444, 423, 148, 141)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmyig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmyig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1wj8")
+}, {
+"duration": 0.61,
+"texture": SubResource("AtlasTexture_tx3at")
+}, {
+"duration": 0.41,
+"texture": SubResource("AtlasTexture_k71uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qcb64")
+}],
+"loop": true,
+"name": &"shark_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0mes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v778f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu3na")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erruo")
+}],
+"loop": true,
+"name": &"shark_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcb64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbsgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wt27u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_828ms")
+}],
+"loop": true,
+"name": &"shark_side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2xl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1tj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcho1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqr6c")
+}],
+"loop": true,
+"name": &"shark_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bacp5"]
+radius = 302.08112
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0mes"]
+radius = 28.071337
+
+[sub_resource type="Theme" id="Theme_nu3na"]
+
+[node name="smartshark" type="CharacterBody2D"]
+script = ExtResource("1_y0mes")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mmyig")
+animation = &"shark_death"
+
+[node name="detect_raft" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_raft"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_bacp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -31)
+shape = SubResource("CircleShape2D_y0mes")
+
+[node name="SharkHealth" type="ProgressBar" parent="."]
+modulate = Color(0.17631814, 0.7144169, 0.53460723, 1)
+offset_left = -7.000001
+offset_top = -9.0
+offset_right = 132.99998
+offset_bottom = 18.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[node name="SharkDamage" type="Label" parent="."]
+offset_left = 2.999999
+offset_top = -29.999998
+offset_right = 103.0
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("5_gbsgd")
+theme_override_font_sizes/font_size = 6
+text = "25
+"
+
+[node name="SharkBubble" type="Node2D" parent="."]
+script = ExtResource("4_erruo")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="SharkBubble"]
+offset_left = -29.0
+offset_top = -86.0
+offset_right = 30.0
+offset_bottom = -14.0
+texture = ExtResource("4_qcb64")
+
+[node name="QuestionLabel" type="Label" parent="SharkBubble/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.5
+offset_top = -18.0
+offset_right = 30.273499
+offset_bottom = 0.6800003
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_nu3na")
+theme_override_colors/font_color = Color(2.7915835e-06, 0, 0.67593414, 1)
+theme_override_font_sizes/font_size = 5
+text = "Testing 1"
+
+[node name="AnswerInput" type="LineEdit" parent="SharkBubble/NinePatchRect"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 27.0
+offset_right = 79.666664
+offset_bottom = 48.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 7
+
+[node name="SubmitButton" type="Button" parent="SharkBubble/NinePatchRect"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 34.0
+offset_right = 55.0
+offset_bottom = 51.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 6
+text = "SUBMIT"
+
+[connection signal="pressed" from="SharkBubble/NinePatchRect/SubmitButton" to="SharkBubble" method="_on_SubmitButton_pressed"]

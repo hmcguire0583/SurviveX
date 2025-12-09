@@ -1,13 +1,15 @@
 extends Node2D
 
-signal correct_answer(island_index: int )
+signal correct_answer(island_index: int)
 signal wrong_answer(island_index: int)
 
-var a : int
-var b : int
-var c : int
-var solution : float
+var solutions : Array = []
+var current_step : int = 0
 var target_island : int = -1
+var x1 : int
+var y1 : int
+var x2 : int
+var y2 : int
 
 func _ready():
 	randomize()
@@ -17,65 +19,59 @@ func _ready():
 func start_challenge(island_index: int):
 	target_island = island_index
 	visible = true
+	current_step = 0
+	solutions.clear()
 
-	# Initial message
-	$NinePatchRect/QuestionLabel.text = "Solve to unlock " + str(island_index)
+	$NinePatchRect/QuestionLabel.text = "Solve to unlock island " + str(island_index + 1)
 	$NinePatchRect/QuestionLabel.autowrap_mode = TextServer.AUTOWRAP_WORD
-	$NinePatchRect/QuestionLabel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	$NinePatchRect/QuestionLabel.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-	# Adjust balloon size to fit text
-	var needed_size = $NinePatchRect/QuestionLabel.get_minimum_size()
-	$NinePatchRect.custom_minimum_size = needed_size + Vector2(40, 80)
-
 	$NinePatchRect/AnswerInput.visible = false
 	$NinePatchRect/SubmitButton.visible = false
 	await get_tree().create_timer(1.5).timeout
-	var question_type = randi() % 3   # 0 = linear equation, 1 = slope, 2 = x-intercept
-	
-	if question_type == 0:
-		# Linear equation: ax + b = c
-		var a = randi_range(1, 9)
-		var b = randi_range(-9, 9)
-		var x_val = randi_range(-9, 9)
-		var c = a * x_val + b        # calculate c
-		solution = float(x_val)
-		$NinePatchRect/QuestionLabel.text = str(a) + "x + " + str(b) + " = " + str(c)
-	
-	elif question_type == 1:
-		# Slope of line through two points
-		var x1 = randi_range(1, 9)
-		var y1 = randi_range(1, 9)
-		var x2 = randi_range(1, 9)
-		var y2 = randi_range(1, 9)
-		while x1 == x2:   # avoid division by zero
-			x2 = randi_range(1, 9)
-		solution = float(y2 - y1) / float(x2 - x1)
-		$NinePatchRect/QuestionLabel.text = "Find slope of line through (" + str(x1) + "," + str(y1) + ") and (" + str(x2) + "," + str(y2) + ")"
-		
-	else:
-		# X-intercept of ax + b = 0
-		var a = randi_range(1, 9)
-		var b = randi_range(-9, 9)
-		solution = -float(b) / float(a)
-		$NinePatchRect/QuestionLabel.text = "Find x-intercept of line: " + str(a) + "x + " + str(b) + " = 0"
 
-	# Show input after question is ready
+	# Example: two-part question (x-intercept then slope)
+	var a = randi_range(2, 10)
+	var b = randi_range(-15, 15)
+	var x_intercept = -float(b) / float(a)
+	solutions.append(x_intercept)
+	x1 = randi_range(-10, 10)
+	y1 = randi_range(-10, 10)
+	x2 = randi_range(-10, 10)
+	y2 = randi_range(-10, 10)
+	while x1 == x2:
+		x2 = randi_range(-10, 10)
+	var slope = float(y2 - y1) / float(x2 - x1)
+	solutions.append(slope)
+
+	# Ask first part
+	$NinePatchRect/QuestionLabel.text = "Part 1:"
+	await get_tree().create_timer(1.0).timeout
+	$NinePatchRect/QuestionLabel.text = "Find x-intercept of line: " + str(a) + "x + " + str(b) + " = 0"
 	$NinePatchRect/AnswerInput.visible = true
 	$NinePatchRect/SubmitButton.visible = true
-	#print("DEBUG: Question =", $NinePatchRect/QuestionLabel.text, " | Solution =", solution)
+
 func _on_submit_button_pressed() -> void:
 	var input = parse_input($NinePatchRect/AnswerInput.text)
-	if abs(input - solution) < 0.01:
-		$NinePatchRect/QuestionLabel.text = "Correct!"
-		emit_signal("correct_answer", target_island)
-		#print("DEBUG: emitting correct_answer for island", target_island)
-		visible = false
+	if abs(input - solutions[current_step]) < 0.02:
+		if current_step == 0:
+			# Move to second part
+			$NinePatchRect/QuestionLabel.text = "Correct! Now Part 2: "
+			await get_tree().create_timer(1.0).timeout
+			$NinePatchRect/QuestionLabel.text = "Find slope of line through (" \
+			+ str(x1) + "," + str(y1) + ") and (" + str(x2) + "," + str(y2) + ")"
+			current_step += 1
+			$NinePatchRect/AnswerInput.text = ""  # clear input
+		else:
+			# Finished both parts
+			$NinePatchRect/QuestionLabel.text = "Correct! Island unlocked!"
+			emit_signal("correct_answer", target_island)
+			visible = false
 	else:
-		$NinePatchRect/QuestionLabel.text = "Attack by shark! Try again..."
-		emit_signal("wrong_answer", target_island)
+		$NinePatchRect/QuestionLabel.text = "You got coordinates wrong!"
 		await get_tree().create_timer(1.5).timeout
-		start_challenge(target_island)
+		$NinePatchRect/QuestionLabel.text = "Going to the middle of ocean"
+		await get_tree().create_timer(1.5).timeout
+		emit_signal("wrong_answer", target_island)
+
 		
 func parse_input(text: String) -> float:
 		# Handle fractions like "25/7"
