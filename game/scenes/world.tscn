@@ -329,3 +329,67 @@ z_index = 1
 position = Vector2(3302, -4672)
 
 [node name="PauseMenu" parent="." instance=ExtResource("12_jhx03")]
+[node name="enemy17" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3884, -5106)
+
+[node name="enemy18" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(4222, -5151)
+
+[node name="enemy19" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3467, -5068)
+
+[node name="enemy20" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(4253, -4723)
+
+[node name="enemy21" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2793, -4909)
+
+[node name="enemy22" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3746, -3898)
+
+[node name="enemy23" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3097, -4433)
+
+[node name="enemy24" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2665, -3811)
+
+[node name="enemy25" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2172, -4250)
+
+[node name="enemy26" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2455, -4892)
+
+[node name="enemy27" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(2237, -4740)
+
+[node name="enemy28" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3418, -5279)
+
+[node name="enemy29" parent="." instance=ExtResource("3_qfnet")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(4322, -3943)
