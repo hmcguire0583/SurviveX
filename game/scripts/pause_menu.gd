@@ -9,20 +9,32 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
-		visible = true
-		get_tree().paused = true
+
+func open_pause():
+	AudioController.play_menu_music()
+	visible = true
+	get_tree().paused = true
 
 func _on_resumebutton_pressed() -> void:
 	visible = false
 	get_tree().paused = false
+	AudioController.stop_menu_music()
 
 func _on_optionsbutton_pressed() -> void:
-	print("settings pressed")
+	$volumepanel.visible = true
+	$pauselabel.visible = false
+	$VBoxContainer.visible = false
 
 func _on_main_menubutton_pressed() -> void:
 	visible = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_backbutton_pressed() -> void:
+	$volumepanel.visible = false
+	$pauselabel.visible = true
+	$VBoxContainer.visible = true
+
+
+func _on_volumeslider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)

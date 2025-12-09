@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://datt86ywnn7ec"]
+[gd_scene load_steps=27 format=3 uid="uid://duo6djxhkdxki"]
 
 [ext_resource type="Texture2D" uid="uid://r4assefy5oty" path="res://art/hai-fin_only.png" id="1_bacp5"]
 [ext_resource type="Script" uid="uid://cjgyxdxm7eeg3" path="res://scenes/smartshark.gd" id="1_y0mes"]

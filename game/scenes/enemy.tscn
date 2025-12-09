@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=102 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
 [ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="16_s1ycm"]
+[ext_resource type="PackedScene" uid="uid://dnyvcu3pc4gkc" path="res://scenes/wood_collectable.tscn" id="19_1x4g4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -586,9 +587,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xk8vo"]
 radius = 127.318
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0cyh"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0wcc"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0wcc"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0cyh"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -603,14 +604,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j0cyh"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0wcc"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g0wcc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j0cyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g0wcc"]
 radius = 12.0
@@ -680,17 +681,17 @@ offset_left = 27.0
 offset_top = 36.0
 offset_right = 55.0
 offset_bottom = 46.0
+theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_fonts/font = ExtResource("14_j0cyh")
 theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxEmpty_j0cyh")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_g0wcc")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wtq4b")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j0cyh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g0wcc")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j0cyh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wtq4b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_g0wcc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_j0cyh")
 text = "Submit"
 
 [node name="TimerLabel" type="Label" parent="ZombieBubble/NinePatchRect"]
@@ -730,12 +731,18 @@ theme_override_font_sizes/font_size = 5
 text = "25"
 
 [node name="scrap_collectable" parent="." instance=ExtResource("16_s1ycm")]
+visible = false
 
 [node name="scrap_collect_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scrap_collect_area"]
 shape = SubResource("CircleShape2D_ile5s")
 disabled = true
+
+[node name="wood_collectable" parent="." instance=ExtResource("19_1x4g4")]
+visible = false
+position = Vector2(-8, 0)
+scale = Vector2(1.2, 1.2)
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]
