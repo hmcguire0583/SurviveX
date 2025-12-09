@@ -15,22 +15,43 @@ var is_attacking = false   # track attack state
 
 @export var inv: Inv
 @onready var foodItem: InvItem = preload("uid://b8grvgyrabk08")
+@onready var repairItem: InvItem = preload("uid://chsnfakysfdkb")
+
+# ✅ preload raft scene and keep reference
+@onready var raft_scene: PackedScene = preload("res://scenes/raft.tscn")
+var raft_ref: Node = null
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 	$AnimatedSprite2D.animation_finished.connect(_on_animation_finished)
 	$Damagelabel.visible = false
-	for boat in get_tree().get_nodes_in_group("raft"):
-		boat.connect("boarded", Callable(self, "_on_boarded"))
+
+	# ✅ if raft is already in the scene, grab it
+	if get_tree().current_scene.has_node("Raft"):
+		raft_ref = get_tree().current_scene.get_node("Raft")
+	else:
+		# otherwise instantiate raft
+		raft_ref = raft_scene.instantiate()
+		get_tree().current_scene.add_child(raft_ref)
+		raft_ref.global_position = Vector2(200, 300)  # place raft where you want
 
 func _physics_process(delta):
+	# Eat food
 	if Input.is_action_just_pressed("eat"):
 		if not inv.slots.filter(func(slot): return slot.item == foodItem).is_empty():
 			remove(foodItem, 1)
 			health += 5
 			if health > 100:
 				health = 100
-		
+
+	# ✅ Repair raft
+	if Input.is_action_just_pressed("repair"):
+		if not inv.slots.filter(func(slot): return slot.item == repairItem).is_empty():
+			remove(repairItem, 1)
+			if raft_ref and raft_ref.has_method("apply_damage"):
+				raft_ref.apply_damage(-10)   # negative damage heals raft
+				print("Repaired raft, new health:", raft_ref.raft_health)
+
 	if on_boat or is_dead:
 		return
 	if math_challenge_active:
@@ -46,7 +67,7 @@ func _physics_process(delta):
 	update_health()
 
 func player_movement(delta):
-	if is_dead or is_attacking:   # block movement while attacking
+	if is_dead or is_attacking:
 		return
 
 	if Input.is_action_pressed("ui_right"):
@@ -76,7 +97,7 @@ func player_movement(delta):
 	move_and_slide()
 
 func play_anim(movement):
-	if is_dead or is_attacking:   # don’t override attack animation
+	if is_dead or is_attacking:
 		return
 
 	var anim = $AnimatedSprite2D
@@ -94,7 +115,6 @@ func play_anim(movement):
 			anim.flip_h = false
 			anim.play("back_walk" if movement == 1 else "back_idle")
 
-# Player attack animation with forced stop after 1 second
 func queue_attack_animation(dir: String):
 	if is_dead or is_attacking:
 		return
@@ -113,12 +133,11 @@ func queue_attack_animation(dir: String):
 		"up":
 			anim.play("front_attack")
 
-	# Force stop after 0.5 seconds
 	var t = get_tree().create_timer(0.5)
 	t.timeout.connect(func():
 		if is_attacking:
 			is_attacking = false
-			play_anim(0)   # return to idle
+			play_anim(0)
 	)
 
 func update_health():
@@ -144,8 +163,8 @@ func trigger_death():
 
 func _on_animation_finished(anim_name: String):
 	if anim_name.ends_with("_attack"):
-		is_attacking = false   # reset attack state
-		play_anim(0)           # return to idle
+		is_attacking = false
+		play_anim(0)
 	elif is_dead and anim_name == "death":
 		var last_frame = $AnimatedSprite2D.sprite_frames.get_frame_count("death") - 1
 		$AnimatedSprite2D.stop()
