@@ -132,7 +132,7 @@ func trigger_death():
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(0.6).timeout
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 
 func _on_animation_finished(anim_name: String):
 	if anim_name.ends_with("_attack"):
