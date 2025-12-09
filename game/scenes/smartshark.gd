@@ -89,7 +89,7 @@ func defeat_shark():
 		player.end_math_challenge()
 
 	# Apply fixed damage
-	SharkHealth -= 25
+	SharkHealth -= 100
 	update_health()
 	show_damage_label("-25")
 
@@ -160,5 +160,7 @@ func die():
 		vlabel_instance.text = "You vanquished the shark, go back to the Island!"
 		vlabel_instance.set_anchors_preset(Control.PRESET_CENTER)
 	get_tree().current_scene.add_child(vlabel_instance)
-
+	if player and player.has_method("teleport_to_dock"):
+		player.teleport_to_dock(GameManager.islands_unlocked)
+		GameManager.current_island = GameManager.islands_unlocked
 	queue_free()
