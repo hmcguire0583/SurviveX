@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 100
+const speed = 600
 var current_dir = "none"
 var on_boat = false
 var boat_ref = null
@@ -14,6 +14,7 @@ var base_dmg = 20
 var is_attacking = false   # track attack state
 
 @export var inv: Inv
+@onready var foodItem: InvItem = preload("uid://b8grvgyrabk08")
 
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
@@ -23,6 +24,13 @@ func _ready():
 		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("eat"):
+		if not inv.slots.filter(func(slot): return slot.item == foodItem).is_empty():
+			remove(foodItem, 1)
+			health += 5
+			if health > 100:
+				health = 100
+		
 	if on_boat or is_dead:
 		return
 	if math_challenge_active:

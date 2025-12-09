@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bqp0tfyerh5bv"]
+[gd_scene load_steps=102 format=3 uid="uid://bqp0tfyerh5bv"]
 
 [ext_resource type="Texture2D" uid="uid://crnrwalu2cunb" path="res://art/characters/Zombie_Big/Zombie_Big_Side_First-Death-Sheet7.png" id="1_dxifv"]
 [ext_resource type="Script" uid="uid://bypqay10gersj" path="res://scripts/enemy.gd" id="1_otmr2"]
@@ -18,6 +18,7 @@
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="14_j0cyh"]
 [ext_resource type="FontFile" uid="uid://e37yyli837re" path="res://art/SuperCursed-E40Vz.ttf" id="15_g0wcc"]
 [ext_resource type="PackedScene" uid="uid://pdyreflojwf7" path="res://scenes/scrap_collectable.tscn" id="16_s1ycm"]
+[ext_resource type="PackedScene" uid="uid://dnyvcu3pc4gkc" path="res://scenes/wood_collectable.tscn" id="19_1x4g4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l1fjw"]
 atlas = ExtResource("2_pwjut")
@@ -730,12 +731,18 @@ theme_override_font_sizes/font_size = 5
 text = "25"
 
 [node name="scrap_collectable" parent="." instance=ExtResource("16_s1ycm")]
+visible = false
 
 [node name="scrap_collect_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="scrap_collect_area"]
 shape = SubResource("CircleShape2D_ile5s")
 disabled = true
+
+[node name="wood_collectable" parent="." instance=ExtResource("19_1x4g4")]
+visible = false
+position = Vector2(-8, 0)
+scale = Vector2(1.2, 1.2)
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_entered" from="detection_area" to="AnimatedSprite2D" method="_on_detection_area_body_entered"]

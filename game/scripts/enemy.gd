@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed := 20.0
 @export var stop_distance := 5.0
 @onready var scrap = $scrap_collectable
+@onready var wood = $wood_collectable
 @export var scrapItem: InvItem
 @export var woodItem: InvItem
 var player_chase := false
@@ -13,7 +14,7 @@ var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
 var is_dead := false   # gate AI and animations when dead
-var base_dmg = 15
+var base_dmg = 8
 #var VanquishLabelScene := preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
@@ -159,13 +160,27 @@ func defeat_enemy():
 		$detection_area/CollisionShape2D.disabled = true
 
 func drop_scrap():
+		drop_resources()
+		#self.queue_free()
+		$AnimatedSprite2D.visible = false
+		$CollisionShape2D.disabled = true
+		$detection_area/CollisionShape2D.disabled = true
+		
+	#else:
+	#	var ok_label = VanquishLabelScene.instantiate()
+	#	ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
+	#	get_tree().current_scene.add_child(ok_label)
+func drop_resources():
 	scrap.visible = true
+	wood.visible = true
 	$scrap_collect_area/CollisionShape2D.disabled = false
-	scrap_collect()
-
-func scrap_collect():
+	resource_collect()
+	
+	
+func resource_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
+	wood.visible = false
 	var scrap = 0
 	var wood = 0
 	randomize()

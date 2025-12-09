@@ -282,9 +282,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12u0i"]
 size = Vector2(44, 34.5)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyejl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vroka"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eai20"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5nr"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
@@ -299,14 +299,14 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vj5nr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eai20"]
 bg_color = Color(0.105882, 0.0862745, 0.431373, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vroka"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyejl"]
 
 [node name="Raft" type="Node2D"]
 position = Vector2(90, 84)
@@ -330,7 +330,6 @@ position = Vector2(-0.999998, -0.999996)
 scale = Vector2(0.496741, 0.362723)
 sprite_frames = SubResource("SpriteFrames_fmk60")
 animation = &"down"
-frame_progress = 0.829392
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1, 8.75)
@@ -377,17 +376,17 @@ offset_left = 36.0
 offset_top = 76.0
 offset_right = 101.0
 offset_bottom = 84.0
-theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.733333, 0.0156863, 0.168627, 1)
 theme_override_fonts/font = ExtResource("6_5ppx3")
 theme_override_font_sizes/font_size = 6
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xyejl")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8qwpy")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vj5nr")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_vroka")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vj5nr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8qwpy")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_eai20")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xyejl")
 text = "Submit"
 
 [node name="TimerLabel" type="Label" parent="StaticBody2D/RaftBubble/NinePatchRect"]

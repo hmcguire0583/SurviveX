@@ -25,6 +25,8 @@ func insert(item: InvItem, amount): # enemy drops item or chest drops item, call
 			itemslots[0].amount += amount
 		else:
 			var emptyslots = slots.filter(func(slot): return slot.item == null)
+			if itemName == "nightvision":
+				GameManager.nightvision = true
 			emptyslots[0].item = item
 			emptyslots[0].amount = amount
 	
@@ -34,6 +36,8 @@ func remove(item: InvItem, amount): # enemy drops item or chest drops item, call
 	var itemslots = slots.filter(func(slot): return slot.item != null and slot.item.name == item.name)
 	if !itemslots.is_empty():
 		itemslots[0].amount -= amount
+		if itemslots[0].amount == 0:
+			itemslots[0].item = null
 	else:
 		var emptyslots = slots.filter(func(slot): return slot.item == null)
 		emptyslots[0].item = item
