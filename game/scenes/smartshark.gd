@@ -11,10 +11,16 @@ var is_dead = false
 var maxHealth = 100
 var SharkHealth = 100   # start full
 
+var spawn_position: Vector2   # store where this shark spawned
+
+# Preload the shark scene itself for respawn
+@export var shark_scene: PackedScene = preload("res://scenes/smartshark.tscn")
+
 # Preload the vanquish label scene
 var VanquishLabelScene = preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
+	spawn_position = global_position   # save spawn location
 	$AnimatedSprite2D.play("shark_down")
 	$SharkBubble.visible = false
 	$detect_raft.body_entered.connect(_on_detect_raft_entered)
@@ -27,10 +33,8 @@ func _ready():
 		$SharkBubble.connect("wrong_answer", Callable(self, "penalize_player"))
 
 	# Hide UI until damaged
-	var healthbar = $SharkHealth
-	healthbar.visible = false
-	var dmg_label = $SharkDamage
-	dmg_label.visible = false
+	$SharkHealth.visible = false
+	$SharkDamage.visible = false
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -88,10 +92,11 @@ func defeat_shark():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	# Apply fixed damage
-	SharkHealth -= 100
+	# Apply damage to shark
+	var damage = 25
+	SharkHealth -= damage
 	update_health()
-	show_damage_label("-25")
+	show_damage_label("-" + str(damage))
 
 	if SharkHealth <= 0:
 		die()
@@ -112,9 +117,12 @@ func penalize_player():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	var raft = get_tree().current_scene.get_node_or_null("Raft")
-	if raft and raft.has_method("apply_damage"):
-		raft.apply_damage(20)
+	# ✅ Apply damage to raft immediately
+	var raft_nodes = get_tree().get_nodes_in_group("raft")
+	if raft_nodes.size() > 0:
+		var raft = raft_nodes[0]
+		if raft and raft.has_method("apply_damage"):
+			raft.apply_damage(20)
 
 	var t = get_tree().create_timer(1.0)
 	t.timeout.connect(func():
@@ -123,28 +131,25 @@ func penalize_player():
 	)
 
 func update_health():
-	var healthbar = $SharkHealth
-	healthbar.max_value = maxHealth
-	healthbar.value = SharkHealth
-	# Only show bar once shark has taken damage
-	healthbar.visible = (SharkHealth < maxHealth and SharkHealth > 0)
+	$SharkHealth.max_value = maxHealth
+	$SharkHealth.value = SharkHealth
+	$SharkHealth.visible = (SharkHealth < maxHealth and SharkHealth > 0)
 
 func show_damage_label(text: String):
 	if is_dead:
 		return
-	var dmg_label = $SharkDamage
-	dmg_label.text = text
-	dmg_label.visible = true
-	dmg_label.z_index = 10
-	dmg_label.modulate = Color(1,1,1,1)
-	dmg_label.position = Vector2(0, -20)
+	$SharkDamage.text = text
+	$SharkDamage.visible = true
+	$SharkDamage.z_index = 10
+	$SharkDamage.modulate = Color(1,1,1,1)
+	$SharkDamage.position = Vector2(0, -20)
 
 	var tween = create_tween()
-	tween.tween_property(dmg_label, "position:y", dmg_label.position.y - 30, 0.6)\
+	tween.tween_property($SharkDamage, "position:y", $SharkDamage.position.y - 30, 0.6)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(dmg_label, "modulate:a", 0.0, 0.6)\
+	tween.tween_property($SharkDamage, "modulate:a", 0.0, 0.6)\
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	tween.finished.connect(func(): dmg_label.visible = false)
+	tween.finished.connect(func(): $SharkDamage.visible = false)
 
 func die():
 	is_dead = true
@@ -157,10 +162,24 @@ func die():
 
 	var vlabel_instance = VanquishLabelScene.instantiate()
 	if vlabel_instance is Label:
-		vlabel_instance.text = "You vanquished the shark, go back to the Island!"
+		vlabel_instance.text = "You vanquished the shark, returning to the Island!"
 		vlabel_instance.set_anchors_preset(Control.PRESET_CENTER)
 	get_tree().current_scene.add_child(vlabel_instance)
+
 	if player and player.has_method("teleport_to_dock"):
 		player.teleport_to_dock(GameManager.islands_unlocked)
 		GameManager.current_island = GameManager.islands_unlocked
+
+
+	var t = get_tree().create_timer(5.0)
+	t.timeout.connect(func():
+		respawn_shark()
+	)
+
 	queue_free()
+
+func respawn_shark():
+	if shark_scene:
+		var new_shark = shark_scene.instantiate()
+		new_shark.global_position = spawn_position
+		get_tree().current_scene.add_child(new_shark)
