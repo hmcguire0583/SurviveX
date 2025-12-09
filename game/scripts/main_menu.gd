@@ -31,3 +31,7 @@ func _on_backbutton_pressed() -> void:
 	$volumepanel.visible = false
 	$menulabel.visible = true
 	$VBoxContainer.visible = true
+
+
+func _on_volumeslider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(0, value)

@@ -13,6 +13,7 @@ var armor_tier := 0
 var base_dmg := 20
 
 @export var inv: Inv
+@onready var foodItem: InvItem = preload("uid://b8grvgyrabk08")
 
 
 func _ready():
@@ -24,9 +25,12 @@ func _ready():
 		boat.connect("boarded", Callable(self, "_on_boarded"))
 
 func _physics_process(delta):
-	#if Input.is_action_pressed("ui_cancel"):
-		#get_tree().paused = true
-		#get_tree().change_scene_to_file("res://scenes/pause_menu.tscn")
+	if Input.is_action_just_pressed("eat"):
+		if not inv.slots.filter(func(slot): return slot.item == foodItem).is_empty():
+			remove(foodItem, 1)
+			health += 5
+			if health > 100:
+				health = 100
 		
 	if on_boat or is_dead:
 		return
