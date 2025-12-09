@@ -1,4 +1,4 @@
-extends Node2D   # or Control, depending on your raft scene root
+extends Node2D  # or Control, depending on your raft scene root
 
 var max_health = 100
 var health = 100
@@ -37,7 +37,7 @@ func show_damage_label(text: String):
 	if label:
 		label.text = text
 		label.visible = true
-		label.modulate = Color(1,1,1,1)
+		label.modulate = Color(1, 1, 1, 1)
 		label.position = Vector2(0, -20)
 
 		var tween = create_tween()
