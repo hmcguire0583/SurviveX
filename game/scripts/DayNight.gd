@@ -6,7 +6,7 @@ signal time_changed(current_hour: float, time_string: String)
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
 
 @export_group("Time Settings")
-@export var day_duration: float = 3
+@export var day_duration: float = 0.3
 @export var starting_hour: float = 8.0
 @export_range(0,23) var sunrise_hour: int = 6
 @export_range(0,23) var sunset_hour: int = 19
@@ -54,7 +54,9 @@ func _update_world_color() -> void:
 	else:
 		target_color = night_color
 		GameManager.time = "night"
-		
+	if GameManager.nightvision and GameManager.time == "night":
+		# brighten night with greenish tint
+		target_color = Color(0.6, 0.9, 0.6, 0.8)
 	canvas_modulate.color = target_color
 
 func get_time_string() -> String:

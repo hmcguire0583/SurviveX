@@ -313,8 +313,6 @@ polygon = PackedVector2Array(-23, 25, 30, 25, 29, -1, 28, -42, 19, -39, -11, -39
 [node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Collisions"]
 polygon = PackedVector2Array(-86, -1336, -42, -1336, -42, -1370, -85, -1370, -89, -1336, -88, -1372, -39, -1372, -39, -1336, -84, -1335)
 
-[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Collisions"]
-
 [node name="Docks" type="Node2D" parent="."]
 script = ExtResource("11_e3hyu")
 
