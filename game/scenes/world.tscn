@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://djroqbs4k7wj2" path="res://scenes/raft.tscn" id="9_w7kh3"]
 [ext_resource type="Script" uid="uid://fa2xcuce2k5v" path="res://scripts/docks.gd" id="11_e3hyu"]
 [ext_resource type="PackedScene" uid="uid://bee55ic0scdag" path="res://scenes/pause_menu.tscn" id="12_jhx03"]
-[ext_resource type="PackedScene" uid="uid://duo6djxhkdxki" path="res://scenes/smartshark.tscn" id="12_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://datt86ywnn7ec" path="res://scenes/smartshark.tscn" id="12_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://dyv2oi7wono43" path="res://scenes/day_night.tscn" id="12_q5onr"]
 
 [sub_resource type="Theme" id="Theme_i7141"]
@@ -432,5 +432,5 @@ position = Vector2(6909, -3723)
 [node name="smartshark" parent="." instance=ExtResource("12_o8fc1")]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(433, -1331)
+position = Vector2(430, -1331)
 collision_layer = 3

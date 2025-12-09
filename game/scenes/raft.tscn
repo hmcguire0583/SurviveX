@@ -392,8 +392,13 @@ text = "Submit"
 
 [node name="TimerLabel" type="Label" parent="StaticBody2D/RaftBubble/NinePatchRect"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 119.0
+offset_top = 77.0
+offset_right = 150.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
 
 [node name="Timer" type="Timer" parent="StaticBody2D/RaftBubble"]
 
@@ -474,10 +479,10 @@ disabled = true
 text = "Island 4"
 
 [node name="RaftHealth" type="ProgressBar" parent="."]
-modulate = Color(0, 0.7490196, 0.105882354, 1)
-offset_left = -6.000002
+modulate = Color(0, 0.74902, 0.105882, 1)
+offset_left = -6.0
 offset_top = 39.0
-offset_right = 163.99994
+offset_right = 164.0
 offset_bottom = 89.0
 scale = Vector2(0.1, 0.1)
 show_percentage = false

@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://duo6djxhkdxki"]
+[gd_scene load_steps=27 format=3 uid="uid://datt86ywnn7ec"]
 
 [ext_resource type="Texture2D" uid="uid://r4assefy5oty" path="res://art/hai-fin_only.png" id="1_bacp5"]
 [ext_resource type="Script" uid="uid://cjgyxdxm7eeg3" path="res://scenes/smartshark.gd" id="1_y0mes"]
 [ext_resource type="Texture2D" uid="uid://l1g04flq8htt" path="res://art/particles/dust_particles_01.png" id="3_qcb64"]
-[ext_resource type="Script" uid="uid://bp7jy50hfw8v0" path="res://scenes/shark_bubble.gd" id="4_erruo"]
+[ext_resource type="Script" path="res://scenes/shark_bubble.gd" id="4_erruo"]
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="4_qcb64"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="5_gbsgd"]
 
@@ -146,10 +146,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bacp5"]
-radius = 302.08112
+radius = 302.081
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0mes"]
-radius = 28.071337
+radius = 28.0713
 
 [sub_resource type="Theme" id="Theme_nu3na"]
 
@@ -173,10 +173,10 @@ position = Vector2(0, -31)
 shape = SubResource("CircleShape2D_y0mes")
 
 [node name="SharkHealth" type="ProgressBar" parent="."]
-modulate = Color(0.17631814, 0.7144169, 0.53460723, 1)
-offset_left = -7.000001
+modulate = Color(0.176318, 0.714417, 0.534607, 1)
+offset_left = -7.0
 offset_top = -9.0
-offset_right = 132.99998
+offset_right = 133.0
 offset_bottom = 18.0
 scale = Vector2(0.1, 0.1)
 show_percentage = false
@@ -195,10 +195,10 @@ text = "25
 script = ExtResource("4_erruo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SharkBubble"]
-offset_left = -29.0
-offset_top = -86.0
-offset_right = 30.0
-offset_bottom = -14.0
+offset_left = -43.0
+offset_top = -89.0
+offset_right = 37.0
+offset_bottom = -12.0
 texture = ExtResource("4_qcb64")
 
 [node name="QuestionLabel" type="Label" parent="SharkBubble/NinePatchRect"]
@@ -208,32 +208,32 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -9.5
-offset_top = -20.0
-offset_right = 13.5
-offset_bottom = -11.0
+offset_left = -18.0
+offset_top = -20.5
+offset_right = 19.0
+offset_bottom = -9.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_nu3na")
-theme_override_colors/font_color = Color(2.7915835e-06, 0, 0.67593414, 1)
-theme_override_font_sizes/font_size = 5
+theme_override_colors/font_color = Color(2.79158e-06, 0, 0.675934, 1)
+theme_override_font_sizes/font_size = 6
 text = "Testing 1"
 
 [node name="AnswerInput" type="LineEdit" parent="SharkBubble/NinePatchRect"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 27.0
-offset_right = 79.666664
-offset_bottom = 48.0
+offset_left = 32.0
+offset_top = 29.0
+offset_right = 88.6667
+offset_bottom = 50.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 7
 
 [node name="SubmitButton" type="Button" parent="SharkBubble/NinePatchRect"]
 layout_mode = 0
-offset_left = 24.0
-offset_top = 34.0
-offset_right = 55.0
-offset_bottom = 51.0
+offset_left = 33.0
+offset_top = 38.0
+offset_right = 64.0
+offset_bottom = 55.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 6
 text = "SUBMIT"
@@ -242,13 +242,16 @@ text = "SUBMIT"
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.043
-anchor_top = 0.07700001
+anchor_top = 0.077
 anchor_right = -0.043
-anchor_bottom = 0.07700001
-offset_left = 12.537001
-offset_top = -5.5440006
-offset_right = 42.537
-offset_bottom = 17.456
+anchor_bottom = 0.077
+offset_left = 68.44
+offset_top = 37.071
+offset_right = 98.44
+offset_bottom = 60.071
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 7
 
 [node name="Timer" type="Timer" parent="SharkBubble"]
 

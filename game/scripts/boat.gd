@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 signal boarded(raft)
-
 var player_in_range = null
 
 func _ready():
@@ -14,9 +13,13 @@ func _on_body_entered(body):
 	print("Entered:", body.name)
 	if body.is_in_group("player"):
 		player_in_range = body
-		print("DEBUG: Boarding triggered!")
+		print("DEBUG: Boarding triggered! ISALNDS = ", GameManager.current_island)
 		emit_signal("boarded", self)
 		# Show the menu instead of starting bubble directly
+		print(" < ISALNDS", GameManager.current_island)
+		if GameManager.current_island == 4:
+			$RaftMenu.visible = false
+			return
 		$RaftMenu.visible = true
 		$RaftMenu.update_unlocks()
 		if not $RaftMenu.is_connected("island_selected", Callable(self, "_on_island_selected")):
@@ -54,6 +57,7 @@ func _on_correct_answer(island_index: int):
 
 func _on_wrong_answer(island_index: int):
 	print("Dock", island_index, "remains locked.")
+	GameManager.current_island = 4
 	var player = get_tree().root.get_node("world/Player")
 	var dock4 = get_tree().root.get_node("world/Docks/Dock4")
 	player.global_position = dock4.global_position
