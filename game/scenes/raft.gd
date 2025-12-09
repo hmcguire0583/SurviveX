@@ -3,6 +3,15 @@ extends Node2D   # or Control, depending on your raft scene root
 var max_health = 100
 var health = 100
 
+func _ready():
+	# Hide UI until raft is damaged
+	var bar = get_node_or_null("RaftHealth")
+	if bar:
+		bar.visible = false
+	var label = get_node_or_null("RaftDamage")
+	if label:
+		label.visible = false
+
 func apply_damage(amount: int):
 	health -= amount
 	health = clamp(health, 0, max_health)
@@ -20,6 +29,10 @@ func update_health_ui():
 		bar.visible = (health > 0 and health < max_health)
 
 func show_damage_label(text: String):
+	# Only show damage label if raft has taken damage
+	if health == max_health or health <= 0:
+		return
+
 	var label = get_node_or_null("RaftDamage")
 	if label:
 		label.text = text
