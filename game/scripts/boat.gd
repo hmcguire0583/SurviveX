@@ -57,5 +57,8 @@ func _on_correct_answer(island_index: int):
 	#print("DEBUG: player node =", player)
 	player.teleport_to_dock(island_index)
 
-func _on_wrong_answer(dock_name: String):
-	print("Dock", dock_name, "remains locked.")
+func _on_wrong_answer(island_index: int):
+	print("Dock", island_index, "remains locked.")
+	var player = get_tree().root.get_node("world/Player")
+	var dock4 = get_tree().root.get_node("world/Docks/Dock4")
+	player.global_position = dock4.global_position

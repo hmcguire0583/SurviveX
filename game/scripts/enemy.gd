@@ -56,11 +56,9 @@ func _on_detection_area_body_entered(body):
 		player = body
 		player_chase = true
 
-
 func _on_detection_area_body_exited(body):
 	if body.has_method("player"):
 		player_chase = false
-
 
 func update_direction(vec: Vector2):
 	if vec == Vector2.ZERO or is_dead:
@@ -135,6 +133,10 @@ func defeat_enemy():
 				player_chase = true
 		)
 
+	# --- Player attack animation queued here ---
+	if player and player.has_method("queue_attack_animation"):
+		player.queue_attack_animation(current_dir)
+
 	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
@@ -151,31 +153,20 @@ func defeat_enemy():
 
 		GameManager.enemies_defeated += 1
 		print(GameManager.enemies_defeated)
-		#var label_instance = VanquishLabelScene.instantiate()
-		#label_instance.get_node("Label").text = (
-			#"You Win!" if GameManager.enemies_defeated >= 3 else "Enemy vanquished!"
-		#)
-		#get_tree().current_scene.add_child(label_instance)
 
 		$AnimatedSprite2D.play("z_death")
 		
 		await get_tree().create_timer(1.2).timeout
 		drop_scrap()
-		#self.queue_free()
 		$AnimatedSprite2D.visible = false
 		$CollisionShape2D.disabled = true
 		$detection_area/CollisionShape2D.disabled = true
-		
-	#else:
-	#	var ok_label = VanquishLabelScene.instantiate()
-	#	ok_label.get_node("Label").text = "Correct Answer! Enemy -20 HP"
-	#	get_tree().current_scene.add_child(ok_label)
+
 func drop_scrap():
 	scrap.visible = true
 	$scrap_collect_area/CollisionShape2D.disabled = false
 	scrap_collect()
-	
-	
+
 func scrap_collect():
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
