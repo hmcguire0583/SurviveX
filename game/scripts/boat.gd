@@ -15,6 +15,9 @@ func _on_body_entered(body):
 		player_in_range = body
 		print("DEBUG: Boarding triggered! ISALNDS = ", GameManager.current_island)
 		emit_signal("boarded", self)
+		body.global_position = global_position + Vector2(0, 32)
+		body.on_boat = true
+		body.boat_ref = self
 		# Show the menu instead of starting bubble directly
 		print(" < ISALNDS", GameManager.current_island)
 		if GameManager.current_island == 4:

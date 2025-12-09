@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh2elqp6wii7m"]
+
+[ext_resource type="Texture2D" uid="uid://bigldpad4ghdq" path="res://art/objects/apple-icon.png" id="1_t2j46"]
+
+[node name="food_collectable" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_t2j46")
