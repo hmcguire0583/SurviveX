@@ -693,6 +693,13 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_j0cyh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g0wcc")
 text = "Submit"
 
+[node name="TimerLabel" type="Label" parent="ZombieBubble/NinePatchRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Timer" type="Timer" parent="ZombieBubble"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_g0wcc")
