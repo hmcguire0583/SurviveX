@@ -150,12 +150,8 @@ func defeat_enemy():
 		player_chase = false
 		velocity = Vector2.ZERO
 		$CollisionShape2D.disabled = true
-
-		GameManager.enemies_defeated += 1
-		print(GameManager.enemies_defeated)
-
+		GameManager.add_enemy_defeated()   # <-- use helper instead of += 1
 		$AnimatedSprite2D.play("z_death")
-		
 		await get_tree().create_timer(1.2).timeout
 		drop_scrap()
 		$AnimatedSprite2D.visible = false
