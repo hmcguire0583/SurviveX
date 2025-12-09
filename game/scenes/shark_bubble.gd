@@ -22,7 +22,7 @@ func _ready():
 func start_challenge():
 	var variable = get_random_char('m', 'z')
 	visible = true
-	$NinePatchRect/QuestionLabel.text = "Shark!\n(Solve for " + variable + ")"
+	$NinePatchRect/QuestionLabel.text = "Shark!\n Solve for " + variable + ""
 	$NinePatchRect/AnswerInput.visible = false
 	$NinePatchRect/SubmitButton.visible = false
 

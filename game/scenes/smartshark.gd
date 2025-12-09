@@ -26,7 +26,11 @@ func _ready():
 	if not $SharkBubble.is_connected("wrong_answer", Callable(self, "penalize_player")):
 		$SharkBubble.connect("wrong_answer", Callable(self, "penalize_player"))
 
-	update_health()
+	# Hide UI until damaged
+	var healthbar = $SharkHealth
+	healthbar.visible = false
+	var dmg_label = $SharkDamage
+	dmg_label.visible = false
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -48,7 +52,6 @@ func _on_detect_raft_entered(body: Node):
 		target = body
 		player = body
 
-		# Wait 2 seconds before showing bubble
 		var t = get_tree().create_timer(2.0)
 		t.timeout.connect(func():
 			show_math_challenge()
@@ -94,7 +97,6 @@ func defeat_shark():
 		die()
 		return
 
-	# Queue up another question after short delay
 	var t = get_tree().create_timer(1.0)
 	t.timeout.connect(func():
 		if not is_dead:
@@ -110,12 +112,10 @@ func penalize_player():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	# --- NEW: Damage raft by 20 ---
 	var raft = get_tree().current_scene.get_node_or_null("Raft")
 	if raft and raft.has_method("apply_damage"):
 		raft.apply_damage(20)
 
-	# Queue up another question after short delay
 	var t = get_tree().create_timer(1.0)
 	t.timeout.connect(func():
 		if not is_dead:
@@ -126,7 +126,8 @@ func update_health():
 	var healthbar = $SharkHealth
 	healthbar.max_value = maxHealth
 	healthbar.value = SharkHealth
-	healthbar.visible = (SharkHealth > 0 and SharkHealth < maxHealth)
+	# Only show bar once shark has taken damage
+	healthbar.visible = (SharkHealth < maxHealth and SharkHealth > 0)
 
 func show_damage_label(text: String):
 	if is_dead:
@@ -150,17 +151,14 @@ func die():
 	math_challenge_active = false
 	velocity = Vector2.ZERO
 
-	# Hide bubble and disable collisions if present
 	$SharkBubble.visible = false
 	if has_node("CollisionShape2D"):
 		$"CollisionShape2D".disabled = true
 
-	# Instance and show vanquish label (centered)
 	var vlabel_instance = VanquishLabelScene.instantiate()
 	if vlabel_instance is Label:
 		vlabel_instance.text = "You vanquished the shark, go back to the Island!"
 		vlabel_instance.set_anchors_preset(Control.PRESET_CENTER)
 	get_tree().current_scene.add_child(vlabel_instance)
 
-	# Remove the shark immediately (no death animation)
 	queue_free()
