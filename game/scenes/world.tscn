@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://duo6djxhkdxki" path="res://scenes/smartshark.tscn" id="12_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://dyv2oi7wono43" path="res://scenes/day_night.tscn" id="12_q5onr"]
 [ext_resource type="AudioStream" uid="uid://cmsa7x5yb3dqt" path="res://audio/pixel-paradise-358340.mp3" id="13_jhx03"]
-[ext_resource type="PackedScene" path="res://scenes/chest.tscn" id="14_o8fc1"]
+[ext_resource type="PackedScene" uid="uid://po62p3lvarb" path="res://scenes/chest.tscn" id="14_o8fc1"]
 
 [sub_resource type="Theme" id="Theme_i7141"]
 
@@ -151,56 +151,78 @@ items = Array[ExtResource("8_4mrxx")]([])
 z_index = 1
 y_sort_enabled = true
 position = Vector2(6489, -2461)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy7" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(5761, -2556)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy8" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(7420, -2488)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy9" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(5981, -1660)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy10" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(7127, -2052)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy11" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(8077, -2267)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy12" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(6691, -1842)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy13" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(7929, -1892)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy14" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(7682, -1372)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy15" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(5582, -2010)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy16" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(8438, -1933)
+collision_layer = 3
+collision_mask = 1
 
 [node name="enemy17" parent="." instance=ExtResource("3_qfnet")]
 z_index = 1
@@ -271,6 +293,8 @@ position = Vector2(4322, -3943)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(15, -135)
+collision_layer = 3
+collision_mask = 1
 
 [node name="Raft" parent="." groups=["raft"] instance=ExtResource("9_w7kh3")]
 z_index = 1
