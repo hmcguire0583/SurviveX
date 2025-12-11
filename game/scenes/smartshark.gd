@@ -21,6 +21,8 @@ var VanquishLabelScene = preload("res://scenes/vanquish_label.tscn")
 
 func _ready():
 	spawn_position = global_position   # save spawn location
+	is_dead = false
+	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D.play("shark_down")
 	$SharkBubble.visible = false
 	$detect_raft.body_entered.connect(_on_detect_raft_entered)
@@ -93,7 +95,7 @@ func defeat_shark():
 		player.end_math_challenge()
 
 	# Apply damage to shark
-	var damage = 25
+	var damage = 100
 	SharkHealth -= damage
 	update_health()
 	show_damage_label("-" + str(damage))
@@ -117,12 +119,13 @@ func penalize_player():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	# ✅ Apply damage to raft immediately
+	#  Apply damage to raft immediately
 	var raft_nodes = get_tree().get_nodes_in_group("raft")
 	if raft_nodes.size() > 0:
 		var raft = raft_nodes[0]
 		if raft and raft.has_method("apply_damage"):
-			raft.apply_damage(20)
+			raft.apply_damage(50)
+			
 			
 	if is_inside_tree():
 		var t = get_tree().create_timer(1.0)
@@ -166,21 +169,18 @@ func die():
 		vlabel_instance.text = "You vanquished the shark, returning to the Island!"
 		vlabel_instance.set_anchors_preset(Control.PRESET_CENTER)
 	get_tree().current_scene.add_child(vlabel_instance)
-
-	if player and player.has_method("teleport_to_dock"):
-		player.teleport_to_dock(GameManager.islands_unlocked)
-		GameManager.current_island = GameManager.islands_unlocked
-
-
-	var t = get_tree().create_timer(5.0)
+	
+	var t = get_tree().create_timer(1.0)
 	t.timeout.connect(func():
-		respawn_shark()
+		# THEN teleport player
+		if player and player.has_method("teleport_to_dock"):
+			player.teleport_to_dock(GameManager.islands_unlocked)
+			GameManager.current_island = GameManager.islands_unlocked
+		GameManager.queue_shark_respawn(spawn_position)
+		queue_free()
 	)
-
-	queue_free()
-
 func respawn_shark():
-	if shark_scene:
+	if shark_scene and is_inside_tree():
 		var new_shark = shark_scene.instantiate()
 		new_shark.global_position = spawn_position
 		get_tree().current_scene.add_child(new_shark)
