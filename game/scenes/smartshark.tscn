@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://r4assefy5oty" path="res://art/hai-fin_only.png" id="1_bacp5"]
 [ext_resource type="Script" uid="uid://cjgyxdxm7eeg3" path="res://scenes/smartshark.gd" id="1_y0mes"]
 [ext_resource type="Texture2D" uid="uid://l1g04flq8htt" path="res://art/particles/dust_particles_01.png" id="3_qcb64"]
-[ext_resource type="Script" path="res://scenes/shark_bubble.gd" id="4_erruo"]
+[ext_resource type="Script" uid="uid://bp7jy50hfw8v0" path="res://scenes/shark_bubble.gd" id="4_erruo"]
 [ext_resource type="Texture2D" uid="uid://cfy5iq46vu14r" path="res://art/assets/Bubble.png" id="4_qcb64"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="5_gbsgd"]
 

@@ -9,7 +9,7 @@ extends CharacterBody2D
 var player_chase := false
 var player = null
 var maxHealth = 100
-var health = 20
+var health = 100
 var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
