@@ -235,16 +235,15 @@ text = "Back"
 [node name="instructionpanel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = -101.0
-offset_top = -142.0
-offset_right = 99.0
-offset_bottom = 131.0
+offset_top = -134.0
+offset_right = 101.0
+offset_bottom = 150.0
 
 [node name="instructionsText" type="TextEdit" parent="instructionpanel"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 3.0
-offset_right = 201.0
-offset_bottom = 279.0
+offset_top = -1.0
+offset_right = 202.0
+offset_bottom = 290.0
 theme_override_colors/search_result_color = Color(0.23483175, 0.26309335, 0.5648549, 1)
 theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
 theme_override_font_sizes/font_size = 4
