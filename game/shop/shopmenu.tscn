@@ -247,6 +247,10 @@ offset_top = 96.0
 offset_right = 260.0
 offset_bottom = 195.0
 
+[node name="iteminfolabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="pressed" from="buttonleft" to="." method="_on_buttonleft_pressed"]
 [connection signal="pressed" from="buttonright" to="." method="_on_buttonright_pressed"]

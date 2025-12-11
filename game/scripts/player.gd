@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 100
+const speed = 120
 var current_dir = "none"
 var on_boat = false
 var boat_ref = null
@@ -8,8 +8,9 @@ var health = 100
 var is_dead = false
 var math_challenge_active = false
 var previous_health = 100
-var weapon_tier := 1
-var armor_tier = 0
+
+var weapon_tier := 1   # 1 = starter sword, 2 = sword2, 3 = sword3
+var armor_tier = 0     # 0 = no armor, 1–3 = upgrades
 var base_dmg = 20
 var is_attacking = false   # track attack state
 
@@ -27,10 +28,9 @@ func _ready():
 	if get_tree().current_scene.has_node("Raft"):
 		raft_ref = get_tree().current_scene.get_node("Raft")
 	else:
-		# otherwise instantiate raft
 		raft_ref = raft_scene.instantiate()
 		get_tree().current_scene.add_child(raft_ref)
-		raft_ref.global_position = Vector2(200, 300)  # place raft where you want
+		raft_ref.global_position = Vector2(200, 300)
 
 func _physics_process(delta):
 	# Eat food
@@ -41,12 +41,12 @@ func _physics_process(delta):
 			if health > 100:
 				health = 100
 
+	# Repair raft
 	if Input.is_action_just_pressed("repair"):
 		if not inv.slots.filter(func(slot): return slot.item == repairItem).is_empty():
 			remove(repairItem, 1)
-			if raft_ref and raft_ref.has_method("apply_damage"):
-				raft_ref.apply_damage(-10)   # negative damage heals raft
-				print("Repaired raft, new health:", raft_ref.raft_health)
+			GameManager.heal_raft(10)
+			print("Repaired raft, new health:", GameManager.raft_current_health)
 
 	if on_boat or is_dead:
 		return
@@ -57,7 +57,7 @@ func _physics_process(delta):
 	# Manual attack input
 	if Input.is_action_just_pressed("ui_accept") and not is_attacking:
 		queue_attack_animation(current_dir)
-		return   # skip movement this frame
+		return
 
 	player_movement(delta)
 	update_health()
@@ -136,6 +136,25 @@ func queue_attack_animation(dir: String):
 			play_anim(0)
 	)
 
+# --- NEW: damage scaling ---
+func get_attack_damage() -> int:
+	match weapon_tier:
+		1: return base_dmg
+		2: return base_dmg + 15
+		3: return base_dmg + 25
+		_: return base_dmg
+
+# --- NEW: damage reduction based on armor ---
+func take_damage(amount: int):
+	var reduced = amount
+	match armor_tier:
+		0: reduced = amount
+		1: reduced = int(amount * 0.85)  # 15% reduction
+		2: reduced = int(amount * 0.70)  # 30% reduction
+		3: reduced = int(amount * 0.50)  # 50% reduction
+	health -= reduced
+	update_health()
+
 func update_health():
 	var healthbar = $HealthBar
 	healthbar.value = health
@@ -143,7 +162,7 @@ func update_health():
 
 	if health < previous_health:
 		var damage_amount = previous_health - health
-		show_damage_label("-" + str(damage_amount))
+		show_damage_label("-%d" % damage_amount)
 
 	previous_health = health
 

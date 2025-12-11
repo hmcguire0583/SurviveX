@@ -138,9 +138,12 @@ func defeat_enemy():
 	if player and player.has_method("queue_attack_animation"):
 		player.queue_attack_animation(current_dir)
 
-	var damage = player.base_dmg + (10 * (player.weapon_tier - 1))
+	
+	var damage = player.get_attack_damage()
 	damage *= 1 - (0.05 * (GameManager.current_day - 1))
 	health -= damage
+
+	
 	if GameManager.time == "night":
 		damage *= 0.95
 	update_health()

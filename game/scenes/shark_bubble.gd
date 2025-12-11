@@ -45,6 +45,9 @@ func start_challenge():
 	c = a * x_val + b
 	solution = x_val
 
+	# Reset player input here
+	answer_input.text = ""
+
 	question_label.text = str(a) + variable + " + " + str(b) + " = " + str(c)
 	answer_input.visible = true
 	submit_button.visible = true

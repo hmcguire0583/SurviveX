@@ -347,15 +347,19 @@ visible = false
 position = Vector2(251, 64)
 
 [node name="Dock1" type="Marker2D" parent="Docks"]
+visible = false
 position = Vector2(2126, -272)
 
 [node name="Dock2" type="Marker2D" parent="Docks"]
+visible = false
 position = Vector2(4578, -1939)
 
 [node name="Dock3" type="Marker2D" parent="Docks"]
+visible = false
 position = Vector2(4658, -4760)
 
 [node name="Dock4" type="Marker2D" parent="Docks"]
+visible = false
 position = Vector2(182, -1278)
 
 [node name="Control" type="Control" parent="."]
@@ -455,16 +459,20 @@ y_sort_enabled = true
 position = Vector2(6909, -3723)
 
 [node name="smartshark" parent="." instance=ExtResource("12_o8fc1")]
-z_index = 1
+z_index = 2
 y_sort_enabled = true
 position = Vector2(430, -1331)
 collision_layer = 3
-
-[node name="chest" parent="." instance=ExtResource("14_o8fc1")]
-z_index = 1
-position = Vector2(2449, -182)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_jhx03")
 volume_db = 1.749
 autoplay = true
+
+[node name="chest" parent="." instance=ExtResource("14_o8fc1")]
+z_index = 1
+position = Vector2(2449, -182)
+
+[node name="chest2" parent="." instance=ExtResource("14_o8fc1")]
+z_index = 1
+position = Vector2(6213, -1968)

@@ -98,7 +98,7 @@ func defeat_shark():
 	var damage = 25
 	SharkHealth -= damage
 	update_health()
-	show_damage_label("-" + str(damage))
+	show_damage_label("-%d" % damage)
 
 	if SharkHealth <= 0:
 		die()
@@ -119,20 +119,15 @@ func penalize_player():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	#  Apply damage to raft immediately
-	var raft_nodes = get_tree().get_nodes_in_group("raft")
-	if raft_nodes.size() > 0:
-		var raft = raft_nodes[0]
-		if raft and raft.has_method("apply_damage"):
-			raft.apply_damage(50)
-			
-			
+	# Apply damage to shared raft health via GameManager
+	GameManager.apply_raft_damage(20)
+
 	if is_inside_tree():
 		var t = get_tree().create_timer(1.0)
 		t.timeout.connect(func():
 			if not is_dead:
 				show_math_challenge()
-				)
+		)
 
 func update_health():
 	$SharkHealth.max_value = maxHealth
@@ -169,7 +164,7 @@ func die():
 		vlabel_instance.text = "You vanquished the shark, returning to the Island!"
 		vlabel_instance.set_anchors_preset(Control.PRESET_CENTER)
 	get_tree().current_scene.add_child(vlabel_instance)
-	
+
 	var t = get_tree().create_timer(1.0)
 	t.timeout.connect(func():
 		# THEN teleport player
@@ -179,6 +174,7 @@ func die():
 		GameManager.queue_shark_respawn(spawn_position)
 		queue_free()
 	)
+
 func respawn_shark():
 	if shark_scene and is_inside_tree():
 		var new_shark = shark_scene.instantiate()
