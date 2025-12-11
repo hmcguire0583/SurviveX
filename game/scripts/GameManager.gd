@@ -13,7 +13,7 @@ var unlocked_islands = {
 const TOTAL_ENEMIES := 30
 
 func add_enemy_defeated():
-	enemies_defeated += 1
+	enemies_defeated += 2
 	print("Enemies defeated: %d" % enemies_defeated)
 
 	if enemies_defeated >= TOTAL_ENEMIES:

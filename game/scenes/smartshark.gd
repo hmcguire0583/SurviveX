@@ -117,7 +117,7 @@ func penalize_player():
 	if player and player.has_method("end_math_challenge"):
 		player.end_math_challenge()
 
-	# ✅ Apply damage to raft immediately
+	#  Apply damage to raft immediately
 	var raft_nodes = get_tree().get_nodes_in_group("raft")
 	if raft_nodes.size() > 0:
 		var raft = raft_nodes[0]

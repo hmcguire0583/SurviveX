@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cothw7m4rryjq"]
+[gd_scene load_steps=6 format=3 uid="uid://vdlnpkyxctkd"]
 
-[ext_resource type="Script" uid="uid://dqx8cvwtvq4wq" path="res://scenes/game_winner.gd" id="1_gfbqi"]
+[ext_resource type="Script" path="res://scenes/game_winner.gd" id="1_gfbqi"]
 [ext_resource type="Texture2D" uid="uid://b4av2nqc5rlu0" path="res://art/background.png" id="1_vt3tl"]
 [ext_resource type="FontFile" uid="uid://bu01bhgq2kh8i" path="res://art/Super Crawler.ttf" id="2_r66pq"]
 [ext_resource type="AudioStream" uid="uid://dxwesc3j2ayx" path="res://audio/winner-game-sound-404167.mp3" id="3_r66pq"]
