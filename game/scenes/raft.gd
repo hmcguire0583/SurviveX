@@ -1,55 +1,50 @@
-extends Node2D   # or Control, depending on your raft scene root
+extends Node2D
 
-var max_health = 100
-var raft_health = 100
+@onready var health_bar = $RaftHealth
+@onready var damage_label = $RaftDamage
 
 func _ready():
 	# Hide UI until raft is damaged
-	$RaftHealth.visible = false
-	$RaftDamage.visible = false
-	print("Raft ready. Health:", raft_health, " RaftHealth visible:", $RaftHealth.visible)
+	health_bar.visible = false
+	damage_label.visible = false
 
-func apply_damage(amount: int):
-	raft_health -= amount
-	raft_health = clamp(raft_health, 0, max_health)
-	print("apply_damage called. Amount:", amount, " New health:", raft_health)
-	update_health_ui()
-	if amount > 0:
-		show_damage_label("-" + str(amount))
-	elif amount < 0:
-		show_damage_label("+" + str(abs(amount)))
+	# Initialize with GameManager values
+	health_bar.max_value = GameManager.raft_max_health
+	health_bar.value = GameManager.raft_current_health
 
-	if raft_health <= 0:
-		sink()
+	# Connect to GameManager signals
+	GameManager.connect("raft_health_updated", Callable(self, "_on_health_updated"))
+	GameManager.connect("raft_damage_taken", Callable(self, "_on_damage_taken"))
 
-func update_health_ui():
-	var bar = get_node_or_null("RaftHealth")
-	if bar:
-		bar.value = raft_health
-		bar.visible = (raft_health > 0 and raft_health < max_health)
-		print("update_health_ui -> value:", bar.value, " visible:", bar.visible, " global_position:", bar.global_position)
+func _on_health_updated(new_health: int):
+	health_bar.value = new_health
+	# Show bar only when raft is damaged but not destroyed
+	health_bar.visible = (new_health > 0 and new_health < GameManager.raft_max_health)
+
+func _on_damage_taken(amount: int):
+	if amount == 0:
+		return
+	var text = "-%d" % amount if amount > 0 else "+%d" % abs(amount)
+	show_damage_label(text)
 
 func show_damage_label(text: String):
 	# Only show damage/heal label if raft is between 0 and max health
-	if raft_health == max_health or raft_health <= 0:
-		print("show_damage_label skipped. Health:", raft_health)
+	var current_health = GameManager.raft_current_health
+	if current_health == GameManager.raft_max_health or current_health <= 0:
 		return
 
-	$RaftDamage.text = text
-	$RaftDamage.visible = true
-	$RaftDamage.modulate = Color(1, 1, 1, 1)
-	$RaftDamage.position = Vector2(0, -20)
-	print("RaftDamage Label showing:", text, " visible:", $RaftDamage.visible, " global_position:", $RaftDamage.global_position)
+	damage_label.text = text
+	damage_label.visible = true
+	damage_label.modulate = Color(1, 1, 1, 1)
+	damage_label.position = Vector2(0, -20)
+	print("RaftDamage Label showing:", text)
 
 	var tween = create_tween()
-	tween.tween_property($RaftDamage, "position:y", $RaftDamage.position.y - 30, 0.6)\
+	tween.tween_property(damage_label, "position:y", damage_label.position.y - 30, 0.6)\
 		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property($RaftDamage, "modulate:a", 0.0, 0.6)\
+	tween.tween_property(damage_label, "modulate:a", 0.0, 0.6)\
 		.set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN)
-	tween.finished.connect(func():
-		$RaftDamage.visible = false
-		print("RaftDamage tween finished. Label hidden.")
-	)
+	tween.finished.connect(func(): damage_label.visible = false)
 
 func sink():
 	print("Raft destroyed! Triggering Game Over scene...")
