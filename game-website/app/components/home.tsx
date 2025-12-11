@@ -29,7 +29,7 @@ export default function GamePage() {
       }}>
         <h2 style={{ fontSize: '5rem', marginBottom: '20px' }}>Fight. Craft. Survive.</h2>
         <p style={{ fontSize: '1.8rem', marginBottom: '30px', color: '#ccc', fontWeight: 'bold' }}>
-          Build shelter, hunt for food, and survive the wilderness.
+          Forge weapons, travel islands, and survive the night.
         </p>
 
   {/* Play button with pulsing glow + hover/focus effects. Use router.push to ensure navigation triggers. */}

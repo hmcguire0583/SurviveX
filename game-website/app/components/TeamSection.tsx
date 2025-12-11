@@ -15,7 +15,7 @@ const members: Member[] = [
   {
     name: 'Harry McGuire',
     role: 'Computer Science Major',
-    blurb: 'Web Designer',
+    blurb: 'Web Designer / Developer',
     color: '#0e766e',
     github: 'https://github.com/hmcguire0583',
     linkedin: 'https://www.linkedin.com/in/harry-mcguire-0595bb301/',

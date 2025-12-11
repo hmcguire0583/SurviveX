@@ -19,7 +19,7 @@ export default function DownloadSection() {
           Download
         </h2>
         <p style={{ color: '#cfe9dd', lineHeight: 1.6 }}>
-          You can download the latest version of SurviveX for Windows and MacOS. Additionally, we offer a web demo that allows you to play the game directly in your browser without any installation.
+          You can download the latest Windows build of SurviveX as a ZIP file. Additionally, we offer a web demo that allows you to play the game directly in your browser without any installation.
         </p>
         <div style={{ marginTop: 20 }}>
           <h3 style={{ color: '#e9fff0', fontSize: '1.25rem', marginBottom: 12 }}>
@@ -27,23 +27,23 @@ export default function DownloadSection() {
           </h3>
           <p style={{ color: '#bcd9cf', marginTop: 12 }}>
             <a
-              href="/downloads/WindowsGame.pck"
-              download="SurviveX_Windows.pck"
+              href="/downloads/SurviveX_Windows.zip"
+              download="SurviveX_Windows.zip"
               style={{
-                color: '#a0f0c0',
+                color: '#87ceeb',
                 textDecoration: 'underline',
                 fontWeight: 'bold',
               }}
             >
-              Download for Windows
+              Download for Windows (ZIP)
             </a>
           </p>
         </div>
       </section>
 
       <section
-        id="Prototype"
-        aria-labelledby="Prototype-title"
+        id="PlayInBrowser"
+        aria-labelledby="PlayInBrowser-title"
         style={{
           maxWidth: 980,
           margin: '40px auto',
@@ -53,11 +53,11 @@ export default function DownloadSection() {
           border: '1px solid rgba(255,255,255,0.03)',
         }}
       >
-        <h2 id="Prototype-title" style={{ marginTop: 0, color: '#e9fff0', fontSize: '2rem' }}>
-          Prototype
+        <h2 id="PlayInBrowser-title" style={{ marginTop: 0, color: '#e9fff0', fontSize: '2rem' }}>
+          Play in Browser
         </h2>
         <p style={{ color: '#cfe9dd', lineHeight: 1.6 }}>
-          The prototype for the game can be played here. Please note that this is an early version of the game and may not include all features or content planned for the final release.
+          Try SurviveX directly in your browser - no download required.
         </p>
         <p style={{ color: '#bcd9cf', marginTop: 12 }}>
           <a
@@ -65,12 +65,12 @@ export default function DownloadSection() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              color: '#a0f0c0',
+              color: '#87ceeb',
               textDecoration: 'underline',
               fontWeight: 'bold',
             }}
           >
-            Play SurviveX Prototype in Browser
+            Play SurviveX in Browser
           </a>
         </p>
       </section>

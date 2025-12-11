@@ -16,7 +16,7 @@ export default function GamePage() {
       }}>
         <h2 className="hero-title" style={{ fontSize: '6rem', marginBottom: '20px', fontFamily: '\'Super Crawler\', cursive' }}>Fight. Craft. Survive.</h2>
         <p style={{ fontSize: '2rem', marginBottom: '30px', color: '#d4d4d4', fontWeight: '800' }}>
-          Build shelter, hunt for food, and survive the wilderness.
+          Forge weapons, travel islands, and survive the night.
         </p>
 
   {/* Play button with pulsing glow + hover/focus effects */}

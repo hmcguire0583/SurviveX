@@ -16,6 +16,19 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/downloads/:path*.zip',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'application/zip',
+          },
+          {
+            key: 'Content-Disposition',
+            value: 'attachment',
+          },
+        ],
+      },
     ];
   },
 };

@@ -6,7 +6,7 @@ export default function BackgroundSection() {
       <section id="background" aria-labelledby="background-title" style={{ maxWidth: 980, margin: '40px auto', padding: 28, borderRadius: 12, background: 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))', border: '1px solid rgba(255,255,255,0.03)' }}>
           <h2 id="background-title" style={{ marginTop: 0, color: '#e9fff0', fontSize: '2rem' }}>Overview</h2>
           <p style={{ color: '#cfe9dd', lineHeight: 1.6 }}>
-              SurviveX is a top-down 2D math survival game where players explore a dynamic ocean world filled with islands, zombies, and shark attacks that are all powered by solving math problems. Designed for 8th-grade learners, the game blends adventure and education: players navigate using slope and distance calculations, battle enemies by answering equations, and earn resources to upgrade gear. With a real-time day/night cycle and adaptive difficulty, SurviveX turns math into a tool for survival, strategy, and progression.
+              SurviveX is a top-down 2D math survival game where players explore a dynamic ocean world filled with islands, zombies, and shark attacks that are all powered by solving math problems. Designed for 8th-grade learners, the game blends adventure and education: players navigate using slope and linear calculations, battle enemies by answering equations, and earn resources to upgrade gear. With a real-time day/night cycle and adaptive difficulty, SurviveX turns math into a tool for survival, strategy, and progression.
           </p>
       </section>
 
