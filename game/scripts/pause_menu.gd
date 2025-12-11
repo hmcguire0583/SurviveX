@@ -1,12 +1,21 @@
 extends CanvasLayer
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
 	get_tree().paused = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	# Correct path: instructionpanel2 is sibling of VBoxContainer
+	var instructions_text_node = $instructionpanel2/instructionsText2
+	instructions_text_node.editable = false
+	instructions_text_node.focus_mode = Control.FOCUS_NONE
+
+	# Hide panels at start
+	$instructionpanel2.visible = false
+	$volumepanel.visible = false
+
+	# Make sure instructions panel draws above background
+	$instructionpanel2.z_index = 1
+
 func _process(delta: float) -> void:
 	pass
 
@@ -22,19 +31,34 @@ func _on_resumebutton_pressed() -> void:
 
 func _on_optionsbutton_pressed() -> void:
 	$volumepanel.visible = true
-	$pauselabel.visible = false
+	$instructionpanel2.visible = false
 	$VBoxContainer.visible = false
+	$pauselabel.visible = false
+
+func _on_instructionsbutton_pressed() -> void:
+	print("Instructions button pressed")  # Debug
+	$instructionpanel2.visible = true
+	$volumepanel.visible = false
+	$VBoxContainer.visible = false
+	$pauselabel.visible = false
+	print("instructionpanel2 visibility:", $instructionpanel2.visible)
+
+func _on_backbutton_pressed() -> void:
+	$volumepanel.visible = false
+	$instructionpanel2.visible = false
+	$VBoxContainer.visible = true
+	$pauselabel.visible = true
+
+func _on_backbutton_3_pressed() -> void:
+	$instructionpanel2.visible = false
+	$VBoxContainer.visible = true
+	$pauselabel.visible = true
+	
 
 func _on_main_menubutton_pressed() -> void:
 	visible = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
-
-func _on_backbutton_pressed() -> void:
-	$volumepanel.visible = false
-	$pauselabel.visible = true
-	$VBoxContainer.visible = true
-
 
 func _on_volumeslider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(0, value)

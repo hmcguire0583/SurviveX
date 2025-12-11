@@ -196,9 +196,9 @@ script = ExtResource("4_erruo")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="SharkBubble"]
 offset_left = -43.0
-offset_top = -89.0
+offset_top = -87.0
 offset_right = 37.0
-offset_bottom = -12.0
+offset_bottom = -10.0
 texture = ExtResource("4_qcb64")
 
 [node name="QuestionLabel" type="Label" parent="SharkBubble/NinePatchRect"]
@@ -208,10 +208,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
-offset_top = -20.5
-offset_right = 19.0
-offset_bottom = -9.5
+offset_left = -16.0
+offset_top = -18.5
+offset_right = 17.0
+offset_bottom = -8.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_nu3na")
@@ -222,9 +222,9 @@ text = "Testing 1"
 [node name="AnswerInput" type="LineEdit" parent="SharkBubble/NinePatchRect"]
 layout_mode = 0
 offset_left = 32.0
-offset_top = 29.0
+offset_top = 31.0
 offset_right = 88.6667
-offset_bottom = 50.0
+offset_bottom = 52.0
 scale = Vector2(0.3, 0.3)
 theme_override_font_sizes/font_size = 7
 
