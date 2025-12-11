@@ -95,7 +95,7 @@ func defeat_shark():
 		player.end_math_challenge()
 
 	# Apply damage to shark
-	var damage = 100
+	var damage = 25
 	SharkHealth -= damage
 	update_health()
 	show_damage_label("-" + str(damage))
