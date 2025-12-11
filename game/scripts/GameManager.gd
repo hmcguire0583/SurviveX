@@ -11,6 +11,18 @@ var unlocked_islands = {
 	0: true
 }
 const TOTAL_ENEMIES := 30
+var shark_scene = preload("res://scenes/smartshark.tscn")
+func queue_shark_respawn(spawn_position: Vector2):
+	var t = get_tree().create_timer(2.0)
+	t.timeout.connect(func():
+		if get_tree().current_scene:
+			var new_shark = shark_scene.instantiate()
+			new_shark.visible = true
+			new_shark.spawn_position = spawn_position
+			new_shark.global_position = spawn_position
+			print("Respawning shark at: ", spawn_position)
+			get_tree().current_scene.add_child(new_shark)
+	)
 
 func add_enemy_defeated():
 	enemies_defeated += 2

@@ -154,9 +154,11 @@ radius = 28.0713
 [sub_resource type="Theme" id="Theme_nu3na"]
 
 [node name="smartshark" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_y0mes")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_mmyig")
 animation = &"shark_death"
 
