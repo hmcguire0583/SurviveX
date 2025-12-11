@@ -9,7 +9,7 @@ extends CharacterBody2D
 var player_chase := false
 var player = null
 var maxHealth = 100
-var health = 20
+var health = 10
 var current_dir := "down"
 var math_challenge_active := false
 var is_attacking := false
@@ -153,7 +153,8 @@ func defeat_enemy():
 		$CollisionShape2D.disabled = true
 		GameManager.add_enemy_defeated()   # <-- use helper instead of += 1
 		$AnimatedSprite2D.play("z_death")
-		await get_tree().create_timer(1.2).timeout
+		if is_inside_tree() and not is_queued_for_deletion():
+			await get_tree().create_timer(1.2).timeout
 		drop_scrap()
 		$AnimatedSprite2D.visible = false
 		$CollisionShape2D.disabled = true
@@ -178,6 +179,8 @@ func drop_resources():
 	
 	
 func resource_collect():
+	if not is_inside_tree() or is_queued_for_deletion():
+		return
 	await get_tree().create_timer(0.4).timeout
 	scrap.visible = false
 	wood.visible = false
@@ -185,14 +188,14 @@ func resource_collect():
 	var wood = 0
 	randomize()
 	if GameManager.current_island <= 1:
-		scrap = randi() % 3 + 2
-		wood = randi() % 4 + 3
+		scrap = randi() % 3 + 2 + 5
+		wood = randi() % 4 + 3 + 5
 	elif GameManager.current_island == 2:
-		scrap = randi() % 4 + 4
-		wood = randi() % 5 + 5
+		scrap = randi() % 4 + 4 + 5
+		wood = randi() % 5 + 5 + 5
 	elif GameManager.current_island >= 3:
-		scrap = randi() % 5 + 6
-		wood = randi() % 6 + 7
+		scrap = randi() % 5 + 6 + 5
+		wood = randi() % 6 + 7 + 5
 	
 	print("rewarding ", scrap, " scrap")
 	print("rewarding ", wood, " wood")
