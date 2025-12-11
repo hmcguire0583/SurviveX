@@ -6,7 +6,7 @@ export const metadata = {
 
 export default function BibliographyPage() {
   return (
-    <main style={{ backgroundColor: '#0d0d0d', color: '#f5f5f5', minHeight: '100vh', padding: 36 }}>
+    <main style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%)', color: '#ffffff', minHeight: '100vh', padding: 36 }}>
       <BibliographySection />
     </main>
   );

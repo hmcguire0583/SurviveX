@@ -41,11 +41,12 @@ const BibliographyData: SourceItem[] = [
     title: "The Massachusetts Department of Education",
     url: "https://www.doe.mass.edu/frameworks/current.html",
     description:
-      "The Massachusetts DESE runs public education from pre-K to grade 12 statewide. We follow clear academic standards to make sure every student gets a fair shot at quality learning.",
+      "The Massachusetts DESE runs public education from pre-K to grade 12 statewide.",
   },
   {
-    title: "Additional Research Sources",
-    description: "More educational and technical sources will be added as the project progresses.",
+    title: "Godot Documentation",
+    url: "https://docs.godotengine.org/",
+    description: "Official documentation for the Godot Engine, covering game development, scripting, and engine features.",
   },
 ];
 
@@ -64,7 +65,7 @@ const Bibliography: React.FC = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold hover:underline text-[#9fe6b8]"
+                className="font-semibold hover:underline text-[#add8e6]"
               >
                 {item.title}
               </a>
@@ -74,7 +75,7 @@ const Bibliography: React.FC = () => {
               </span>
             )}
             {item.description && (
-              <p className="text-sm text-gray-400 mt-1">{item.description}</p>
+              <p className="text-sm text-[#60a5fa] mt-1">{item.description}</p>
             )}
           </li>
         ))}

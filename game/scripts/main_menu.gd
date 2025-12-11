@@ -29,7 +29,12 @@ func _on_instructionsbutton_pressed() -> void:
 	$VBoxContainer.visible = false
 
 func _on_exit_pressed() -> void:
-	get_tree().quit()
+	if OS.has_feature("web"):
+		JavaScriptBridge.eval("window.location.href = '/'")
+	else:
+		get_tree().quit()
+
+
 
 func _on_backbutton_pressed() -> void:
 	$volumepanel.visible = false

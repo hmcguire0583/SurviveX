@@ -21,6 +21,24 @@ export default function DownloadSection() {
         <p style={{ color: '#cfe9dd', lineHeight: 1.6 }}>
           You can download the latest version of SurviveX for Windows and MacOS. Additionally, we offer a web demo that allows you to play the game directly in your browser without any installation.
         </p>
+        <div style={{ marginTop: 20 }}>
+          <h3 style={{ color: '#e9fff0', fontSize: '1.25rem', marginBottom: 12 }}>
+            Available Downloads
+          </h3>
+          <p style={{ color: '#bcd9cf', marginTop: 12 }}>
+            <a
+              href="/downloads/WindowsGame.pck"
+              download="SurviveX_Windows.pck"
+              style={{
+                color: '#a0f0c0',
+                textDecoration: 'underline',
+                fontWeight: 'bold',
+              }}
+            >
+              Download for Windows
+            </a>
+          </p>
+        </div>
       </section>
 
       <section

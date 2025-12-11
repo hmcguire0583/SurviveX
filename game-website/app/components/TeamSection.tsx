@@ -37,7 +37,7 @@ const members: Member[] = [
     color: '#7a4ea6',
     github: 'https://github.com/Max-leav',
     linkedin: 'https://www.linkedin.com/in/maxleavitt/',
-    photo: 'max-leavitt.jpg'
+    photo: 'max-leavitt3.jpg.png'
   },
   {
     name: 'Aryan Bhagat',
