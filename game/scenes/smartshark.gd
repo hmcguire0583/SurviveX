@@ -123,12 +123,13 @@ func penalize_player():
 		var raft = raft_nodes[0]
 		if raft and raft.has_method("apply_damage"):
 			raft.apply_damage(20)
-
-	var t = get_tree().create_timer(1.0)
-	t.timeout.connect(func():
-		if not is_dead:
-			show_math_challenge()
-	)
+			
+	if is_inside_tree():
+		var t = get_tree().create_timer(1.0)
+		t.timeout.connect(func():
+			if not is_dead:
+				show_math_challenge()
+				)
 
 func update_health():
 	$SharkHealth.max_value = maxHealth

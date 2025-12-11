@@ -4,6 +4,8 @@ class_name DayNight
 signal time_changed(current_hour: float, time_string: String)
 
 @onready var canvas_modulate: CanvasModulate = $CanvasModulate
+# Reference to the player's Spotlight (PointLight2D)
+@onready var player_spotlight: PointLight2D = get_node("/root/MainScene/Player/Spotlight")
 
 @export_group("Time Settings")
 @export var day_duration: float = 5.0
@@ -54,10 +56,16 @@ func _update_world_color() -> void:
 	else:
 		target_color = night_color
 		GameManager.time = "night"
+
+	# Apply nightvision tint if active
 	if GameManager.nightvision and GameManager.time == "night":
-		# brighten night with greenish tint
 		target_color = Color(0.6, 0.9, 0.6, 0.8)
+
 	canvas_modulate.color = target_color
+
+	# Spotlight logic: only visible at night AND no nightvision
+	if player_spotlight:
+		player_spotlight.visible = (GameManager.time == "night" and not GameManager.nightvision)
 
 func get_time_string() -> String:
 	var hour := floori(current_hour)

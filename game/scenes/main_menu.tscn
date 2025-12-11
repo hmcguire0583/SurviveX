@@ -232,9 +232,78 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
 text = "Back"
 
+[node name="instructionpanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -101.0
+offset_top = -142.0
+offset_right = 99.0
+offset_bottom = 131.0
+
+[node name="instructionsText" type="TextEdit" parent="instructionpanel"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 3.0
+offset_right = 201.0
+offset_bottom = 279.0
+theme_override_colors/search_result_color = Color(0.23483175, 0.26309335, 0.5648549, 1)
+theme_override_colors/font_color = Color(0.875, 0.875, 0.875, 1)
+theme_override_font_sizes/font_size = 4
+text = "Objective: Eliminate enemies on all the islands to win.
+
+- Eliminate all enemies per island in order to enable raft travelling to the next island 
+and to unlock the chests on the islands (not on starting island)
+- Use the item shop at the starting island to buy weapon, armor upgrades, and night vision 
+(Important for seeing in the dark.)
+
+- Resource usage: 
+- scraps are used to purchase item upgrades (dropped by zombies or chest)
+- wood is used to repair raft damage (dropped by zombies or chests)
+- apples are used to heal player health (dropped by chests)
+
+Buttons: 
+- WASD or Arrow keys to move
+- I (toggle inventory)
+- R (to eat apple, heal player heath)
+- K (to use wood, heal raft health)
+- ESC (toggle pause menu)
+
+Damage: 
+- sharks deal raft damage
+- zombies deal player damage
+- timer deals damage to player when reaching zero
+"
+
+[node name="backbutton2" type="Button" parent="instructionpanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = -156.0
+offset_right = 222.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wu84c")
+text = "Back"
+
 [connection signal="pressed" from="VBoxContainer/startbutton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/optionsbutton" to="." method="_on_optionsbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/instructionsbutton" to="." method="_on_instructionsbutton_pressed"]
 [connection signal="pressed" from="VBoxContainer/exitbutton" to="." method="_on_exit_pressed"]
 [connection signal="value_changed" from="volumepanel/volumeslider" to="." method="_on_volumeslider_value_changed"]
 [connection signal="pressed" from="volumepanel/backbutton" to="." method="_on_backbutton_pressed"]
+[connection signal="pressed" from="instructionpanel/backbutton2" to="." method="_on_backbutton_pressed"]

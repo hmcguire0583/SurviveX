@@ -460,11 +460,11 @@ y_sort_enabled = true
 position = Vector2(430, -1331)
 collision_layer = 3
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_jhx03")
-volume_db = -34.833
-autoplay = true
-
 [node name="chest" parent="." instance=ExtResource("14_o8fc1")]
 z_index = 1
 position = Vector2(2449, -182)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_jhx03")
+volume_db = 1.749
+autoplay = true
