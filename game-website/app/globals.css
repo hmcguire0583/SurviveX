@@ -6,6 +6,15 @@
   --foreground: #171717;
 }
 
+body {
+  background-image: url('/images/surviveX.gif');
+  background-size: 100%;
+  background-position: center -625px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
 /* Local display font: Basi Map
    Place the font files (WOFF2/WOFF/TTF) in /public/fonts/ as described in public/fonts/README.md
 */
@@ -18,10 +27,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Super Crawler';
+  src: url('/fonts/Super%20Crawler.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Header / Navbar styles (restored) */
 .site-header {
-  background: #0f1112;
-  border-bottom: 1px solid #222;
+  background: linear-gradient(rgb(6, 6, 93),rgb(14, 14, 131), rgb(10, 64, 118));
+  border-bottom: 1px solid #14acc1;
 }
 
 .site-header-inner {
@@ -44,13 +61,14 @@
   font-weight: 900;
   font-size: 40px;
   letter-spacing: 0.8px;
-  transition: transform 180ms ease, text-shadow 180ms ease;
+  transition: transform 180ms ease, text-shadow 180ms ease, color 180ms ease;
 }
 
 /* SurviveX glow on hover */
 .site-logo-heading:hover {
+  color: #ffffff;
   transform: translateY(-2px) scale(1.02);
-  text-shadow: 0 6px 18px rgba(0, 255, 127, 0.18), 0 2px 6px rgba(0, 255, 127, 0.12);
+  text-shadow: 0 6px 18px rgba(255, 255, 255, 0.3), 0 2px 6px rgba(239, 68, 68, 0.2);
 }
 
 .site-nav {
@@ -73,7 +91,6 @@
 }
 
 .nav-link::after {
-  /* animated underline (white) */
   content: '';
   position: absolute;
   left: 12px;
@@ -99,8 +116,8 @@
 
 .nav-link.active {
   color: #e9fff0;
-  background: rgba(34,197,94,0.08);
-  border: 1px solid rgba(34,197,94,0.14);
+  background: rgba(4, 64, 147, 0.08);
+  border: 1px solid rgba(38, 162, 215, 0.14);
 }
 
 /* Smooth scrolling for anchor links */
@@ -130,7 +147,7 @@ html {
 }
 
 .team-card {
-  background: rgba(255,255,255,0.02);
+  background: #111827;
   padding: 20px;
   border-radius: 12px;
   min-width: 220px;
@@ -138,6 +155,11 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: background 0.3s ease;
+}
+
+.team-card:hover {
+  background: #1f2937;
 }
 
 .team-card-top {

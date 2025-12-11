@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 export default function BackgroundSection() {
   return (
@@ -25,12 +24,11 @@ export default function BackgroundSection() {
                   <div style={{ maxWidth: 880, margin: '14px auto', borderRadius: 12, overflow: 'hidden' }}>
                     {/* Static demo image from public/images/vid.png — fits container responsively */}
                     <div style={{ position: 'relative', width: '100%', paddingBottom: '56.25%' }}>
-                      <Image
-                        src="/images/vid.png"
-                        alt="SurviveX demo thumbnail"
-                        fill
-                        sizes="(max-width: 640px) 100vw, 880px"
-                        style={{ objectFit: 'cover' }}
+                      <iframe
+                        src="https://www.youtube.com/embed/B43zCx0hfx8"
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', borderRadius: 12 }}
+                        allowFullScreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       />
                     </div>
                   </div>

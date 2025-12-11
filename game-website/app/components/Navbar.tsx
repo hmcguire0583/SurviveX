@@ -27,7 +27,9 @@ export default function Navbar() {
           className="site-home-link"
           aria-label="SurviveX home"
         >
-          <span className="site-logo site-logo-heading">SurviveX</span>
+          <span className="site-logo site-logo-heading" style={{ fontFamily: "'Super Crawler', cursive" }}>
+            <span style={{ color: '#f5f5f5' }}>Survive</span><span style={{ color: '#ef4444' }}>X</span>
+          </span>
         </Link>
 
         <nav aria-label="Primary navigation" className="site-nav">
