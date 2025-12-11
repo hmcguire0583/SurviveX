@@ -70,7 +70,7 @@ export default function TeamSection() {
         Meet the Team
       </h2>
 
-      <div className="w-28 h-1 bg-gradient-to-r from-[#00ff7f] to-[#7ef5c6] mx-auto rounded mb-4" aria-hidden />
+      <div className="w-28 h-1 bg-gradient-to-r from-[#7486C2] to-[#99ccff] mx-auto rounded mb-4" aria-hidden />
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Top 3 cards */}

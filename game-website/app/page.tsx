@@ -5,8 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function GamePage() {
   const router = useRouter();
   return (
-    <main style={{ backgroundColor: '#0d0d0d', color: '#f5f5f5' }}>
-      
+    <main style={{ color: '#f5f5f5' }}>
       <div style={{
         height: '90vh',
         display: 'flex',
@@ -15,8 +14,8 @@ export default function GamePage() {
         flexDirection: 'column',
         textAlign: 'center'
       }}>
-        <h2 className="hero-title" style={{ fontSize: '6rem', marginBottom: '20px' }}>Fight. Craft. Survive.</h2>
-        <p style={{ fontSize: '2rem', marginBottom: '30px', color: '#ccc', fontWeight: '700' }}>
+        <h2 className="hero-title" style={{ fontSize: '6rem', marginBottom: '20px', fontFamily: '\'Super Crawler\', cursive' }}>Fight. Craft. Survive.</h2>
+        <p style={{ fontSize: '2rem', marginBottom: '30px', color: '#d4d4d4', fontWeight: '800' }}>
           Build shelter, hunt for food, and survive the wilderness.
         </p>
 
@@ -25,8 +24,8 @@ export default function GamePage() {
 
         <style>{`
           .play-btn {
-            background: linear-gradient(90deg,#7bf7a4,#22c55e);
-            color: #052016;
+            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            color: #ffffff;
             padding: 36px 48px;
             border: none;
             border-radius: 10px;
@@ -42,7 +41,7 @@ export default function GamePage() {
 
           .play-btn:hover {
             transform: scale(1.06);
-            box-shadow: 0 10px 30px rgba(34,197,94,0.18);
+            box-shadow: 0 10px 30px rgba(59,130,246,0.4);
             animation-play-state: paused; /* subtle pause on hover */
           }
 
@@ -53,20 +52,20 @@ export default function GamePage() {
 
           .play-btn:focus {
             outline: none;
-            box-shadow: 0 0 0 6px rgba(34,197,94,0.12), 0 8px 24px rgba(0,0,0,0.5);
+            box-shadow: 0 0 0 6px rgba(59,130,246,0.3), 0 8px 24px rgba(0,0,0,0.5);
           }
 
           @keyframes pulse {
             0% {
-              box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(34,197,94,0.18);
+              box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(59,130,246,0.4);
               transform: translateY(0) scale(1);
             }
             50% {
-              box-shadow: 0 10px 30px rgba(34,197,94,0.10), 0 0 28px 8px rgba(34,197,94,0.06);
+              box-shadow: 0 10px 30px rgba(59,130,246,0.3), 0 0 28px 8px rgba(59,130,246,0.2);
               transform: translateY(-3px) scale(1.02);
             }
             100% {
-              box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(34,197,94,0.0);
+              box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 0 0 0 rgba(59,130,246,0.0);
               transform: translateY(0) scale(1);
             }
           }

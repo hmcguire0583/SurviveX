@@ -46,7 +46,7 @@ const Resource: React.FC = () => {
         {ResourceData.map((item, index) => (
           <li
             key={index}
-            className="bg-gray-900 p-4 rounded-2xl shadow hover:bg-gray-800 transition"
+            className="[background:rgba(255,255,255,0.02)] p-4 rounded-2xl shadow hover:bg-gray-800 transition"
           >
             <a
               href={`pdfs/${item.filename}`}
@@ -55,7 +55,6 @@ const Resource: React.FC = () => {
               className="font-semibold hover:underline"
               style={{ color: "#e9fff0" }}
             >
-               
               {item.title}
             </a>
           </li>
