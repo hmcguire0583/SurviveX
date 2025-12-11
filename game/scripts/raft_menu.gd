@@ -13,7 +13,7 @@ func update_unlocks():
 	$Panel/ButtonIsland1.disabled = false   # always unlocked
 	$Panel/ButtonIsland2.disabled = GameManager.enemies_defeated < 1
 	$Panel/ButtonIsland3.disabled = GameManager.enemies_defeated < 6
-	$Panel/ButtonIsland4.disabled = GameManager.enemies_defeated < 11
+	$Panel/ButtonIsland4.disabled = GameManager.enemies_defeated < 17
 
 func _on_island_pressed(index: int):
 	emit_signal("island_selected", index)
